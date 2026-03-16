@@ -1,0 +1,18 @@
+.page-hero {
+  padding: var(--space-6) 0 var(--space-4);
+}
+
+.filters {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: var(--space-4);
+}
+
+.card--case {
+  padding: var(--space-3);
+}
+
+.card--case .card__content {
+  padding-top: var(--space-3);
+}

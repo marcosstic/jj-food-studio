@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JJ Food Studio</title>
+    <link rel="preload" href="./GothamBook.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="./GothamMedium.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="./GothamBold.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="stylesheet" href="./styles/tokens.css" />
+    <link rel="stylesheet" href="./styles/base.css" />
+    <link rel="stylesheet" href="./styles/components.css" />
+    <link rel="stylesheet" href="./styles/pages/home.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./index.html" aria-label="JJ Food Studio">
+        <span class="brand__mark">JJ</span>
+        <span class="brand__name">Food Studio</span>
+      </a>
+
+      <nav class="nav">
+        <a class="nav__link" href="./portafolio.html">Portafolio</a>
+        <a class="nav__link" href="#servicios">Servicios</a>
+        <a class="nav__link" href="#formacion">Formación</a>
+        <a class="nav__link" href="#sobre">Sobre JJ</a>
+        <a class="nav__cta btn btn--outline" href="#">Agenda tu sesión</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Inicio">
+        <div class="hero__bg"></div>
+
+        <div class="hero__content container">
+          <div class="hero__left">
+            <p class="kicker">Cine gastronómico · Dark & moody · Precisión técnica</p>
+            <h1 class="h1">Imagen gastronómica que despierta apetito</h1>
+            <p class="lead">Fotografía y video para restaurantes, marcas de alimentos y pastelería.</p>
+
+            <div class="hero__actions">
+              <a class="btn btn--outline btn--cta" data-cta="primary" href="#">Agenda tu sesión</a>
+              <a class="btn btn--ghost" href="./portafolio.html">Ver portafolio</a>
+            </div>
+
+            <div class="hero__meta">
+              <span class="pill">Food styling</span>
+              <span class="pill">Dirección de arte</span>
+              <span class="pill">Foto · Video</span>
+            </div>
+          </div>
+
+          <div class="hero__right">
+            <div class="logo-stage" aria-label="Logo">
+              <div class="logo-css" data-logo="css">
+                <img class="logo-img" src="./JJ-logo-dorado.png" alt="JJ Food Studio" />
+                <span class="logo-spec"></span>
+              </div>
+              <div class="logo-three" data-logo="three" hidden>
+                <canvas class="logo-canvas" width="640" height="640" aria-label="Logo 3D"></canvas>
+                <div class="logo-three__fallback">Cargando modo 3D…</div>
+              </div>
+            </div>
+
+            <div class="reel" aria-label="Demo reel">
+              <div class="reel__placeholder">
+                <div class="reel__frame"></div>
+                <div class="reel__text">DEMO REEL JJ</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-toggle" aria-label="Demo">
+          <button class="demo-toggle__btn" type="button" data-demo-toggle>Demo</button>
+        </div>
+
+        <div class="demo-panel" hidden aria-label="Demo Panel">
+          <div class="demo-panel__row">
+            <span class="demo-panel__label">Logo</span>
+            <button class="seg" type="button" data-logo-mode="css">CSS</button>
+            <button class="seg" type="button" data-logo-mode="three">Three.js</button>
+          </div>
+          <div class="demo-panel__row">
+            <span class="demo-panel__label">CTA</span>
+            <button class="seg" type="button" data-cta-style="outline">Outline</button>
+            <button class="seg" type="button" data-cta-style="solid">Solid</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section container" aria-label="Portafolio destacado">
+        <header class="section__header">
+          <h2 class="h2">Portafolio</h2>
+          <a class="link" href="./portafolio.html">Explorar</a>
+        </header>
+
+        <div class="grid grid--3">
+          <a class="card card--cover" href="./portafolio.html#restaurantes">
+            <div class="card__media card__media--ph"></div>
+            <div class="card__content">
+              <h3 class="h3">Restaurantes</h3>
+              <p class="muted">Imagen, atmósfera y antojo.</p>
+            </div>
+          </a>
+
+          <a class="card card--cover" href="./portafolio.html#marcas">
+            <div class="card__media card__media--ph"></div>
+            <div class="card__content">
+              <h3 class="h3">Marcas de alimentos</h3>
+              <p class="muted">Calidad publicitaria para CPG.</p>
+            </div>
+          </a>
+
+          <a class="card card--cover" href="./portafolio.html#pasteleria">
+            <div class="card__media card__media--ph"></div>
+            <div class="card__content">
+              <h3 class="h3">Pastelería</h3>
+              <p class="muted">Texturas, brillo y detalle macro.</p>
+            </div>
+          </a>
+        </div>
+      </section>
+
+      <section id="servicios" class="section container" aria-label="Servicios">
+        <header class="section__header">
+          <h2 class="h2">Servicios</h2>
+          <a class="link" href="#">Trabajemos juntos</a>
+        </header>
+
+        <div class="grid grid--3">
+          <div class="card">
+            <h3 class="h3">Fotografía gastronómica</h3>
+            <p class="muted">Imágenes profesionales para restaurantes, marcas y productos.</p>
+          </div>
+          <div class="card">
+            <h3 class="h3">Video gastronómico</h3>
+            <p class="muted">Contenido audiovisual para redes, campañas y branding.</p>
+          </div>
+          <div class="card">
+            <h3 class="h3">Dirección de arte</h3>
+            <p class="muted">Concepto visual, composición y estilo para cada proyecto.</p>
+          </div>
+          <div class="card">
+            <h3 class="h3">Food styling</h3>
+            <p class="muted">Preparación y estilismo de alimentos para foto y video.</p>
+          </div>
+          <div class="card">
+            <h3 class="h3">Asesorías</h3>
+            <p class="muted">Consultoría visual para mejorar la imagen de tu marca.</p>
+          </div>
+          <div class="card card--cta">
+            <h3 class="h3">Agenda tu sesión</h3>
+            <p class="muted">Cuéntanos tu proyecto y te respondemos.</p>
+            <a class="btn btn--outline btn--cta" data-cta="secondary" href="#">Abrir formulario</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="formacion" class="section container" aria-label="Formación">
+        <header class="section__header">
+          <h2 class="h2">Formación</h2>
+          <a class="link" href="#">Ver todo</a>
+        </header>
+
+        <div class="grid grid--3">
+          <div class="card">
+            <h3 class="h3">Curso de fotografía integral</h3>
+            <p class="muted">De la técnica a la construcción de imagen profesional.</p>
+            <a class="link" href="#">Ver curso</a>
+          </div>
+          <div class="card">
+            <h3 class="h3">Curso de fotografía gastronómica</h3>
+            <p class="muted">Iluminación, composición y estilismo aplicado.</p>
+            <a class="link" href="#">Ver curso</a>
+          </div>
+          <div class="card">
+            <h3 class="h3">Curso de food styling</h3>
+            <p class="muted">Técnicas para preparar y controlar alimentos.</p>
+            <a class="link" href="#">Ver curso</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="sobre" class="section container" aria-label="Sobre JJ">
+        <header class="section__header">
+          <h2 class="h2">Sobre JJ</h2>
+          <a class="link" href="#">Conoce más</a>
+        </header>
+
+        <div class="card card--wide">
+          <p class="lead">Soy JJ, fotógrafo gastronómico y fundador de JJfoodstudio. Durante más de 8 años he trabajado con restaurantes, chefs y marcas desarrollando imagen gastronómica profesional.</p>
+          <p class="muted">Mi enfoque combina fotografía, video, dirección de arte y conocimiento real de cocina.</p>
+        </div>
+      </section>
+
+      <section class="section container" aria-label="CTA final">
+        <div class="card card--wide card--cta-final">
+          <div>
+            <h2 class="h2">Hagamos algo delicioso</h2>
+            <p class="muted">Video de JJ hablando e invitando a trabajar juntos.</p>
+          </div>
+          <div class="cta-row">
+            <a class="btn btn--outline btn--cta" data-cta="final" href="#">Agenda tu sesión</a>
+            <a class="btn btn--ghost" href="#">WhatsApp</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer container" aria-label="Footer">
+      <div class="footer__top">
+        <div>
+          <div class="footer__brand">JJ Food Studio</div>
+          <div class="footer__muted">Fotografía · Video · Dirección de arte · Food styling</div>
+        </div>
+        <div class="footer__links">
+          <a class="nav__link" href="./portafolio.html">Portafolio</a>
+          <a class="nav__link" href="#servicios">Servicios</a>
+          <a class="nav__link" href="#formacion">Formación</a>
+        </div>
+      </div>
+      <div class="footer__bottom">© JJ Food Studio</div>
+    </footer>
+
+    <a class="wa" href="#" aria-label="WhatsApp">WA</a>
+
+    <script type="module" src="./scripts/app.js"></script>
+  </body>
+</html>

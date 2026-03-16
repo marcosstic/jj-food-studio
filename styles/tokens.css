@@ -1,0 +1,78 @@
+@font-face {
+  font-family: "Gotham";
+  src: url("../GothamBook.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../GothamBookItalic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../GothamMedium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../GothamBold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gotham";
+  src: url("../GothamBoldItalic.ttf") format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root {
+  --bg0: #070708;
+  --bg1: #0b0b0c;
+  --panel: rgba(255, 255, 255, 0.06);
+  --panel2: rgba(255, 255, 255, 0.10);
+  --text: rgba(255, 255, 255, 0.92);
+  --muted: rgba(255, 255, 255, 0.70);
+  --muted2: rgba(255, 255, 255, 0.55);
+  --neutral: #58595b;
+
+  --gold-d: #bd8c44;
+  --gold-m: #d4ac6a;
+  --gold-l: #e9d79a;
+  --gold-grad: linear-gradient(135deg, var(--gold-d) 0%, var(--gold-m) 48%, var(--gold-l) 100%);
+
+  --radius: 18px;
+  --radius-sm: 12px;
+  --shadow: 0 18px 60px rgba(0, 0, 0, 0.60);
+
+  --container: 1120px;
+  --space-1: 8px;
+  --space-2: 12px;
+  --space-3: 16px;
+  --space-4: 24px;
+  --space-5: 32px;
+  --space-6: 48px;
+  --space-7: 72px;
+
+  --font: "Gotham", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --dur-1: 180ms;
+  --dur-2: 320ms;
+}
+
+body.demo-on {
+  --demo-panel-opacity: 1;
+}
