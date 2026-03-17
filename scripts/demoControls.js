@@ -33,9 +33,17 @@ const ensureDemoUi = () => {
             <div class="opt__title">Opción 1 · CSS</div>
             <div class="opt__desc">Más rápida y estable. Look premium.</div>
           </button>
+          <button class="opt" type="button" data-logo-mode="glow">
+            <div class="opt__title">Opción 2 · Glow</div>
+            <div class="opt__desc">Brillo dorado + flotación (estilo MUBI).</div>
+          </button>
           <button class="opt" type="button" data-logo-mode="three">
-            <div class="opt__title">Opción 2 · Three.js</div>
+            <div class="opt__title">Opción 3 · Three.js</div>
             <div class="opt__desc">Más “wow”. Carga bajo demanda.</div>
+          </button>
+          <button class="opt" type="button" data-logo-mode="cinematic">
+            <div class="opt__title">Opción 4 · Cinematic</div>
+            <div class="opt__desc">Luz más dramática + partículas sutiles.</div>
           </button>
         </div>
       </div>

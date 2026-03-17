@@ -182,28 +182,28 @@ body.cta-outline .btn--outline.btn--cta::before {
 
 .demo-toggle {
   position: fixed;
-  top: 18px;
-  right: 18px;
+  left: 18px;
+  bottom: 18px;
   z-index: 50;
 }
 
 .demo-toggle__btn {
-  height: 34px;
-  padding: 0 12px;
+  height: 30px;
+  padding: 0 10px;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(7, 7, 8, 0.35);
   color: rgba(255, 255, 255, 0.78);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  font-size: 11px;
+  font-size: 10px;
   cursor: pointer;
 }
 
 .demo-panel {
   position: fixed;
-  top: 62px;
-  right: 18px;
+  left: 18px;
+  bottom: 58px;
   z-index: 50;
   width: min(420px, calc(100vw - 36px));
   padding: 14px;
@@ -245,7 +245,7 @@ body.cta-outline .btn--outline.btn--cta::before {
 
 .demo-panel__options {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
   gap: 10px;
 }
 

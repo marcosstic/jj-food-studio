@@ -4,12 +4,14 @@ export const setLogoMode = async (mode) => {
   const cssEl = document.querySelector("[data-logo=css]");
   const threeEl = document.querySelector("[data-logo=three]");
 
-  document.body.dataset.logoMode = mode === "three" ? "three" : "css";
+  const normalized = mode === "three" || mode === "cinematic" || mode === "glow" ? mode : "css";
+  document.body.dataset.logoMode = normalized;
+  document.body.classList.toggle("logo-glow", normalized === "glow");
 
-  if (mode === "three") {
+  if (normalized === "three" || normalized === "cinematic") {
     if (cssEl) cssEl.hidden = true;
     if (threeEl) threeEl.hidden = false;
-    await initThreeLogo();
+    await initThreeLogo({ variant: normalized });
     return;
   }
 

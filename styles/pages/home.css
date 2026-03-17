@@ -75,6 +75,49 @@
   transform: translateZ(8px);
 }
 
+@keyframes jj-float {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes jj-sweep {
+  0% {
+    background-position: -200% 0;
+    opacity: 0.30;
+  }
+  40% {
+    opacity: 0.70;
+  }
+  100% {
+    background-position: 200% 0;
+    opacity: 0.30;
+  }
+}
+
+body.logo-glow .logo-css {
+  animation: jj-float 1.9s var(--ease) infinite alternate;
+}
+
+body.logo-glow .logo-img {
+  filter:
+    drop-shadow(0 0 22px rgba(233, 215, 154, 0.35))
+    drop-shadow(0 0 44px rgba(212, 172, 106, 0.22))
+    drop-shadow(0 0 70px rgba(189, 140, 68, 0.18));
+}
+
+body.logo-glow .logo-spec {
+  opacity: 0.95;
+  background:
+    radial-gradient(520px 420px at 50% 55%, rgba(233, 215, 154, 0.18), transparent 62%),
+    linear-gradient(110deg, rgba(233, 215, 154, 0.00) 0%, rgba(233, 215, 154, 0.00) 40%, rgba(233, 215, 154, 0.35) 50%, rgba(233, 215, 154, 0.00) 60%, rgba(233, 215, 154, 0.00) 100%);
+  background-size: 240% 100%;
+  animation: jj-sweep 2.1s var(--ease) infinite;
+}
+
 .logo-three {
   position: relative;
   width: 100%;
