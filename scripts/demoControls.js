@@ -35,7 +35,7 @@ const ensureDemoUi = () => {
           </button>
           <button class="opt" type="button" data-logo-mode="glow">
             <div class="opt__title">Opción 2 · Glow</div>
-            <div class="opt__desc">Brillo dorado + flotación (estilo MUBI).</div>
+            <div class="opt__desc">Brillo dorado + flotación.</div>
           </button>
           <button class="opt" type="button" data-logo-mode="three">
             <div class="opt__title">Opción 3 · Three.js</div>
@@ -106,7 +106,16 @@ const updateSegmentActive = () => {
   });
 };
 
+let isInitialized = false;
+
 export const initDemoControls = () => {
+  if (isInitialized) {
+    console.log("Demo controls already initialized, skipping");
+    return;
+  }
+  
+  isInitialized = true;
+  console.log("Initializing demo controls");
   const { toggleBtn } = ensureDemoUi();
 
   const enabled = getInitialDemoMode();

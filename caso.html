@@ -2,7 +2,7 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
     <title>Caso · JJ Food Studio</title>
     <link rel="stylesheet" href="./styles/tokens.css" />
     <link rel="stylesheet" href="./styles/base.css" />
@@ -69,10 +69,52 @@
           <div class="media-tile"></div>
         </div>
       </section>
+
+      <div class="demo-panel" hidden aria-label="Demo Panel">
+        <div class="demo-panel__section">
+          <div class="demo-panel__section-title">Logo</div>
+          <div class="demo-panel__options">
+            <button class="opt" type="button" data-logo-mode="css">
+              <div class="opt__title">Opción 1 · CSS</div>
+              <div class="opt__desc">Efecto 3D con CSS (ligero).</div>
+            </button>
+            <button class="opt" type="button" data-logo-mode="glow">
+              <div class="opt__title">Opción 2 · Glow</div>
+              <div class="opt__desc">Brillo y flotación.</div>
+            </button>
+            <button class="opt" type="button" data-logo-mode="three">
+              <div class="opt__title">Opción 3 · Three.js</div>
+              <div class="opt__desc">Más "wow". Carga bajo demanda.</div>
+            </button>
+            <button class="opt" type="button" data-logo-mode="cinematic">
+              <div class="opt__title">Opción 4 · Cinematic</div>
+              <div class="opt__desc">Luz más dramática + partículas sutiles.</div>
+            </button>
+          </div>
+        </div>
+
+        <div class="demo-panel__section">
+          <div class="demo-panel__section-title">CTA</div>
+          <div class="demo-panel__options">
+            <button class="opt" type="button" data-cta-style="outline">
+              <div class="opt__title">Opción 1 · Outline</div>
+              <div class="opt__desc">Borde gradiente + fondo oscuro (editorial).</div>
+            </button>
+            <button class="opt" type="button" data-cta-style="solid">
+              <div class="opt__title">Opción 2 · Solid</div>
+              <div class="opt__desc">Botón dorado sólido (más llamativo).</div>
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
 
+    <div class="demo-toggle" aria-label="Demo">
+      <button class="demo-toggle__btn" type="button" data-demo-toggle>Demo</button>
+    </div>
+
     <footer class="footer container" aria-label="Footer">
-      <div class="footer__bottom">© JJ Food Studio</div>
+      <div class="footer__bottom"> JJ Food Studio</div>
     </footer>
 
     <a class="wa" href="#" aria-label="WhatsApp">WA</a>

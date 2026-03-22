@@ -1,4 +1,6 @@
 let state = null;
+let isDestroyed = false;
+let animationFrameId = null;
 
 const createDustTexture = () => {
   const c = document.createElement("canvas");
@@ -18,14 +20,26 @@ const createDustTexture = () => {
 
 export const initThreeLogo = async ({ variant } = {}) => {
   const wanted = variant === "cinematic" ? "cinematic" : "three";
-  if (state && state.variant === wanted) return;
-  if (state && state.variant !== wanted) destroyThreeLogo();
+  console.log("initThreeLogo called with variant:", variant, "wanted:", wanted);
+  
+  // Always destroy previous instance to avoid double initialization
+  if (state) {
+    console.log("Destroying previous Three.js instance");
+    destroyThreeLogo();
+    // Wait a bit for context to stabilize
+    await new Promise(resolve => setTimeout(resolve, 100));
+  }
+
+  isDestroyed = false; // Reset flag on init
 
   const wrap = document.querySelector("[data-logo=three]");
   const canvas = document.querySelector(".logo-canvas");
   const fallback = document.querySelector(".logo-three__fallback");
 
-  if (!wrap || !canvas) return;
+  if (!wrap || !canvas) {
+    console.log("Missing elements - wrap:", !!wrap, "canvas:", !!canvas);
+    return;
+  }
 
   try {
     if (fallback) fallback.textContent = "Cargando modo 3D…";
@@ -34,6 +48,7 @@ export const initThreeLogo = async ({ variant } = {}) => {
 
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+    console.log("Three.js renderer created:", renderer);
 
     const scene = new THREE.Scene();
     if (wanted === "cinematic") {
@@ -43,7 +58,7 @@ export const initThreeLogo = async ({ variant } = {}) => {
     const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 100);
     camera.position.set(0, 0, wanted === "cinematic" ? 6.2 : 6);
 
-    const texture = await new THREE.TextureLoader().loadAsync("./JJ-logo-dorado.png");
+    const texture = await new THREE.TextureLoader().loadAsync("JJ-logo-dorado.png");
     texture.colorSpace = THREE.SRGBColorSpace;
 
     const material = new THREE.MeshStandardMaterial({
@@ -53,9 +68,10 @@ export const initThreeLogo = async ({ variant } = {}) => {
       metalness: wanted === "cinematic" ? 0.72 : 0.65,
       emissive: wanted === "cinematic" ? new THREE.Color(0x2a1c08) : new THREE.Color(0x000000),
       emissiveIntensity: wanted === "cinematic" ? 0.35 : 0.0,
+      side: THREE.DoubleSide, // Importante: visible por ambos lados
     });
 
-    const geometry = new THREE.PlaneGeometry(3.8, 3.8);
+    const geometry = new THREE.PlaneGeometry(3.2, 3.2); // Reducido 15% total (era 3.8, ahora 3.2)
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
 
@@ -83,7 +99,7 @@ export const initThreeLogo = async ({ variant } = {}) => {
         depthWrite: false,
         blending: THREE.AdditiveBlending,
       });
-      glowPlane = new THREE.Mesh(new THREE.PlaneGeometry(6.2, 6.2), glowMat);
+      glowPlane = new THREE.Mesh(new THREE.PlaneGeometry(5.3, 5.3), glowMat); // Reducido 15% total (era 6.2, ahora 5.3)
       glowPlane.position.z = -0.6;
       scene.add(glowPlane);
     }
@@ -136,8 +152,10 @@ export const initThreeLogo = async ({ variant } = {}) => {
 
     const resize = () => {
       const rect = wrap.getBoundingClientRect();
-      const w = Math.max(1, Math.floor(rect.width));
-      const h = Math.max(1, Math.floor(rect.height));
+      // Force minimum dimensions if rect is too small
+      const w = Math.max(420, Math.floor(rect.width));
+      const h = Math.max(420, Math.floor(rect.height));
+      console.log("Resizing Three.js canvas to:", w, "x", h, "rect:", rect);
       renderer.setSize(w, h, false);
       camera.aspect = w / h;
       camera.updateProjectionMatrix();
@@ -145,7 +163,13 @@ export const initThreeLogo = async ({ variant } = {}) => {
 
     resize();
 
-    const onResize = () => resize();
+    let resizeTimeout;
+    const onResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        resize();
+      }, 100); // Espera 100ms después del último resize
+    };
     window.addEventListener("resize", onResize);
 
     const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -167,17 +191,32 @@ export const initThreeLogo = async ({ variant } = {}) => {
 
     let raf = 0;
     const tick = () => {
+      if (isDestroyed) {
+        console.log("Tick function stopped due to destroy flag");
+        return;
+      }
+
       const t = performance.now() * 0.001;
       pointer.x += (pointer.tx - pointer.x) * 0.06;
       pointer.y += (pointer.ty - pointer.y) * 0.06;
 
-      const baseSpin = wanted === "cinematic" ? 0.006 : 0.003;
+      // Rotación principal en Y (giro completo 360°)
+      const baseSpin = wanted === "cinematic" ? 0.0096 : 0.0077; // Reducido 40% total (era 0.015/0.012)
       mesh.rotation.y += baseSpin;
+      
+      // Log reducido: solo cada 5 segundos para no afectar rendimiento
+      if (Math.floor(t) % 5 === 0 && Math.floor(t * 60) % 300 === 0) {
+        const degrees = (mesh.rotation.y * 180 / Math.PI) % 360;
+        console.log(`Logo 3D rotating: ${degrees.toFixed(1)}° | Mode: ${wanted}`);
+      }
 
-      const tiltX = pointer.y * (wanted === "cinematic" ? 0.28 : 0.18);
-      const tiltY = pointer.x * (wanted === "cinematic" ? 0.34 : 0.22);
-      mesh.rotation.x = (Math.sin(t * (wanted === "cinematic" ? 0.9 : 0.7)) * 0.08) + tiltX;
-      mesh.rotation.z = tiltY * 0.18;
+      // Rotaciones sutiles para efecto 3D sin interferir mucho
+      const tiltX = pointer.y * (wanted === "cinematic" ? 0.15 : 0.12);
+      const tiltY = pointer.x * (wanted === "cinematic" ? 0.20 : 0.15);
+      
+      // Oscilación sutil en X para dar vida
+      mesh.rotation.x = (Math.sin(t * (wanted === "cinematic" ? 0.5 : 0.4)) * 0.05) + tiltX;
+      mesh.rotation.z = tiltY * 0.1; // Reducida para no interferir con el giro principal
 
       if (wanted === "cinematic") {
         camera.position.x = Math.sin(t * 0.22) * 0.16;
@@ -197,13 +236,21 @@ export const initThreeLogo = async ({ variant } = {}) => {
         }
       }
 
-      renderer.render(scene, camera);
-      raf = requestAnimationFrame(tick);
+      // Ensure renderer and scene still exist before rendering
+      if (renderer && scene && camera) {
+        renderer.render(scene, camera);
+        animationFrameId = requestAnimationFrame(tick);
+      } else {
+        console.log("Missing renderer/scene/camera in tick");
+      }
     };
 
-    if (fallback) fallback.hidden = true;
-
-    raf = requestAnimationFrame(tick);
+    console.log("Starting Three.js render loop");
+    if (fallback) {
+      fallback.hidden = true;
+      console.log("Fallback hidden");
+    }
+    animationFrameId = requestAnimationFrame(tick);
 
     state = {
       THREE,
@@ -219,13 +266,14 @@ export const initThreeLogo = async ({ variant } = {}) => {
       dust,
       dustTexture,
       variant: wanted,
-      raf,
+      animationFrameId,
       onResize,
       onPointerMove,
       onPointerLeave,
       wrap,
     };
   } catch (e) {
+    console.error("Error initializing Three.js:", e);
     if (fallback) fallback.textContent = "No se pudo cargar el modo 3D.";
   }
 };
@@ -233,7 +281,14 @@ export const initThreeLogo = async ({ variant } = {}) => {
 export const destroyThreeLogo = () => {
   if (!state) return;
 
-  cancelAnimationFrame(state.raf);
+  console.log("Destroying Three.js instance");
+  isDestroyed = true; // Stop the loop logic
+  
+  if (animationFrameId) {
+    cancelAnimationFrame(animationFrameId);
+    animationFrameId = null;
+  }
+
   window.removeEventListener("resize", state.onResize);
 
   try {
@@ -243,6 +298,20 @@ export const destroyThreeLogo = () => {
   }
 
   try {
+    // Clear scene to free memory
+    if (state.scene) {
+      state.scene.traverse((object) => {
+        if (object.geometry) object.geometry.dispose();
+        if (object.material) {
+          if (Array.isArray(object.material)) {
+            object.material.forEach(m => m.dispose());
+          } else {
+            object.material.dispose();
+          }
+        }
+      });
+    }
+    
     state.geometry.dispose();
     state.material.dispose();
     state.texture.dispose();
@@ -261,6 +330,7 @@ export const destroyThreeLogo = () => {
       state.dustTexture.dispose();
     }
     state.renderer.dispose();
+    // Avoid forceContextLoss() to prevent context loss issues
   } catch {
   }
 

@@ -1,9 +1,10 @@
 .case-hero {
-  padding: var(--space-6) 0 var(--space-5);
+  padding: var(--space-12) var(--space-4);
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: var(--space-5);
-  align-items: end;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: center;
+  min-height: 500px;
 }
 
 .case-hero__media {
@@ -41,5 +42,90 @@
 @media (max-width: 980px) {
   .case-hero {
     grid-template-columns: 1fr;
+    gap: var(--space-6);
+    min-height: 400px;
+  }
+  
+  .case-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+  
+  .case-hero .lead {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .case-hero {
+    padding: var(--space-8) var(--space-3);
+    gap: var(--space-5);
+    min-height: 350px;
+  }
+  
+  .case-hero h1 {
+    font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+  }
+  
+  .case-hero .lead {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 680px) {
+  .case-hero {
+    padding: var(--space-6) var(--space-2);
+    gap: var(--space-4);
+    min-height: 300px;
+  }
+  
+  .case-hero h1 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+  
+  .case-hero .lead {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .case-hero {
+    padding: var(--space-5) var(--space-2);
+    gap: var(--space-3);
+    min-height: 250px;
+  }
+  
+  .case-hero h1 {
+    font-size: clamp(1.25rem, 3.5vw, 1.75rem);
+  }
+  
+  .case-hero .lead {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 375px) {
+  .case-hero h1 {
+    font-size: clamp(1.125rem, 3vw, 1.5rem);
+  }
+  
+  .case-hero .lead {
+    font-size: 12px;
+  }
+}
+
+/* iPad específico */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .case-hero {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+    min-height: 450px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .case-hero {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    min-height: 400px;
   }
 }

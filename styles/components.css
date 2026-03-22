@@ -332,7 +332,170 @@ kbd {
   border-color: rgba(255, 255, 255, 0.18);
 }
 
-@media (max-width: 520px) {
+@media (max-width: 980px) {
+  .demo-panel__options {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-2);
+  }
+  
+  .demo-panel__section {
+    padding: var(--space-3);
+  }
+  
+  .opt__title {
+    font-size: 12px;
+  }
+  
+  .opt__desc {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .demo-panel {
+    width: 90vw;
+    max-width: 320px;
+    right: 5vw;
+    bottom: 80px;
+  }
+  
+  .demo-panel__options {
+    grid-template-columns: 1fr;
+  }
+  
+  .demo-panel__section {
+    padding: var(--space-2);
+  }
+  
+  .opt__title {
+    font-size: 11px;
+  }
+  
+  .opt__desc {
+    font-size: 9px;
+  }
+  
+  .demo-toggle {
+    bottom: var(--space-3);
+    right: var(--space-3);
+  }
+  
+  .demo-toggle__btn {
+    width: 44px;
+    height: 44px;
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 680px) {
+  .demo-panel {
+    width: 95vw;
+    max-width: 300px;
+    right: 2.5vw;
+    bottom: 70px;
+  }
+  
+  .demo-panel__section-title {
+    font-size: 11px;
+  }
+  
+  .opt {
+    padding: var(--space-2);
+  }
+  
+  .opt__title {
+    font-size: 10px;
+  }
+  
+  .opt__desc {
+    font-size: 8px;
+  }
+  
+  .demo-toggle__btn {
+    width: 40px;
+    height: 40px;
+    font-size: 9px;
+  }
+}
+
+@media (max-width: 480px) {
+  .demo-panel {
+    width: 98vw;
+    max-width: 280px;
+    right: 1vw;
+    bottom: 60px;
+  }
+  
+  .demo-panel__section {
+    padding: var(--space-1);
+  }
+  
+  .demo-panel__section-title {
+    font-size: 10px;
+    margin-bottom: var(--space-2);
+  }
+  
+  .opt {
+    padding: var(--space-1);
+  }
+  
+  .opt__title {
+    font-size: 9px;
+    margin-bottom: 2px;
+  }
+  
+  .opt__desc {
+    font-size: 7px;
+  }
+  
+  .demo-toggle {
+    bottom: var(--space-2);
+    right: var(--space-2);
+  }
+  
+  .demo-toggle__btn {
+    width: 36px;
+    height: 36px;
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 375px) {
+  .demo-panel {
+    bottom: 55px;
+  }
+  
+  .demo-toggle__btn {
+    width: 32px;
+    height: 32px;
+    font-size: 7px;
+  }
+  
+  .wa {
+    width: 50px;
+    height: 50px;
+    font-size: 14px;
+  }
+}
+
+/* iPad específico */
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  .demo-panel {
+    width: 80vw;
+    max-width: 500px;
+  }
+  
+  .demo-panel__options {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: portrait) {
+  .demo-panel {
+    width: 85vw;
+    max-width: 400px;
+  }
+  
   .demo-panel__options {
     grid-template-columns: 1fr;
   }
