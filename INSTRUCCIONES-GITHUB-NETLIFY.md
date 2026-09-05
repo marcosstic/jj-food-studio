@@ -1,10 +1,17 @@
 # Instrucciones para Configurar GitHub y Netlify
 
-## Paso 1: Crear Repositorio Privado en GitHub
+## Configuración: Tu GitHub + Netlify del Cliente
 
-1. **Inicia sesión en GitHub**
+**Estrategia:**
+- **GitHub:** Tu cuenta personal (repo privado)
+- **Netlify:** Cuenta del cliente con su email
+- **Beneficio:** Tú controlas el código, cliente controla el deploy
+
+## Paso 1: Crear Repositorio Privado en GitHub (TU cuenta)
+
+1. **Inicia sesión en TU cuenta de GitHub**
    - Ve a https://github.com
-   - Inicia sesión con tu cuenta
+   - Inicia sesión con tu cuenta personal
 
 2. **Crea nuevo repositorio**
    - Clic en el icono "+" arriba a la derecha
@@ -34,35 +41,49 @@
    - Debe decir "Private" en la parte superior
    - Si dice "Public", ve a Settings → Danger Zone → Change repository visibility → Make private
 
-## Paso 2: Configurar Netlify
+## Paso 2: Configurar Netlify (CUENTA DEL CLIENTE)
 
-1. **Crea cuenta en Netlify**
+1. **El cliente crea cuenta en Netlify**
    - Ve a https://app.netlify.com
    - Clic en "Sign up"
-   - Regístrate con tu cuenta de GitHub (recomendado)
-   - Verifica tu email
+   - Regístrate con el email del cliente (Gmail)
+   - Verifica el email del cliente
 
-2. **Conecta tu repositorio**
+2. **Conectar Netlify a TU repositorio de GitHub**
    - En el dashboard de Netlify, clic en "Add new site" → "Import an existing project"
    - Selecciona "GitHub"
-   - Autoriza Netlify para acceder a tu cuenta de GitHub
-   - Busca y selecciona el repositorio `jj-food-studio`
+   - **IMPORTANTE:** El cliente debe autorizar Netlify para acceder a GitHub
+   - Si el cliente no tiene cuenta GitHub, puede:
+     - Opción A: Crear cuenta GitHub gratuita (recomendado)
+     - Opción B: Tú le das acceso temporal a tu repo (ver abajo)
+   - Busca y selecciona el repositorio `jj-food-studio` (de TU cuenta)
    - Clic en "Import site"
 
-3. **Configura build settings**
+3. **Configurar build settings**
    - **Build command:** (dejar vacío)
    - **Publish directory:** (dejar vacío - usará la raíz del repo)
    - Clic en "Deploy site"
 
-4. **Obtén tu URL pública**
+4. **Obtén la URL pública**
    - Netlify generará una URL como: `https://jj-food-studio.netlify.app` o similar
-   - Copia esta URL para compartirla con tu cliente
+   - Comparte esta URL con el cliente
 
-5. **Configura dominio personalizado (opcional)**
-   - Si tienes dominio propio (ej: jjfoodstudio.com)
-   - Ve a Site settings → Domain management
-   - Clic en "Add custom domain"
-   - Sigue las instrucciones para configurar DNS
+## Opción B: Dar acceso temporal al cliente a tu repo
+
+Si el cliente no quiere crear cuenta GitHub:
+
+1. **Dar acceso al cliente a TU repo**
+   - Ve a tu repositorio en GitHub
+   - Settings → Collaborators
+   - Clic en "Add people"
+   - Ingresa el email del cliente
+   - Selecciona "Maintain" (permisos completos)
+   - El cliente recibirá invitación por email
+
+2. **Cliente acepta invitación**
+   - El cliente crea cuenta GitHub gratuita
+   - Acepta la invitación
+   - Ahora puede conectar Netlify al repo
 
 ## Paso 3: Verificar Deploy
 
@@ -88,10 +109,21 @@ Netlify detectará el push automáticamente y hará deploy de los cambios.
 
 ## Seguridad
 
-- ✅ Repositorio GitHub privado (nadie puede descargar el código)
-- ✅ Sitio público (cualquiera puede verlo, pero no el código fuente)
+- ✅ Repositorio GitHub privado en TU cuenta (tú controlas el código)
+- ✅ Cliente NO tiene acceso al código fuente
+- ✅ Sitio público (cualquiera puede verlo, pero no el código)
 - ✅ Netlify maneja HTTPS automáticamente
 - ✅ No hay credenciales en el código
+
+## Para tu Portafolio
+
+Como el repo es privado, para mostrar este trabajo en tu portafolio:
+
+- Muestra screenshots del sitio
+- Describe el proyecto y tecnologías usadas
+- Link al sitio deployado (Netlify)
+- NO link al repo de GitHub (es privado)
+- Puedes crear un repo separado con código demo/sanitizado si quieres mostrar código
 
 ## Siguiente Paso
 
