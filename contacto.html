@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+    <title>Contacto · JJ Food Studio</title>
+    <link rel="stylesheet" href="./styles/tokens.css" />
+    <link rel="stylesheet" href="./styles/base.css" />
+    <link rel="stylesheet" href="./styles/components.css" />
+    <link rel="stylesheet" href="./styles/pages/home.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./index.html" aria-label="JJ Food Studio">
+        <span class="brand__mark">JJ</span>
+        <span class="brand__name">Food Studio</span>
+      </a>
+      <nav class="nav">
+        <a class="nav__link" href="./portafolio.html">Portafolio</a>
+        <a class="nav__link" href="./servicios.html">Servicios</a>
+        <a class="nav__link" href="./index.html#formacion">Formación</a>
+        <a class="nav__link" href="./sobre-jj.html">Sobre JJ</a>
+        <a class="nav__cta btn btn--outline btn--cta" data-cta="nav" href="./contacto.html">Agenda tu sesión</a>
+      </nav>
+    </header>
+
+    <main class="container">
+      <section class="page-hero">
+        <h1 class="h1">Contacto</h1>
+        <p class="lead">Cuéntame sobre tu proyecto y te respondo lo antes posible.</p>
+      </section>
+
+      <section class="section">
+        <div class="card card--wide">
+          <h2 class="h2">Agenda tu sesión</h2>
+          <p class="muted">Completa el formulario y te contactaré para coordinar los detalles de tu proyecto.</p>
+          
+          <form 
+            action="https://formspree.io/f/TU_FORM_ID" 
+            method="POST"
+            style="margin-top: var(--space-5);"
+          >
+            <div style="margin-bottom: var(--space-3);">
+              <label style="display: block; color: var(--text); margin-bottom: var(--space-2); font-size: 14px;">Nombre *</label>
+              <input 
+                type="text" 
+                name="nombre" 
+                required
+                style="width: 100%; padding: var(--space-3); background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.10); border-radius: var(--radius-sm); color: var(--text); font-size: 14px; font-family: var(--font);"
+                placeholder="Tu nombre completo"
+              />
+            </div>
+
+            <div style="margin-bottom: var(--space-3);">
+              <label style="display: block; color: var(--text); margin-bottom: var(--space-2); font-size: 14px;">Correo electrónico *</label>
+              <input 
+                type="email" 
+                name="correo" 
+                required
+                style="width: 100%; padding: var(--space-3); background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.10); border-radius: var(--radius-sm); color: var(--text); font-size: 14px; font-family: var(--font);"
+                placeholder="tu@email.com"
+              />
+            </div>
+
+            <div style="margin-bottom: var(--space-3);">
+              <label style="display: block; color: var(--text); margin-bottom: var(--space-2); font-size: 14px;">Instagram</label>
+              <input 
+                type="text" 
+                name="instagram"
+                style="width: 100%; padding: var(--space-3); background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.10); border-radius: var(--radius-sm); color: var(--text); font-size: 14px; font-family: var(--font);"
+                placeholder="@tu.instagram"
+              />
+            </div>
+
+            <div style="margin-bottom: var(--space-3);">
+              <label style="display: block; color: var(--text); margin-bottom: var(--space-2); font-size: 14px;">Número de contacto *</label>
+              <input 
+                type="tel" 
+                name="telefono" 
+                required
+                style="width: 100%; padding: var(--space-3); background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.10); border-radius: var(--radius-sm); color: var(--text); font-size: 14px; font-family: var(--font);"
+                placeholder="+58 412 123 4567"
+              />
+            </div>
+
+            <div style="margin-bottom: var(--space-3);">
+              <label style="display: block; color: var(--text); margin-bottom: var(--space-2); font-size: 14px;">Interés en *</label>
+              <select 
+                name="interes" 
+                required
+                style="width: 100%; padding: var(--space-3); background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.10); border-radius: var(--radius-sm); color: var(--text); font-size: 14px; font-family: var(--font); cursor: pointer;"
+              >
+                <option value="">Selecciona una opción</option>
+                <option value="sesiones">Sesiones de fotos y/o video</option>
+                <option value="cursos">Cursos</option>
+                <option value="asesorias">Asesorías</option>
+                <option value="otros">Otros</option>
+              </select>
+            </div>
+
+            <div style="margin-bottom: var(--space-4);">
+              <label style="display: block; color: var(--text); margin-bottom: var(--space-2); font-size: 14px;">Mensaje</label>
+              <textarea 
+                name="mensaje"
+                rows="4"
+                style="width: 100%; padding: var(--space-3); background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.10); border-radius: var(--radius-sm); color: var(--text); font-size: 14px; font-family: var(--font); resize: vertical;"
+                placeholder="Cuéntame sobre tu proyecto..."
+              ></textarea>
+            </div>
+
+            <button 
+              type="submit" 
+              class="btn btn--outline btn--cta"
+              style="width: 100%;"
+            >
+              Enviar mensaje
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="grid grid--3">
+          <div class="card">
+            <h3 class="h3">WhatsApp</h3>
+            <p class="muted">Respuesta inmediata para consultas rápidas.</p>
+            <a class="link" href="https://wa.me/" target="_blank">Enviar mensaje</a>
+          </div>
+          <div class="card">
+            <h3 class="h3">Instagram</h3>
+            <p class="muted">Ve mi trabajo diario y proceso detrás de cámara.</p>
+            <a class="link" href="https://instagram.com/" target="_blank">@jjfoodstudio</a>
+          </div>
+          <div class="card">
+            <h3 class="h3">Email</h3>
+            <p class="muted">Para consultas detalladas y presupuestos.</p>
+            <a class="link" href="mailto:contacto@jjfoodstudio.com">contacto@jjfoodstudio.com</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="demo-toggle" aria-label="Demo">
+      <button class="demo-toggle__btn" type="button" data-demo-toggle>Demo</button>
+    </div>
+
+    <div class="demo-panel" hidden aria-label="Demo Panel">
+      <div class="demo-panel__section">
+        <div class="demo-panel__section-title">Logo</div>
+        <div class="demo-panel__options">
+          <button class="opt" type="button" data-logo-mode="css">
+            <div class="opt__title">Opción 1 · CSS</div>
+            <div class="opt__desc">Efecto 3D con CSS (ligero).</div>
+          </button>
+          <button class="opt" type="button" data-logo-mode="glow">
+            <div class="opt__title">Opción 2 · Glow</div>
+            <div class="opt__desc">Brillo y flotación.</div>
+          </button>
+          <button class="opt" type="button" data-logo-mode="three">
+            <div class="opt__title">Opción 3 · Three.js</div>
+            <div class="opt__desc">Más "wow". Carga bajo demanda.</div>
+          </button>
+          <button class="opt" type="button" data-logo-mode="cinematic">
+            <div class="opt__title">Opción 4 · Cinematic</div>
+            <div class="opt__desc">Luz más dramática + partículas sutiles.</div>
+          </button>
+        </div>
+      </div>
+
+      <div class="demo-panel__section">
+        <div class="demo-panel__section-title">CTA</div>
+        <div class="demo-panel__options">
+          <button class="opt" type="button" data-cta-style="outline">
+            <div class="opt__title">Opción 1 · Outline</div>
+            <div class="opt__desc">Borde gradiente + fondo oscuro (editorial).</div>
+          </button>
+          <button class="opt" type="button" data-cta-style="solid">
+            <div class="opt__title">Opción 2 · Solid</div>
+            <div class="opt__desc">Botón dorado sólido (más llamativo).</div>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer container" aria-label="Footer">
+      <div class="footer__top">
+        <div>
+          <div class="footer__brand">JJ Food Studio</div>
+          <div class="footer__muted">Fotografía · Video · Dirección de arte · Food styling</div>
+        </div>
+        <div class="footer__links">
+          <a class="nav__link" href="./portafolio.html">Portafolio</a>
+          <a class="nav__link" href="./servicios.html">Servicios</a>
+          <a class="nav__link" href="./index.html#formacion">Formación</a>
+        </div>
+      </div>
+      <div class="footer__bottom">© JJ Food Studio</div>
+    </footer>
+
+    <a class="wa" href="https://wa.me/" target="_blank" aria-label="WhatsApp">WA</a>
+
+    <script type="module" src="./scripts/app.js"></script>
+  </body>
+</html>
