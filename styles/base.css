@@ -252,7 +252,14 @@ a {
   }
 }
 
-/* Hide Netlify badge (free tier) */
-.netlify-badge {
+/* Hide Netlify badge (free tier) - multiple selectors for robustness */
+.netlify-badge,
+[data-netlify-badge],
+#netlify-badge,
+a[href*="netlify.com"][target="_blank"][rel*="noopener"] {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  position: absolute !important;
+  left: -9999px !important;
 }
