@@ -41,51 +41,68 @@
    - Debe decir "Private" en la parte superior
    - Si dice "Public", ve a Settings → Danger Zone → Change repository visibility → Make private
 
-## Paso 2: Configurar Netlify (CUENTA DEL CLIENTE)
+## Paso 2: Configurar Netlify (TU cuenta GitHub)
 
-1. **El cliente crea cuenta en Netlify**
-   - Ve a https://app.netlify.com
-   - Clic en "Sign up"
-   - Regístrate con el email del cliente (Gmail)
-   - Verifica el email del cliente
-
-2. **Conectar Netlify a TU repositorio de GitHub**
-   - En el dashboard de Netlify, clic en "Add new site" → "Import an existing project"
+1. **En el dashboard de Netlify del cliente:**
+   - Clic en "Add new site" → "Import an existing project"
    - Selecciona "GitHub"
-   - **IMPORTANTE:** El cliente debe autorizar Netlify para acceder a GitHub
-   - Si el cliente no tiene cuenta GitHub, puede:
-     - Opción A: Crear cuenta GitHub gratuita (recomendado)
-     - Opción B: Tú le das acceso temporal a tu repo (ver abajo)
-   - Busca y selecciona el repositorio `jj-food-studio` (de TU cuenta)
+
+2. **Autorizar Netlify con TU cuenta GitHub**
+   - Netlify te pedirá autorizar acceso a GitHub
+   - Inicia sesión con TU cuenta (marcosstic)
+   - Autoriza Netlify para acceder a tus repositorios
+
+3. **Seleccionar el repositorio**
+   - Busca y selecciona `jj-food-studio` (de TU cuenta)
    - Clic en "Import site"
 
-3. **Configurar build settings**
+4. **Configurar build settings**
    - **Build command:** (dejar vacío)
    - **Publish directory:** (dejar vacío - usará la raíz del repo)
    - Clic en "Deploy site"
 
-4. **Obtén la URL pública**
+5. **Obtén la URL pública**
    - Netlify generará una URL como: `https://jj-food-studio.netlify.app` o similar
    - Comparte esta URL con el cliente
 
-## Opción B: Dar acceso temporal al cliente a tu repo
+## Paso 3: Transferir el Sitio Netlify al Cliente (al final del proyecto)
 
-Si el cliente no quiere crear cuenta GitHub:
+Cuando el proyecto esté terminado y quieras transferir el control al cliente:
 
-1. **Dar acceso al cliente a TU repo**
-   - Ve a tu repositorio en GitHub
-   - Settings → Collaborators
-   - Clic en "Add people"
+1. **Transferir el sitio Netlify**
+   - En Netlify, ve al sitio del cliente
+   - Site settings → General → Change site owner
    - Ingresa el email del cliente
-   - Selecciona "Maintain" (permisos completos)
    - El cliente recibirá invitación por email
+   - Cliente acepta y ahora es owner del sitio
 
-2. **Cliente acepta invitación**
-   - El cliente crea cuenta GitHub gratuita
-   - Acepta la invitación
-   - Ahora puede conectar Netlify al repo
+2. **Transferir el código fuente (opcional)**
+   - Si el cliente quiere el código fuente, tienes 3 opciones:
 
-## Paso 3: Verificar Deploy
+   **Opción A: Dar acceso al repo GitHub**
+   - Ve a https://github.com/marcosstic/jj-food-studio/settings/access
+   - Clic en "Collaborators"
+   - Agrega el email del cliente como "Maintain"
+   - El cliente crea cuenta GitHub y acepta
+   - Ahora tiene acceso completo al código
+
+   **Opción B: Transferir ownership del repo GitHub**
+   - Ve a https://github.com/marcosstic/jj-food-studio/settings
+   - Danger Zone → Transfer repository
+   - Ingresa el nombre del repo y el nombre de usuario del cliente
+   - El cliente recibe el repo completo
+
+   **Opción C: Exportar código como ZIP**
+   - Si el cliente no quiere GitHub
+   - Ejecuta en tu terminal:
+     ```bash
+     cd /home/marcos/Documentos/jj-food-studio
+     git archive --format=zip --output=jj-food-studio.zip main
+     ```
+   - Envía el archivo `jj-food-studio.zip` al cliente
+   - El cliente puede descomprimir y usar el código localmente
+
+## Paso 4: Verificar Deploy
 
 1. **Abre la URL de Netlify en tu navegador**
    - Deberías ver el sitio funcionando
@@ -94,7 +111,7 @@ Si el cliente no quiere crear cuenta GitHub:
    - Puede acceder desde su laptop o celular
    - El sitio es público pero el código está protegido en GitHub privado
 
-## Paso 4: Actualizaciones Futuras
+## Paso 5: Actualizaciones Futuras
 
 Cada vez que hagas cambios al código:
 
