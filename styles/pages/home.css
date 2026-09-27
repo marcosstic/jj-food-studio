@@ -363,9 +363,71 @@ body.logo-glow .logo-spec {
     grid-template-columns: 1fr;
     text-align: center;
   }
-  
+
   .logo-stage {
     width: min(380px, 85vw);
     min-height: 380px;
   }
+}
+
+/* Video styles for Hero Demo Reel */
+.reel__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+}
+
+/* CTA Final Video Section */
+.card--cta-final {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.cta-final__content {
+  flex: 1;
+}
+
+.cta-final__video {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cta-video {
+  width: 100%;
+  border-radius: var(--radius-md);
+}
+
+@media (min-width: 980px) {
+  .card--cta-final {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+/* Card media for images */
+.card__media {
+  background: rgba(255, 255, 255, 0.05);
+  min-height: 200px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card__media img.loaded {
+  opacity: 1;
+}
+
+/* Hide placeholder class when using real images */
+.card__media--ph {
+  display: none;
 }

@@ -2,6 +2,7 @@ import { initDemoControls } from "./demoControls.js";
 import { initLogoCssTilt } from "./logoCssTilt.js";
 import { applyCtaStyleFromBody } from "./ctaVariants.js";
 import { hideNetlifyBadge } from "./hideNetlifyBadge.js";
+import { initImageFadeIn } from "./imageFadeIn.js";
 
 const ensureBodyDefaults = () => {
   if (!document.body.classList.contains("cta-outline") && !document.body.classList.contains("cta-solid")) {
@@ -14,3 +15,4 @@ initDemoControls();
 applyCtaStyleFromBody();
 initLogoCssTilt();
 hideNetlifyBadge();
+initImageFadeIn();

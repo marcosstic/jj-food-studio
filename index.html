@@ -7,6 +7,7 @@
     <link rel="preload" href="./GothamBook.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="preload" href="./GothamMedium.ttf" as="font" type="font/ttf" crossorigin />
     <link rel="preload" href="./GothamBold.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="https://res.cloudinary.com/sfhco0ar/image/upload/c_fill,w_600,h_400,q_75,f_auto/v1790531095/IMG_9222.jpg" as="image" />
     <link rel="stylesheet" href="./styles/tokens.css" />
     <link rel="stylesheet" href="./styles/base.css" />
     <link rel="stylesheet" href="./styles/components.css" />
@@ -63,10 +64,18 @@
             </div>
 
             <div class="reel" aria-label="Demo reel">
-              <div class="reel__placeholder">
-                <div class="reel__frame"></div>
-                <div class="reel__text">DEMO REEL JJ</div>
-              </div>
+              <video
+                class="reel__video"
+                src="https://res.cloudinary.com/sfhco0ar/video/upload/q_80,f_auto/v1790499569/DRACOROSSO_TEASER.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+                loading="lazy"
+                poster="https://res.cloudinary.com/sfhco0ar/image/upload/c_fill,w_1200,h_800,q_75,f_auto/v1790531313/IMG_9651.jpg"
+              >
+                Tu navegador no soporta videos HTML5.
+              </video>
             </div>
           </div>
         </div>
@@ -122,7 +131,19 @@
 
         <div class="grid grid--3">
           <a class="card card--cover" href="./portafolio.html#restaurantes">
-            <div class="card__media card__media--ph"></div>
+            <div class="card__media">
+              <img
+                src="https://res.cloudinary.com/sfhco0ar/image/upload/c_fill,w_1200,h_800,q_85,f_auto/v1790531095/IMG_9222.jpg"
+                srcset="
+                  https://res.cloudinary.com/sfhco0ar/image/upload/c_fill,w_600,h_400,q_75,f_auto/v1790531095/IMG_9222.jpg 600w,
+                  https://res.cloudinary.com/sfhco0ar/image/upload/c_fill,w_900,h_600,q_80,f_auto/v1790531095/IMG_9222.jpg 900w,
+                  https://res.cloudinary.com/sfhco0ar/image/upload/c_fill,w_1200,h_800,q_85,f_auto/v1790531095/IMG_9222.jpg 1200w
+                "
+                sizes="(max-width: 768px) 600px, (max-width: 1024px) 900px, 1200px"
+                alt="Fotografía de restaurante - JJ Food Studio"
+                loading="lazy"
+              />
+            </div>
             <div class="card__content">
               <h3 class="h3">Restaurantes</h3>
               <p class="muted">Imagen, atmósfera y antojo.</p>
@@ -130,7 +151,19 @@
           </a>
 
           <a class="card card--cover" href="./portafolio.html#marcas">
-            <div class="card__media card__media--ph"></div>
+            <div class="card__media">
+              <img
+                src="https://res.cloudinary.com/sfhco0ar/image/upload/c_fill,w_1200,h_800,q_85,f_auto/v1790533207/IMG_3370.jpg"
+                srcset="
+                  https://res.cloudinary.com/sfhco0ar/image/upload/c_fill,w_600,h_400,q_75,f_auto/v1790533207/IMG_3370.jpg 600w,
+                  https://res.cloudinary.com/sfhco0ar/image/upload/c_fill,w_900,h_600,q_80,f_auto/v1790533207/IMG_3370.jpg 900w,
+                  https://res.cloudinary.com/sfhco0ar/image/upload/c_fill,w_1200,h_800,q_85,f_auto/v1790533207/IMG_3370.jpg 1200w
+                "
+                sizes="(max-width: 768px) 600px, (max-width: 1024px) 900px, 1200px"
+                alt="Fotografía de marca de alimentos - JJ Food Studio"
+                loading="lazy"
+              />
+            </div>
             <div class="card__content">
               <h3 class="h3">Marcas de alimentos</h3>
               <p class="muted">Calidad publicitaria para CPG.</p>
@@ -138,7 +171,19 @@
           </a>
 
           <a class="card card--cover" href="./portafolio.html#pasteleria">
-            <div class="card__media card__media--ph"></div>
+            <div class="card__media">
+              <img
+                src="https://res.cloudinary.com/sfhco0ar/image/upload/c_fill,w_1200,h_800,q_85,f_auto/v1790532915/_MG_9520.jpg"
+                srcset="
+                  https://res.cloudinary.com/sfhco0ar/image/upload/c_fill,w_600,h_400,q_75,f_auto/v1790532915/_MG_9520.jpg 600w,
+                  https://res.cloudinary.com/sfhco0ar/image/upload/c_fill,w_900,h_600,q_80,f_auto/v1790532915/_MG_9520.jpg 900w,
+                  https://res.cloudinary.com/sfhco0ar/image/upload/c_fill,w_1200,h_800,q_85,f_auto/v1790532915/_MG_9520.jpg 1200w
+                "
+                sizes="(max-width: 768px) 600px, (max-width: 1024px) 900px, 1200px"
+                alt="Fotografía de pastelería - JJ Food Studio"
+                loading="lazy"
+              />
+            </div>
             <div class="card__content">
               <h3 class="h3">Pastelería</h3>
               <p class="muted">Texturas, brillo y detalle macro.</p>
@@ -241,9 +286,22 @@
 
       <section class="section container" aria-label="CTA final">
         <div class="card card--wide card--cta-final">
-          <div>
+          <div class="cta-final__content">
             <h2 class="h2">Hagamos algo delicioso</h2>
             <p class="muted">Video de JJ hablando e invitando a trabajar juntos.</p>
+          </div>
+          <div class="cta-final__video">
+            <video
+              class="cta-video"
+              src="https://res.cloudinary.com/sfhco0ar/video/upload/q_80,f_auto/v1790531740/Tomatos_JJ_V2.mp4"
+              autoplay
+              muted
+              playsinline
+              controls
+              loading="lazy"
+            >
+              Tu navegador no soporta videos HTML5.
+            </video>
           </div>
           <div class="cta-row">
             <a class="btn btn--outline btn--cta" data-cta="final" href="./contacto.html">Agenda tu sesión</a>
