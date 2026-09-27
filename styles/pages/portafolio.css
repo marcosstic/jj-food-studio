@@ -124,3 +124,34 @@
 .card--case .card__content {
   padding-top: var(--space-3);
 }
+
+/* Card media for images */
+.card__media {
+  background: rgba(255, 255, 255, 0.05);
+  min-height: 280px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card__media img.loaded {
+  opacity: 1;
+}
+
+.card__media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Hide placeholder class when using real images */
+.card__media--ph {
+  display: none;
+}
