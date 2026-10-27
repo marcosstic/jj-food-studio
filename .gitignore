@@ -50,3 +50,6 @@ temp/
 
 # Client content (will be hosted on Cloudinary)
 CONTENIDO-WEB/
+
+# Heavy client PDF (7.7 MB; texto extraído en docs/requisitos/ajustes-web-cliente.md)
+RESUMEN AJUSTES WEB-jj.pdf
