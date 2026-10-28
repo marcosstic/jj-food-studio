@@ -10,10 +10,10 @@
 <section class="wwd container" aria-label="Qué hacemos">
 	<p class="wwd__lead">{home.hero.sub}</p>
 
-	<div class="wwd__actions">
-		<a class="btn btn--outline btn--cta" href="/contacto">Agenda tu sesión</a>
-		<a class="btn btn--ghost" href="/portafolio">Ver portafolio</a>
-	</div>
+		<div class="wwd__actions">
+			<a class="btn btn--outline btn--cta" href="/#agenda">Agenda tu sesión</a>
+			<a class="btn btn--ghost" href="/portafolio">Ver portafolio</a>
+		</div>
 
 	<div class="wwd__meta">
 		<span class="pill">Food styling</span>

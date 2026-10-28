@@ -21,7 +21,7 @@
 			<h1 class="h1">Caso de ejemplo</h1>
 			<p class="lead">Look publicitario, control de iluminación y detalle macro.</p>
 			<div class="cta-row">
-				<a class="btn btn--outline btn--cta" href="/contacto">Quiero algo así</a>
+				<a class="btn btn--outline btn--cta" href="/#agenda">Quiero algo así</a>
 				<a class="btn btn--ghost" href="/portafolio">Volver</a>
 			</div>
 		</div>

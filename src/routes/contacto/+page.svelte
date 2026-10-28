@@ -8,7 +8,7 @@
 
 <Meta
 	title="Contacto · JJ Food Studio"
-	description="Agenda tu sesión de fotografía o video gastronómico. Cuéntame tu proyecto y te respondo lo antes posible."
+	description="Cuéntame tu proyecto: fotografía, video, dirección de arte, food styling, cursos o asesorías. Te respondo en menos de 24 horas."
 	path="/contacto"
 />
 
@@ -16,9 +16,10 @@
 
 <section class="section container">
 	<div class="card card--wide">
-		<h2 class="h2">Agenda tu sesión</h2>
+		<h2 class="h2">Cuéntame tu proyecto</h2>
 		<p class="muted">
-			Completa el formulario y te contactaré para coordinar los detalles de tu proyecto.
+			Completa el formulario y te contactaré en menos de 24 horas para coordinar los detalles.
+			¿Ya sabes qué necesitas? <a class="link" href="/#agenda">Agenda tu sesión directamente en el calendario</a>.
 		</p>
 		<ContactForm />
 	</div>

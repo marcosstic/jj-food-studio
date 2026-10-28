@@ -142,7 +142,7 @@
 			</p>
 		</div>
 		<div class="cta-row">
-			<a class="btn btn--outline btn--cta" href="/contacto">Agenda tu sesión</a>
+			<a class="btn btn--outline btn--cta" href="/#agenda">Agenda tu sesión</a>
 			<a class="btn btn--ghost" href="/portafolio">Ver portafolio</a>
 		</div>
 	</div>

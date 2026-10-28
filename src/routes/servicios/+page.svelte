@@ -23,7 +23,7 @@
 			<p class="lead">{service.lead}</p>
 			<p class="muted">{service.description}</p>
 			<div class="cta-row">
-				<a class="btn btn--outline btn--cta" href="/contacto">{service.cta}</a>
+				<a class="btn btn--outline btn--cta" href="/#agenda">{service.cta}</a>
 			</div>
 		</div>
 	</section>
@@ -43,7 +43,7 @@
 		<div class="card card--cta">
 			<h3 class="h3">Hablemos de tu proyecto</h3>
 			<p class="muted">Cuéntame qué necesitas y te explico cómo puedo ayudarte.</p>
-			<a class="btn btn--outline btn--cta" href="/contacto">Agenda tu sesión</a>
+			<a class="btn btn--outline btn--cta" href="/#agenda">Agenda tu sesión</a>
 		</div>
 	</div>
 </section>

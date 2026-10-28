@@ -26,7 +26,7 @@
 			<p class="muted">
 				Cuéntame tu proyecto y te explico cómo aplico esta metodología a tu caso específico.
 			</p>
-			<a class="btn btn--outline btn--cta" href="/contacto">Agenda tu sesión</a>
+			<a class="btn btn--outline btn--cta" href="/#agenda">Agenda tu sesión</a>
 		</div>
 	</div>
 </section>

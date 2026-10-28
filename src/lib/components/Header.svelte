@@ -9,6 +9,6 @@
 		<a class="nav__link" href="/servicios">Servicios</a>
 		<a class="nav__link" href="/#formacion">Formación</a>
 		<a class="nav__link" href="/sobre-jj">Sobre JJ</a>
-		<a class="nav__cta btn btn--outline btn--cta" href="/contacto">Agenda tu sesión</a>
+		<a class="nav__cta btn btn--outline btn--cta" href="/#agenda">Agenda tu sesión</a>
 	</nav>
 </header>

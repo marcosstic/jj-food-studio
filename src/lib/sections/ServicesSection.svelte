@@ -18,7 +18,7 @@
 			</div>
 		{/each}
 		<div class="card card--cta">
-			<h3 class="h3">Agenda tu sesión</h3>
+			<h3 class="h3">Cuéntame tu proyecto</h3>
 			<p class="muted">Cuéntanos tu proyecto y te respondemos.</p>
 			<a class="btn btn--outline btn--cta" href="/contacto">Abrir formulario</a>
 		</div>

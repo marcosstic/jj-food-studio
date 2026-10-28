@@ -7,6 +7,13 @@ body {
   height: 100%;
 }
 
+/* Scroll suave hacia anclas (ej. /#agenda) salvo preferencia de movimiento reducido */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
 body {
   margin: 0;
   font-family: var(--font);

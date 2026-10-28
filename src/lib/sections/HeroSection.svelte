@@ -13,7 +13,7 @@
 	 */
 </script>
 
-<section class="hero" aria-label="Agenda tu sesión">
+<section id="agenda" class="hero" aria-label="Agenda tu sesión">
 	<div class="hero__bg" aria-hidden="true"></div>
 
 	<div class="hero__inner">
@@ -48,6 +48,8 @@
 	.hero {
 		position: relative;
 		padding: var(--space-6) 0 var(--space-7);
+		/* Ancla de todos los CTA "Agenda tu sesión": no queda bajo el header */
+		scroll-margin-top: var(--header-h);
 	}
 
 	/* Glow unificado (Fase 2b §4.3): un solo halo suave arriba-izquierda */
