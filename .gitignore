@@ -1,7 +1,9 @@
 # Dependencies
 node_modules/
-package-lock.json
 yarn.lock
+
+# SvelteKit
+.svelte-kit/
 
 # macOS
 .DS_Store

@@ -81,24 +81,43 @@ no capas horizontales sueltas.
 ```
 src/
 ├── routes/            # Páginas (SvelteKit file routing). Solo orquestan:
-│                      #   cargan datos, componen UI. Sin lógica de negocio.
+│                      #   cargan datos y componen secciones. Sin lógica de negocio.
 ├── lib/
+│   ├── sections/      # SECCIONES tipo LEGO (Fase 2b): bloques autocontenidos
+│   │                  #   con estilos scoped (HeroSection, PortfolioSection…).
+│   │                  #   Pueden leer la capa de contenido. Mover una sección
+│   │                  #   en una página = mover una línea del orden declarativo.
 │   ├── components/    # Componentes UI presentacionales (reciben props,
 │   │                  #   no hacen fetch ni conocen el origen de datos)
 │   ├── content/       # CAPA DE CONTENIDO (repositorio): tipos + proveedor.
 │   │                  #   Hoy: datos tipados en TS. Fase 3: adapter Sanity.
-│   │                  #   ÚNICA fuente de contenido del sitio.
+│   │                  #   ÚNICA fuente de contenido del sitio. Incluye el
+│   │                  #   ORDEN de secciones (homeSections).
 │   ├── services/      # Integraciones externas: cloudinary.ts (URL builder),
-│   │                  #   booking.ts (cal.com), formspree.ts, etc.
-│   ├── scripts/       # Efectos de DOM envueltos como Svelte actions
-│   │                  #   (use:fadein, logo tilt, three.js)
-│   └── styles/        # tokens.css · base.css · components.css (globales,
-│                      #   heredados del diseño actual) + pages/*.css
-└── static/            # Fuentes Gotham, logo, favicon (servidos tal cual)
+│   │                  #   booking.ts (cal.com), netlify.ts, etc.
+│   ├── actions/       # Svelte actions (use:fadein, use:tilt)
+│   ├── demo/          # Estado del panel demo (stores, ?demo=1)
+│   ├── logo/          # Módulo Three.js del logo
+│   └── styles/        # tokens.css · base.css · components.css (globales)
+└── static/            # Fuentes Gotham, logo, favicon, sitemap, robots
 ```
 
-**Reglas de dependencia (solo hacia abajo):** `routes → components → content/services`;
-`components` nunca importa de `routes`; `content` no importa de `components`.
+**Reglas de dependencia (solo hacia abajo):** `routes → sections → components → content/services`;
+`components` nunca importa de `routes`/`sections`; `content` no importa de nada visual.
+
+**Contrato de layout (Fase 2b — anti-superposición y anti-distorsión):**
+1. Solo el header (sticky) y el WhatsApp flotante usan `position: fixed/sticky`
+   hacia afuera; las secciones viven en el flujo normal.
+2. El ritmo vertical lo aporta cada sección con tokens (`--space-6/7/8`); prohibidos
+   márgenes negativos y "compensaciones" mágicas.
+3. Todo contenido dentro de `.container` (1120 px). Única excepción: la banda
+   hero usa `--container-wide` (1360 px) para el layout a 3 columnas.
+4. **Prohibido z-index literal**: usar `--z-sticky/--z-header/--z-demo/--z-float`.
+5. `<980 px` todo colapsa a 1 columna.
+6. Elementos sticky internos usan `top: calc(var(--header-h) + …)`.
+7. El CSS de una sección/componente vive scoped en su `.svelte`; los globales solo
+   para tokens/base/componentes compartidos. Prohibido recrear `pages/*.css`
+   compartidos entre rutas (causó acoplamiento cruzado hasta Fase 2a).
 
 **Convenciones:** nombres de clases CSS en BEM (heredados del diseño actual);
 componentes en PascalCase; datos en español (contenido) e inglés (código);
@@ -106,25 +125,25 @@ componentes en PascalCase; datos en español (contenido) e inglés (código);
 
 ## 6. Comandos
 
-Estado actual del repo: **sitio vanilla pre-migración** (abrir los `.html` de la
-raíz directamente). Tras la Fase 1 existirá `package.json`:
+Proyecto SvelteKit desde Fase 1 (raíz del repo):
 
 ```bash
-npm install        # dependencias
-npm run dev        # desarrollo (http://localhost:5173)
+npm install        # dependencias (requiere Node 18.13+; verificado con Node 20)
+npm run dev        # desarrollo (http://localhost:5173; si está ocupado Vite elige otro puerto)
 npm run build      # build estático → build/
-npm run preview    # servir el build localmente
+npm run preview    # servir el build localmente (reiniciar tras cada build: sirv cachea el listado de archivos al arrancar)
 ```
 
 Deploy: Netlify conectado al repo GitHub `marcosstic/jj-food-studio`.
-Tras Fase 1: build command `npm run build`, publish directory `build/`.
+Config (netlify.toml ya incluido): build command `npm run build`, publish `build/`.
 
 ## 7. Estado actual y próximos pasos
 
 - [x] Documentación base (este archivo, plan maestro, ADRs, requisitos AJ)
-- [ ] **Fase 1 — Migración a SvelteKit con paridad visual 1:1** ← *siguiente paso*
-- [ ] Fase 2 — Ajustes del cliente (AJ-01…AJ-11)
-- [ ] Fase 3 — CMS Sanity sobre la capa de contenido
+- [x] **Fase 1 — Migración a SvelteKit con paridad visual 1:1** ✅ (2026-10-27; desviaciones D-1…D-7 y bugs preservados documentados en plan-maestro.md; deploy Netlify pendiente de push)
+- [x] **Fase 2 — Ajustes del cliente (AJ-01…AJ-12)** ✅ (2026-10-27; galerías `/portafolio/[categoria]` con stage Embla; selector público de logo; placeholders P-1/P-2/P-3 activos; Q-1 abierta)
+- [x] **Fase 2b — Modularización + sprint visual** ✅ (2026-10-27; secciones LEGO con orden declarativo, agenda primera, contrato de layout, SEO/OG/sitemap/favicon; placeholders Cloudinary pendientes de API key)
+- [ ] **Fase 3 — CMS Sanity sobre la capa de contenido** ← *siguiente paso (explicar alcance a Marcos antes de iniciar)*
 - [ ] Fase 4 — Evaluación del sistema de agenda
 
 El detalle completo con criterios de salida está en `docs/plan-maestro.md`.

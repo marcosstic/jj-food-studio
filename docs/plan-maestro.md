@@ -22,7 +22,7 @@ requisitos AJ-01…AJ-11), con:
 
 ## 2. Fases
 
-### Fase 1 — Migración a SvelteKit (paridad exacta) 🔜
+### Fase 1 — Migración a SvelteKit (paridad exacta) ✅ (2026-10-27)
 
 **Objetivo:** mismo sitio, misma apariencia, nueva arquitectura. Sin cambios visuales.
 
@@ -40,16 +40,42 @@ requisitos AJ-01…AJ-11), con:
 **Fuera de alcance:** cualquier cambio visual o de contenido (eso es Fase 2).
 
 **Criterios de salida:**
-- [ ] `npm run build` sin errores; todas las rutas prerender.
-- [ ] Comparación visual screenshot a screenshot (desktop 1440 y móvil 390) contra el sitio vanilla: sin diferencias perceptibles.
-- [ ] Los 4 modos de logo funcionan (panel demo vía `?demo=1`).
-- [ ] Widget cal.com y video del hero operativos.
-- [ ] Deploy en Netlify verificado.
-- [ ] El contenido del sitio vive **solo** en `src/lib/content/` (cero contenido hardcodeado en componentes).
+- [x] `npm run build` sin errores; todas las rutas prerender (7 rutas → `build/*.html`).
+- [x] Comparación visual screenshot a screenshot (desktop 1440 y móvil 390) contra el sitio vanilla: sin diferencias perceptibles (verificado con navegador real contra worktree del tag `pre-fase-1`).
+- [x] Los 4 modos de logo funcionan (panel demo vía `?demo=1`; modo Three.js verificado con render 3D real).
+- [x] Widget cal.com y video del hero operativos.
+- [ ] Deploy en Netlify verificado. ← *pendiente: requiere push al remoto (el usuario no lo ha solicitado aún)*
+- [x] El contenido del sitio vive **solo** en `src/lib/content/` (cero contenido hardcodeado en componentes).
 
-### Fase 2 — Ajustes del cliente (AJ-01…AJ-11)
+**Desviaciones respecto al sitio vanilla (todas documentadas y justificadas):**
 
-**Objetivo:** implementar los requisitos del PDF. Diseño intacto; solo lo pedido.
+| # | Desviación | Motivo |
+|---|-----------|--------|
+| D-1 | Nav unificada en todas las páginas (portafolio/caso tenían menos enlaces y CTA roto `href="#"`) | Corrección de enlaces rotos; intención evidente del diseño |
+| D-2 | WhatsApp flotante unificado a `site.whatsappUrl` en todas las páginas (antes `#` en 5 páginas) | Enlace roto; número real pendiente (P-4) |
+| D-3 | Botones CTA `#` de servicios/caso → `/contacto` | Enlaces rotos |
+| D-4 | Panel demo oculto salvo `?demo=1` o localStorage (antes botón "Demo" siempre visible) | Acordado en plan: herramienta de desarrollo, no debe verse en producción/evento |
+| D-5 | Logs de depuración eliminados del módulo Three.js | Eran restos de debug; cero impacto visual |
+| D-6 | `rel="noreferrer"` en enlaces `_blank`; `id`/`for` en el formulario | Buenas prácticas, sin impacto visual |
+| D-7 | Preload de fuentes en todas las páginas (antes solo home) | Optimización, sin impacto visual |
+
+**Bugs del sitio vanilla preservados deliberadamente (paridad 1:1) — decidir en Fase 2:**
+
+| Bug | Efecto | Archivo |
+|-----|--------|---------|
+| `--space-8/10/12` no existen en tokens | `padding` de `.booking-section`, `.page-hero`, `.case-hero`, `.hero` (768px) cae a 0 | tokens.css/pages |
+| `--radius-md` no existe en tokens | `border-radius` de `.reel__video`, `.calcom-widget`, `.card__media` cae a 0 | pages/home.css, portafolio.css |
+
+**Bugs corregidos durante la migración (detectados en verificación):**
+- `handleKey is not defined` (atajo de teclado del demo) — reescrito con `addEventListener` en `onMount`.
+- Video del hero sin `src`/`poster` (shorthand Svelte incorrecto) — corregido.
+- `.svelte-kit/` ignorado; `package-lock.json` ahora se versiona (builds deterministas en Netlify).
+
+**Limpieza realizada:** páginas HTML legacy y `scripts/` eliminados del repo (recuperables en el tag `pre-fase-1`); CSS movido con `git mv` (historial preservado); fuentes y logo movidos a `static/`.
+
+### Fase 2 — Ajustes del cliente (AJ-01…AJ-12) ✅ (2026-10-27)
+
+**Objetivo:** implementar los requisitos del PDF + selector de logo. Diseño intacto; solo lo pedido.
 
 **Alcance (trazabilidad completa en `docs/requisitos/ajustes-web-cliente.md`):**
 - Hero nuevo (AJ-01/02/03): kicker + H1 + subtexto arriba; debajo, fila video (mix/backstage) + calendario; botones con más espacio.
@@ -58,21 +84,50 @@ requisitos AJ-01…AJ-11), con:
 - Nueva ruta `/portafolio/[categoria]`: galería directa por categoría (AJ-06) con stage diapositiva sincronizado con el grid (AJ-07) y copy exacto por categoría (AJ-08), CTA "Agenda tu sesión" (AJ-09).
 - Cierre con backstage/video de JJ, solo WhatsApp (AJ-10).
 - Eliminar la sección marcada como innecesaria (AJ-11 — **requiere confirmación del cliente**).
+- Selector público de versiones del logo en el hero (AJ-12): píldoras doradas CSS · Glow · 3D · Cine, persistente por navegador, default desde config (CMS-editable en Fase 3).
 - Detalle UX de galería (aprobado con el dev): Embla Carousel para el stage, blur-up LQIP de Cloudinary, hover zoom sutil, soporte de video en el grid, navegación por teclado, View Transitions API con mejora progresiva.
 
 **Criterios de salida:**
-- [ ] Todos los AJ-01…AJ-10 verificados visualmente y marcados en la tabla de trazabilidad.
-- [ ] Lighthouse Performance ≥ 90 en móvil (media por Cloudinary, sin layout shift).
-- [ ] Aprobación visual del cliente (screenshots o demo).
+- [x] Todos los AJ-01…AJ-12 verificados visualmente y marcados en la tabla de trazabilidad (placeholders en AJ-03/10 hasta llegar P-1/P-2; AJ-11 parcial con Q-1 abierta).
+- [ ] Lighthouse Performance ≥ 90 en móvil (media por Cloudinary, sin layout shift). ← *medir al hacer deploy real*
+- [ ] Aprobación visual del cliente (screenshots o demo). ← *pendiente de presentación a JJ*
 
 **Dependencias:** pendientes P-1…P-6 del cliente (videos, galerías, WhatsApp, Formspree, Instagram). Los ítems no bloqueados se ejecutan primero.
+
+### Fase 2b — Modularización + sprint visual + placeholders 🔜 (propuesta v2 pendiente de aprobación final)
+
+**Objetivo:** (a) convertir las páginas en composiciones de **secciones tipo LEGO**
+(orden declarativo en la capa de contenido → JJ reordena su home desde el CMS en
+Fase 3), con **contrato de layout** anti-superposición (z-index tokens, ritmo
+vertical por sección, container único, sticky medido); (b) sprint visual: agenda
+primero (Opción A aprobada), espaciados, tokens rotos (`--space-8/10/12`,
+`--radius-md`), cajas suavizadas, selector de logo discreto; (c) placeholders con
+stock curado subido a Cloudinary del cliente vía API key (entrega directa de
+Marcos; claves solo en `.env`/Netlify, nunca en el repo).
+
+**Detalle completo:** [docs/propuestas/mejoras-fase-2b.md](propuestas/mejoras-fase-2b.md)
+(incluye auditoría de modularidad del 2026-10-27: páginas monolíticas, CSS
+compartido entre 5 rutas, z-index mágicos, elementos fijos).
+
+**Criterios de salida:**
+- [x] Refactor de secciones con paridad visual 1:1 (10 secciones LEGO creadas; páginas interiores con PageHero compartido; `pages/home.css` y `pages/portafolio.css` eliminados).
+- [x] Home con agenda primera (Opción A) verificado desktop+móvil.
+- [x] Orden del home viviendo en `src/lib/content/home.ts` (`homeSections` — sin contenido en rutas).
+- [x] z-index y `--header-h` tokenizados; sin z-index literales nuevos. Tokens rotos definidos (`--space-8/10/12`, `--radius-md`).
+- [x] Backlog rápido: Meta/SEO+Open Graph por página, sitemap.xml, robots.txt, favicon.svg, WhatsApp prellenado (esperando número P-4), `prefers-reduced-motion` en el stage.
+- [ ] Galerías y slots de video con material placeholder en Cloudinary del cliente. ← *esperando API key de Cloudinary (paso 3)*
+
+**Incidentes resueltos durante la fase (lecciones):**
+- Al eliminar `pages/home.css`, los estilos del logo y del reel se fueron con él (canvas sin estilo → min-content 640px → scroll horizontal en móvil). Restaurados a `components.css` (su capa correcta). Verificación de overflow (scrollWidth == clientWidth) añadida al protocolo.
+- Video vertical del hero desbordaba el grid (`height:100%` en contenedor auto) → altura fija `min(70vh,720px)` + `object-fit: cover`.
+- Svelte poda selectores con clases runtime (`img.loaded`) → patrón `:global(.loaded)` documentado.
 
 ### Fase 3 — CMS (Sanity) sobre la capa de contenido
 
 **Objetivo:** JJ edita categorías, textos, imágenes y galleries sin depender del dev.
 
 **Alcance:**
-- Proyecto Sanity con esquema: `category` (nombre, slug, tagline, descripción, cover, galería de `MediaAsset`, orden), `siteConfig` singleton (WhatsApp, Instagram, email, enlaces cal.com, textos del hero).
+- Proyecto Sanity con esquema: `category` (nombre, slug, tagline, descripción, cover, galería de `MediaAsset` con **alt obligatorio**, orden), `siteConfig` singleton (WhatsApp, Instagram, email, enlaces cal.com, textos del hero, **logoDefault — versión activa del logo**, **homeSections — orden de secciones del home, lista arrastrable**), `homeContent`, `service`, `course`, `testimonial` (opcional).
 - Studio hospedado por Sanity (gratis) con onboarding visual para JJ.
 - Adapter Sanity en `src/lib/content/` respetando los mismos tipos (las rutas no cambian).
 - Webhook Sanity → Netlify para rebuild automático (~1 min).
@@ -107,3 +162,14 @@ requisitos AJ-01…AJ-11), con:
 | Fecha | Cambio |
 |-------|--------|
 | 2026-10-27 | Creación del plan; ADRs 0001–0006; guardado `pre-fase-1` |
+| 2026-10-27 | **Fase 1 completada**: migración SvelteKit verificada visualmente; desviaciones D-1…D-7 documentadas; bugs vanilla preservados listados; Netlify deploy pendiente de push |
+| 2026-10-27 | **Fase 2 completada**: AJ-01…AJ-12 implementados y verificados en navegador (home nuevo, galerías con stage Embla, selector de logo); trazabilidad actualizada; pendientes de cliente P-1/P-2/P-3 usan placeholders; Q-1 (AJ-11) sigue abierta |
+| 2026-10-27 | Propuesta de mejoras Fase 2b creada ([docs/propuestas/mejoras-fase-2b.md](propuestas/mejoras-fase-2b.md)): agenda primero, discretizar selector de logo + default CMS, tokens rotos, placeholders stock, especificación de formatos para JJ, esquema CMS con categorías creables y alt obligatorio, backlog priorizado (SEO, WhatsApp, testimonios…) — **pendiente de aprobación** |
+| 2026-10-27 | Propuesta **v2** (consolidada): Opción A de agenda aprobada; +auditoría de modularidad y sistema de secciones LEGO con orden declarativo; +gestión de Cloudinary vía API key (segura, `.env`); Fase 2b formalizada en el plan; esquema CMS ampliado con `homeSections` y `logoDefault` — **pendiente aprobación final (3 ítems)** |
+| 2026-10-27 | **Fase 2b implementada** (pasos 1, 2 y 4): modularización con secciones LEGO + contrato de layout (AGENTS.md §5), agenda primera (Opción A), tokens/espaciados/cajas/selector discreto, SEO+OG+sitemap+favicon+WhatsApp prellenado+reduced-motion. Paso 3 (placeholders Cloudinary) espera API key. Verificado en navegador (desktop+móvil, overflow=0) |
+| 2026-10-27 | Propuesta **hero a 3 columnas** (video · agenda · logo) creada ([docs/propuestas/hero-tres-columnas.md](propuestas/hero-tres-columnas.md)): usa el ancho real de pantalla (`--container-wide` 1360px), logo compacto junto a la agenda; breakpoints 3col/2col/pila — **pendiente de aprobación** |
+| 2026-10-27 | **Hero a 3 columnas implementado** (aprobado por Marcos): video · agenda (centro dominante) · logo 3D compacto con selector; `--container-wide` 1360px (excepción única al contrato); responsive 3col ≥1200 / 2col 980–1199 / pila con agenda primero <980; verificado sin overflow en 1440/1366/1280/1024/390 |
+| 2026-10-27 | Propuesta **v2 de alineación del hero** ("tríptico uniforme", §7 de hero-tres-columnas.md): diagnóstico medido (logo 226px más bajo por centrado vertical); opción B recomendada = stretch + logo en tarjeta glass; blindaje de orden móvil — **pendiente de aprobación** |
+| 2026-10-28 | **Tríptico uniforme implementado** (Opción B aprobada): `align-items: stretch` con video llenando su columna (absoluto), logo en tarjeta glass igualando altura; fix de overflow (min-content de la tarjeta > columna → `min-width: 0` + logo elástico); verificado con medición (tops 275/275/275 a 1280, orden móvil agenda→video→logo, overflow=0 en 1280 y 390) |
+| 2026-10-28 | **Hero full-bleed + agenda completa**: banda a todo el ancho (video pegado al borde izquierdo, logo al derecho, radios solo hacia el interior); agenda apuntando a la raíz de la cuenta cal.com (`bookingLink`) para listar TODOS los eventos automáticamente; hallazgo: la cuenta solo tiene 1 de los 5 tipos de evento del instructivo — **JJ debe crear los otros 4 en cal.com (Paso 5 de INSTRUCCIONS-CALCOM.md)** |
+| 2026-10-28 | **Agenda sin cortes en todos los dispositivos**: el contenedor del embed dejó la altura fija y ahora usa auto-altura (cal.com ajusta el iframe a su contenido: 588px desktop / 807px iPhone XS); verificado desktop 1920, 1280, 1024 y 375 (iPhone XS) sin overflow ni fechas cortadas |

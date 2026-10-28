@@ -109,6 +109,17 @@ cambiarse**: solo se aplican estas mejoras.
 - El video de cierre se reemplaza por un backstage o video de JJ **pendiente de recibir**.
 - Se eliminan botones y textos laterales de esa sección; solo permanece el acceso a WhatsApp.
 
+## AJ-12 · Selector público de versiones del logo (nuevo, solicitado 2026-10-27)
+
+> Solicitado por Marcos tras Fase 1: dar a JJ (y visitantes) la opción de cambiar
+> entre las versiones del logo en cualquier momento — atractivo para la competencia.
+
+**Enfoque acordado (recomendación del dev):**
+- Selector público integrado al diseño: píldoras doradas bajo el logo del hero (`CSS · Glow · 3D · Cine`), lenguaje visual del sitio (tokens/BEM).
+- Cambio instantáneo reutilizando LogoStage/DemoPanel; elección persistente por navegador (localStorage, clave `jj_logo_mode` ya existente).
+- Modo por defecto definido en `site` config; en Fase 3 pasa a ser editable por JJ desde el CMS (sin rebuild).
+- El panel técnico actual (`?demo=1`) queda como herramienta interna de desarrollo.
+
 ## AJ-11 · Borrar sección innecesaria
 
 > BORRAR ESTA PARTE ES INNECESARIA
@@ -135,14 +146,25 @@ maestro y debe marcarse como hecho en este documento (columna Estado) al complet
 
 | Req | Descripción corta | Estado |
 |-----|-------------------|--------|
-| AJ-01 | Hero nuevo con texto + calendario debajo | ⬜ |
-| AJ-02 | Espacio entre botones | ⬜ |
-| AJ-03 | Video mix/backstage + calendario al lado | ⬜ |
-| AJ-04 | Título "No se trata solo de fotografiar comida" | ⬜ |
-| AJ-05 | Categorías renombradas con subtítulos | ⬜ |
-| AJ-06 | Clic categoría → galería directa | ⬜ |
-| AJ-07 | Stage diapositiva sincronizado con grid | ⬜ |
-| AJ-08 | Textos por categoría | ⬜ |
-| AJ-09 | CTA "Agenda tu sesión" | ⬜ |
-| AJ-10 | Cierre con backstage/video JJ, solo WhatsApp | ⬜ |
-| AJ-11 | Borrar sección innecesaria (confirmar cuál) | ⬜ |
+| AJ-01 | Hero nuevo con texto + calendario debajo | ✅ (videos/copy exactos; calendario en banda bajo el hero) |
+| AJ-02 | Espacio entre botones | ✅ (gap ampliado en `.hero__actions`) |
+| AJ-03 | Video mix/backstage + calendario al lado | ✅ con video placeholder — **pendiente P-1** (swap de publicId) |
+| AJ-04 | Título "No se trata solo de fotografiar comida" | ✅ (sección editorial con gradiente dorado) |
+| AJ-05 | Categorías renombradas con subtítulos | ✅ (Restaurantes / Marcas personales / Pastelerías) |
+| AJ-06 | Clic categoría → galería directa | ✅ (rutas `/portafolio/{slug}`; pantalla intermedia de "casos" eliminada) |
+| AJ-07 | Stage diapositiva sincronizado con grid | ✅ (Embla autoplay + flechas + dots + teclado; clic en grid salta la diapositiva) |
+| AJ-08 | Textos por categoría | ✅ (copy exacto del cliente en las 3 galerías) |
+| AJ-09 | CTA "Agenda tu sesión" | ✅ (galerías y caso → `/contacto`) |
+| AJ-10 | Cierre con backstage/video JJ, solo WhatsApp | ✅ con video placeholder — **pendiente P-2** (swap de publicId) |
+| AJ-11 | Borrar sección innecesaria | 🔶 parcial — grid de "casos de ejemplo" eliminado (era la pantalla redundante); **Q-1 sigue abierta** por si JJ indica otra sección |
+| AJ-12 | Selector público de versiones del logo | ✅ (píldoras CSS · Glow · 3D · Cine bajo el hero; persistente por navegador; default en config) |
+
+## Notas de implementación (Fase 2, 2026-10-27)
+
+- **Placeholders activos:** hero usa el reel actual (P-1), cierre usa el video Tomatos (P-2) y las
+  galerías mezclan las 6 fotos existentes en Cloudinary (P-3). Al llegar los materiales del cliente:
+  cambiar `publicId` en `src/lib/content/home.ts` / `categories.ts` y nada más.
+- **Bug de CSS corregido en el camino:** Svelte podaba el selector `img.loaded`
+  (clase añadida en runtime) dentro de GalleryStage — resuelto con `:global(.loaded)`.
+- **Videos verticales** se recortan a caja 16:9 (`object-fit: cover`) para que el diseño
+  no dependa del ratio del placeholder.
