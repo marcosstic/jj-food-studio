@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jj-food-studio.netlify.app/sitemap.xml
+Sitemap: https://jjfoodstudio.com/sitemap.xml

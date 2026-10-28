@@ -7,8 +7,8 @@ import type { SiteConfig } from './types';
  */
 export const site: SiteConfig = {
 	name: 'JJ Food Studio',
-	// TODO: dominio definitivo (usado por Open Graph y sitemap)
-	url: 'https://jj-food-studio.netlify.app',
+	// Dominio real (Netlify: proyecto jjfoodstudio.com)
+	url: 'https://jjfoodstudio.com',
 	// Pendiente P-4: número real de WhatsApp (internacional, sin "+")
 	whatsappPhone: '',
 	whatsappMessage: 'Hola JJ, vi tu web y quiero una sesión de fotografía/video gastronómico.',
