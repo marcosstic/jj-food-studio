@@ -87,8 +87,10 @@ export const initCalEmbed = (config: SiteConfig['cal']): void => {
 
 	ns('ui', {
 		cssVarsPerTheme: {
+			// Marca dorada en AMBOS temas: el botón Confirmar nunca debe fundirse
+			// con el fondo (bug #070708 sobre fondo oscuro)
 			light: { 'cal-brand': config.brandColorLight },
-			dark: { 'cal-brand': config.brandColorDark }
+			dark: { 'cal-brand': config.brandColorLight }
 		},
 		hideEventTypeDetails: false,
 		layout: 'month_view'

@@ -24,9 +24,9 @@
 </a>
 
 <style>
-	/* Estilos propios del componente (antes en pages/*.css compartidos) */
+	/* Estilos propios del componente (vertical 4:5, Fase 2c) */
 	.card__media {
-		aspect-ratio: 3 / 2;
+		aspect-ratio: 4 / 5;
 		background: rgba(255, 255, 255, 0.05);
 		border-radius: var(--radius-md);
 		overflow: hidden;

@@ -16,12 +16,8 @@
 <section id="agenda" class="hero" aria-label="Agenda tu sesión">
 	<div class="hero__bg" aria-hidden="true"></div>
 
-	<div class="hero__inner">
-		<p class="kicker">{home.hero.kicker}</p>
-		<h1 class="hero__title">{home.hero.h1}</h1>
-	</div>
-
-	<!-- Banda full-bleed: video pegado al borde izquierdo, logo al derecho -->
+	<!-- Banda full-bleed: video pegado al borde izquierdo, logo al borde derecho.
+	     El titular de marca vive en la sección "Qué hacemos" (Fase 2c). -->
 	<div class="hero__band">
 		<div class="hero__media">
 			<ReelVideo />
@@ -60,24 +56,6 @@
 			radial-gradient(900px 600px at 18% 0%, rgba(233, 215, 154, 0.10), transparent 62%),
 			linear-gradient(180deg, transparent 55%, rgba(0, 0, 0, 0.25));
 		pointer-events: none;
-	}
-
-	/* Título alineado con el container amplio */
-	.hero__inner {
-		position: relative;
-		width: 100%;
-		max-width: var(--container-wide);
-		margin: 0 auto;
-		padding: 0 var(--space-4);
-	}
-
-	.hero__title {
-		font-size: clamp(28px, 3.2vw, 40px);
-		letter-spacing: -0.02em;
-		line-height: 1.12;
-		margin: 0 0 var(--space-5);
-		max-width: 720px;
-		font-weight: 700;
 	}
 
 	/* Banda full-bleed — tríptico uniforme (v2/v3): video al borde izquierdo,

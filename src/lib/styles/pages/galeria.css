@@ -38,7 +38,7 @@
 
 .gallery-tile__media {
   display: block;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 5;
   background-size: cover;
   background-position: center;
   background-color: rgba(255, 255, 255, 0.03);

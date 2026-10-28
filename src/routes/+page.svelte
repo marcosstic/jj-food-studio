@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Meta from '$lib/components/Meta.svelte';
+	import BannerSection from '$lib/sections/BannerSection.svelte';
 	import HeroSection from '$lib/sections/HeroSection.svelte';
 	import WhatWeDoSection from '$lib/sections/WhatWeDoSection.svelte';
 	import EditorialSection from '$lib/sections/EditorialSection.svelte';
@@ -16,6 +17,7 @@
 	 * mover un string. Fase 3: orden arrastrable desde el CMS.
 	 */
 	const registry: Record<HomeSectionId, import('svelte').Component> = {
+		banner: BannerSection,
 		hero: HeroSection,
 		whatWeDo: WhatWeDoSection,
 		editorial: EditorialSection,

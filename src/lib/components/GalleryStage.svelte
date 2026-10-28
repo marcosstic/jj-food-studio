@@ -6,8 +6,8 @@
 	import { fadein } from '$lib/actions/fadein';
 
 	/**
-	 * Stage tipo diapositiva (AJ-07): autoplay + arrastre táctil + teclado,
-	 * sincronizado con el grid inferior vía onselect/scrollToIndex.
+	 * Visor fotográfico vertical (Fase 2c): stage 4:5 con autoplay + flechas
+	 * + teclado, y tira de miniaturas lateral sincronizada con el grid.
 	 */
 	let { images, autoplayMs = 4000, onselect, jumpTo = -1 }: { images: CloudinaryAsset[]; autoplayMs?: number; onselect?: (index: number) => void; jumpTo?: number } = $props();
 
@@ -72,59 +72,86 @@
 	});
 </script>
 
-<div class="stage-wrap">
-	<div
-		class="stage"
-		tabindex="0"
-		role="region"
-		aria-label="Galería destacada — usa flechas para navegar"
-		onpointerenter={() => (paused = true)}
-		onpointerleave={() => (paused = false)}
-		onfocusin={() => (paused = true)}
-		onfocusout={() => (paused = false)}
-		onkeydown={onKeydown}
-	>
-		<div class="stage__viewport" bind:this={viewport}>
-			<div class="stage__track">
-				{#each images as img, i (img.publicId + i)}
-					<div class="stage__slide" aria-hidden={current !== i}>
-						<img
-							src={imageUrl(img.publicId, cardImageVariants[cardImageVariants.length - 1])}
-							srcset={imageSrcSet(img.publicId, cardImageVariants)}
-							sizes="(max-width: 768px) 100vw, 900px"
-							alt={img.alt}
-							loading={i === 0 ? 'eager' : 'lazy'}
-							use:fadein
-						/>
-					</div>
+<div class="viewer">
+	<div class="viewer__stagecol">
+		<div
+			class="stage"
+			tabindex="0"
+			role="region"
+			aria-label="Galería destacada — usa flechas para navegar"
+			onpointerenter={() => (paused = true)}
+			onpointerleave={() => (paused = false)}
+			onfocusin={() => (paused = true)}
+			onfocusout={() => (paused = false)}
+			onkeydown={onKeydown}
+		>
+			<div class="stage__viewport" bind:this={viewport}>
+				<div class="stage__track">
+					{#each images as img, i (img.publicId + i)}
+						<div class="stage__slide" aria-hidden={current !== i}>
+							<img
+								src={imageUrl(img.publicId, cardImageVariants[cardImageVariants.length - 1])}
+								srcset={imageSrcSet(img.publicId, cardImageVariants)}
+								sizes="(max-width: 980px) 100vw, 640px"
+								alt={img.alt}
+								loading={i === 0 ? 'eager' : 'lazy'}
+								use:fadein
+							/>
+						</div>
+					{/each}
+				</div>
+			</div>
+
+			<button class="stage__nav stage__nav--prev" type="button" aria-label="Foto anterior" onclick={() => step(-1)}>‹</button>
+			<button class="stage__nav stage__nav--next" type="button" aria-label="Foto siguiente" onclick={() => step(1)}>›</button>
+
+			<div class="stage__dots" role="tablist" aria-label="Posición de la diapositiva">
+				{#each images as _, i (i)}
+					<button
+						class="stage__dot"
+						type="button"
+						class:is-active={current === i}
+						aria-label={`Ir a la foto ${i + 1}`}
+						onclick={() => scrollToIndex(i)}
+					></button>
 				{/each}
 			</div>
 		</div>
+	</div>
 
-		<button class="stage__nav stage__nav--prev" type="button" aria-label="Foto anterior" onclick={() => step(-1)}>‹</button>
-		<button class="stage__nav stage__nav--next" type="button" aria-label="Foto siguiente" onclick={() => step(1)}>›</button>
-
-		<div class="stage__dots" role="tablist" aria-label="Posición de la diapositiva">
-			{#each images as _, i (i)}
-				<button
-					class="stage__dot"
-					type="button"
-					class:is-active={current === i}
-					aria-label={`Ir a la foto ${i + 1}`}
-					onclick={() => scrollToIndex(i)}
-				></button>
-			{/each}
-		</div>
+	<div class="viewer__thumbs" role="tablist" aria-label="Miniaturas de la galería">
+		{#each images as img, i (img.publicId + i)}
+			<button
+				class="viewer__thumb"
+				type="button"
+				class:is-active={current === i}
+				aria-label={`Ver foto ${i + 1}: ${img.alt}`}
+				onclick={() => scrollToIndex(i)}
+			>
+				<img src={imageUrl(img.publicId, { w: 160, h: 200, q: 70 })} alt="" loading="lazy" />
+			</button>
+		{/each}
 	</div>
 </div>
 
 <style>
-	.stage-wrap {
+	/* Visor fotográfico: stage vertical + tira de miniaturas lateral */
+	.viewer {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) 104px;
+		gap: var(--space-4);
+		align-items: start;
 		width: 100%;
+	}
+
+	.viewer__stagecol {
+		display: flex;
+		justify-content: center;
 	}
 
 	.stage {
 		position: relative;
+		width: min(100%, calc(min(76vh, 780px) * 0.8));
 		border-radius: var(--radius);
 		overflow: hidden;
 		border: 1px solid rgba(255, 255, 255, 0.06);
@@ -138,10 +165,6 @@
 		border-color: rgba(233, 215, 154, 0.22);
 	}
 
-	.stage:focus-visible {
-		border-color: rgba(233, 215, 154, 0.45);
-	}
-
 	.stage__viewport {
 		overflow: hidden;
 	}
@@ -153,7 +176,7 @@
 	.stage__slide {
 		flex: 0 0 100%;
 		min-width: 0;
-		aspect-ratio: 3 / 2;
+		aspect-ratio: 4 / 5;
 		background:
 			radial-gradient(600px 420px at 30% 35%, rgba(233, 215, 154, 0.10), transparent 60%),
 			rgba(255, 255, 255, 0.03);
@@ -228,7 +251,64 @@
 		border-color: var(--gold-l);
 	}
 
-	@media (max-width: 680px) {
+	/* Tira de miniaturas vertical */
+	.viewer__thumbs {
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
+		max-height: min(76vh, 780px);
+		overflow-y: auto;
+	}
+
+	.viewer__thumb {
+		flex: 0 0 auto;
+		width: 100%;
+		aspect-ratio: 4 / 5;
+		padding: 0;
+		border: 1px solid rgba(255, 255, 255, 0.08);
+		border-radius: var(--radius-sm);
+		overflow: hidden;
+		cursor: pointer;
+		opacity: 0.55;
+		background: rgba(255, 255, 255, 0.04);
+		transition: opacity var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
+	}
+
+	.viewer__thumb:hover {
+		opacity: 1;
+	}
+
+	.viewer__thumb.is-active {
+		opacity: 1;
+		border-color: rgba(233, 215, 154, 0.55);
+	}
+
+	.viewer__thumb img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
+	@media (max-width: 980px) {
+		.viewer {
+			grid-template-columns: 1fr;
+		}
+
+		.stage {
+			width: 100%;
+		}
+
+		.viewer__thumbs {
+			flex-direction: row;
+			max-height: none;
+			overflow-x: auto;
+		}
+
+		.viewer__thumb {
+			width: 72px;
+		}
+
 		.stage__nav {
 			width: 38px;
 			height: 38px;

@@ -2,18 +2,21 @@
 	import { home } from '$lib/content';
 
 	/**
-	 * Sección "Qué hacemos": texto de marca + botones (el logo vive en el hero
-	 * a 3 columnas, Fase 2b).
+	 * Sección "Qué hacemos": titular de marca (mudado del hero en Fase 2c,
+	 * donde vive el banner), texto + botones.
 	 */
 </script>
 
 <section class="wwd container" aria-label="Qué hacemos">
+	<p class="kicker">{home.hero.kicker}</p>
+	<h1 class="wwd__title">{home.hero.h1}</h1>
+
 	<p class="wwd__lead">{home.hero.sub}</p>
 
-		<div class="wwd__actions">
-			<a class="btn btn--outline btn--cta" href="/#agenda">Agenda tu sesión</a>
-			<a class="btn btn--ghost" href="/portafolio">Ver portafolio</a>
-		</div>
+	<div class="wwd__actions">
+		<a class="btn btn--outline btn--cta" href="/#agenda">Agenda tu sesión</a>
+		<a class="btn btn--ghost" href="/portafolio">Ver portafolio</a>
+	</div>
 
 	<div class="wwd__meta">
 		<span class="pill">Food styling</span>
@@ -26,6 +29,15 @@
 	.wwd {
 		padding-top: var(--space-7);
 		padding-bottom: var(--space-8);
+	}
+
+	.wwd__title {
+		font-size: clamp(30px, 3.6vw, 46px);
+		letter-spacing: -0.02em;
+		line-height: 1.08;
+		margin: 0 0 var(--space-5);
+		max-width: 720px;
+		font-weight: 700;
 	}
 
 	.wwd__lead {
