@@ -127,11 +127,13 @@ compartido entre 5 rutas, z-index mágicos, elementos fijos).
 **Objetivo:** JJ edita categorías, textos, imágenes y galleries sin depender del dev.
 
 **Alcance:**
-- Proyecto Sanity con esquema: `category` (nombre, slug, tagline, descripción, cover, galería de `MediaAsset` con **alt obligatorio**, orden), `siteConfig` singleton (WhatsApp, Instagram, email, enlaces cal.com, textos del hero, **logoDefault — versión activa del logo**, **homeSections — orden de secciones del home, lista arrastrable**), `homeContent`, `service`, `course`, `testimonial` (opcional).
+- Proyecto Sanity (ID `tg1ohclj`, dataset `production` — creado por Marcos el 2026-10-29) con esquema: `category` **creable sin límite por JJ** (nombre, slug, tagline, descripción, cover, galería de `MediaAsset` con **alt obligatorio** y **ficha técnica opcional por pieza: cliente · servicio · año** — se muestra en el lightbox, "con quién trabajó JJ"), orden arrastrable, visible/oculta; `siteConfig` singleton (WhatsApp, Instagram, email, enlaces cal.com, textos del hero, **logoDefault**, **homeSections**), `homeContent`, `service`, `course`, `testimonial` (opcional).
+- `MediaItem` soporta **foto o video** mezclados en galería.
 - Studio hospedado por Sanity (gratis) con onboarding visual para JJ.
 - Adapter Sanity en `src/lib/content/` respetando los mismos tipos (las rutas no cambian).
 - Webhook Sanity → Netlify para rebuild automático (~1 min).
 - Imágenes siguen en Cloudinary (Sanity solo guarda URLs públicas).
+- **Plan Sanity:** el proyecto se crea en trial de 30 días del plan pago y **al vencer baja automáticamente al plan Community gratuito permanente** (contenido y studio intactos; sin medios de pago registrados no hay cobro posible). El sitio no usa funciones de pago.
 
 **Criterios de salida:**
 - [ ] JJ crea/edita una categoría con fotos y el cambio se publica solo.
