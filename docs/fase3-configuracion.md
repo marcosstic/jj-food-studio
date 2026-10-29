@@ -6,7 +6,7 @@
 
 ## 1. Crear el dataset `production` (Sanity)
 
-1. Ve a **manage.sanity.io** → proyecto **JJ Food Studio** (tg1ohclj)
+1. Ve a **manage.sanity.io** → proyecto **JJ Food Studio** (tg1ohcli)
 2. Menú izquierdo → **Datasets** → **Create dataset**
 3. Nombre: `production` · Visibilidad: **Public** → Create
    *(sin esto, la web usa su contenido local de respaldo — no se rompe nada)*

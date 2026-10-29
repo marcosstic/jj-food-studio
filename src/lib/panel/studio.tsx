@@ -7,7 +7,7 @@ import { structureTool } from 'sanity/structure';
 import { schemaTypes } from './schema';
 
 export const studioConfig = defineConfig({
-	projectId: 'tg1ohclj',
+	projectId: 'tg1ohcli',
 	dataset: 'production',
 	title: 'JJ Food Studio — Panel',
 	plugins: [structureTool()],

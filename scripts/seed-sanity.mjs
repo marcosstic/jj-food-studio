@@ -11,14 +11,14 @@ const env = Object.fromEntries(
 		.split('\n').filter((l) => l.includes('=')).map((l) => [l.split('=')[0], l.split('=')[1]])
 );
 const TOKEN = env.SANITY_WRITE_TOKEN;
-const PROJECT = 'tg1ohclj';
+const PROJECT = 'tg1ohcli';
 const DATASET = 'production';
 if (!TOKEN) {
 	console.error('✗ Falta SANITY_WRITE_TOKEN en .env.local (manage.sanity.io → API → Tokens → Add token, permisos Editor)');
 	process.exit(1);
 }
 
-const API = `https://${PROJECT}.apicdn.sanity.io`;
+const API = `https://${PROJECT}.api.sanity.io`;
 const B = 'https://res.cloudinary.com/sfhco0ar';
 
 async function uploadImage(url) {

@@ -127,7 +127,7 @@ compartido entre 5 rutas, z-index mágicos, elementos fijos).
 **Objetivo:** JJ edita categorías, textos, imágenes y galleries sin depender del dev.
 
 **Alcance:**
-- Proyecto Sanity (ID `tg1ohclj`, dataset `production` — creado por Marcos el 2026-10-29) con esquema: `category` **creable sin límite por JJ** (nombre, slug, tagline, descripción, cover, galería de `MediaAsset` con **alt obligatorio** y **ficha técnica opcional por pieza: cliente · servicio · año** — se muestra en el lightbox, "con quién trabajó JJ"), orden arrastrable, visible/oculta; `siteConfig` singleton (WhatsApp, Instagram, email, enlaces cal.com, textos del hero, **logoDefault**, **homeSections**), `homeContent`, `service`, `course`, `testimonial` (opcional).
+- Proyecto Sanity (ID `tg1ohcli`, dataset `production` — creado por Marcos el 2026-10-29) con esquema: `category` **creable sin límite por JJ** (nombre, slug, tagline, descripción, cover, galería de `MediaAsset` con **alt obligatorio** y **ficha técnica opcional por pieza: cliente · servicio · año** — se muestra en el lightbox, "con quién trabajó JJ"), orden arrastrable, visible/oculta; `siteConfig` singleton (WhatsApp, Instagram, email, enlaces cal.com, textos del hero, **logoDefault**, **homeSections**), `homeContent`, `service`, `course`, `testimonial` (opcional).
 - `MediaItem` soporta **foto o video** mezclados en galería.
 - Studio hospedado por Sanity (gratis) con onboarding visual para JJ.
 - Adapter Sanity en `src/lib/content/` respetando los mismos tipos (las rutas no cambian).

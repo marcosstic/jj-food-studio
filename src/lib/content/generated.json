@@ -1,1 +1,275 @@
-{}
+{
+  "categories": [
+    {
+      "slug": "restaurantes",
+      "tagline": "Imagen, composición y antojo",
+      "headline": "Fotografía que abre el apetito.",
+      "description": "Construimos imágenes que transmiten la esencia de tu restaurante: sus platos, su ambiente y la experiencia detrás de cada servicio.",
+      "cover": {
+        "kind": "image",
+        "src": "https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+        "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+        "sizes": "(max-width: 680px) 46vw, 300px",
+        "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+        "alt": "Fotografía de restaurante — JJ Food Studio"
+      },
+      "gallery": [
+        {
+          "kind": "image",
+          "src": "https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+          "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+          "sizes": "(max-width: 980px) 100vw, 640px",
+          "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+          "alt": "Restaurantes — JJ Food Studio"
+        },
+        {
+          "kind": "image",
+          "src": "https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+          "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+          "sizes": "(max-width: 980px) 100vw, 640px",
+          "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+          "alt": "Restaurantes — JJ Food Studio"
+        },
+        {
+          "kind": "image",
+          "src": "https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+          "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+          "sizes": "(max-width: 980px) 100vw, 640px",
+          "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+          "alt": "Restaurantes — JJ Food Studio"
+        }
+      ]
+    },
+    {
+      "slug": "marcas-personales",
+      "tagline": "El talento detrás de cada plato",
+      "headline": "La imagen detrás del talento.",
+      "description": "Retratos y contenido gastronómico para chefs, cocineros, pasteleros y profesionales que quieren construir una identidad visual propia.",
+      "cover": {
+        "kind": "image",
+        "src": "https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+        "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+        "sizes": "(max-width: 680px) 46vw, 300px",
+        "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+        "alt": "Fotografía para marca gastronómica — JJ Food Studio"
+      },
+      "gallery": [
+        {
+          "kind": "image",
+          "src": "https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+          "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+          "sizes": "(max-width: 980px) 100vw, 640px",
+          "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+          "alt": "Marcas personales — JJ Food Studio"
+        },
+        {
+          "kind": "image",
+          "src": "https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+          "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+          "sizes": "(max-width: 980px) 100vw, 640px",
+          "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+          "alt": "Marcas personales — JJ Food Studio"
+        },
+        {
+          "kind": "image",
+          "src": "https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+          "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+          "sizes": "(max-width: 980px) 100vw, 640px",
+          "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+          "alt": "Marcas personales — JJ Food Studio"
+        }
+      ]
+    },
+    {
+      "slug": "pastelerias",
+      "tagline": "Texturas, detalle y dulzura",
+      "headline": "El detalle también se saborea.",
+      "description": "Imágenes que resaltan texturas, formas, color y detalle para convertir cada creación en una experiencia visual.",
+      "cover": {
+        "kind": "image",
+        "src": "https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+        "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+        "sizes": "(max-width: 680px) 46vw, 300px",
+        "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+        "alt": "Fotografía de pastelería — JJ Food Studio"
+      },
+      "gallery": [
+        {
+          "kind": "image",
+          "src": "https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+          "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+          "sizes": "(max-width: 980px) 100vw, 640px",
+          "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+          "alt": "Pastelerías — JJ Food Studio"
+        },
+        {
+          "kind": "image",
+          "src": "https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+          "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+          "sizes": "(max-width: 980px) 100vw, 640px",
+          "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+          "alt": "Pastelerías — JJ Food Studio"
+        },
+        {
+          "kind": "image",
+          "src": "https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+          "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+          "sizes": "(max-width: 980px) 100vw, 640px",
+          "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+          "alt": "Pastelerías — JJ Food Studio"
+        }
+      ]
+    }
+  ],
+  "site": {
+    "whatsappMessage": "Hola JJ, vi tu web y quiero una sesión de fotografía/video gastronómico.",
+    "instagramUrl": "https://instagram.com/",
+    "instagramHandle": "@jjfoodstudio",
+    "email": "contacto@jjfoodstudio.com",
+    "logoDefault": "css",
+    "homeSections": [
+      "banner",
+      "hero",
+      "editorial",
+      "portfolio",
+      "whatWeDo",
+      "services",
+      "formation",
+      "about",
+      "closing"
+    ]
+  },
+  "home": {
+    "hero": {
+      "kicker": "Fotografía y video gastronómico · Estilismo de alimentos · Dirección de arte",
+      "h1": "Imágenes que hacen que la comida se venda.",
+      "sub": "Enfocado en restaurantes, pastelerías, marcas de alimentos y personales"
+    },
+    "editorial": {
+      "title": "No se trata solo de fotografiar comida",
+      "subtitle": "Se trata de construir imágenes que hagan que una persona quiera probarla y trasmitir experiencias"
+    },
+    "banner": [
+      {
+        "kind": "image",
+        "src": "https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+        "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+        "sizes": "(max-width: 680px) 42vw, 300px",
+        "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+        "alt": "Fotografía gastronómica de restaurante"
+      },
+      {
+        "kind": "image",
+        "src": "https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+        "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+        "sizes": "(max-width: 680px) 42vw, 300px",
+        "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+        "alt": "Plato con textura y vapor"
+      },
+      {
+        "kind": "image",
+        "src": "https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+        "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+        "sizes": "(max-width: 680px) 42vw, 300px",
+        "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+        "alt": "Ambiente gastronómico"
+      },
+      {
+        "kind": "image",
+        "src": "https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+        "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+        "sizes": "(max-width: 680px) 42vw, 300px",
+        "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+        "alt": "Fotografía para marca de alimentos"
+      },
+      {
+        "kind": "image",
+        "src": "https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+        "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+        "sizes": "(max-width: 680px) 42vw, 300px",
+        "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+        "alt": "Creación de pastelería"
+      },
+      {
+        "kind": "image",
+        "src": "https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+        "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+        "sizes": "(max-width: 680px) 42vw, 300px",
+        "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+        "alt": "Detalle macro de pastelería"
+      }
+    ],
+    "closingFoto": {
+      "kind": "image",
+      "src": "https://cdn.sanity.io/images/tg1ohcli/production/abba1ae7652b63f295a412566797e9c1d30a4ba2-1600x1068.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+      "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/abba1ae7652b63f295a412566797e9c1d30a4ba2-1600x1068.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/abba1ae7652b63f295a412566797e9c1d30a4ba2-1600x1068.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/abba1ae7652b63f295a412566797e9c1d30a4ba2-1600x1068.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/abba1ae7652b63f295a412566797e9c1d30a4ba2-1600x1068.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+      "sizes": "(max-width: 680px) 92vw, 560px",
+      "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/abba1ae7652b63f295a412566797e9c1d30a4ba2-1600x1068.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+      "alt": "JJ, fotógrafo gastronómico (foto de prueba — pendiente foto real de JJ)"
+    }
+  },
+  "services": [
+    {
+      "title": "Fotografía gastronómica",
+      "description": "Imágenes profesionales para restaurantes, marcas y productos.",
+      "detalle": "Fotografía de platos, menús completos, productos en packaging, hero shots para campañas publicitarias. Cada imagen está diseñada para activar antojo y comunicar calidad premium."
+    },
+    {
+      "title": "Video gastronómico",
+      "description": "Contenido audiovisual para redes, campañas y branding.",
+      "detalle": "Videos de platos en movimiento, process shots, contenido para Instagram Reels, TikTok, YouTube Shorts. Producción completa desde concepto hasta edición final con ritmo y precisión técnica."
+    },
+    {
+      "title": "Dirección de arte gastronómica",
+      "description": "Concepto visual, composición y estilo para cada proyecto.",
+      "detalle": "Desarrollo de identidad visual para marcas gastronómicas. Selección de props, paleta de colores, composición de escenas, moodboards y guías de estilo."
+    },
+    {
+      "title": "Food styling",
+      "description": "Preparación y estilismo de alimentos para fotografía y video.",
+      "detalle": "Manipulación profesional de alimentos para que se vean irresistibles. Control de texturas, brillos, vapor, frescura."
+    },
+    {
+      "title": "Asesorías",
+      "description": "Consultoría visual para mejorar la imagen de tu marca gastronómica.",
+      "detalle": "Auditoría de imagen actual, recomendaciones de mejoras, entrenamiento de equipo interno, guías de contenido para redes, estrategia visual a largo plazo."
+    }
+  ],
+  "courses": [
+    {
+      "title": "Curso de fotografía integral",
+      "description": "De la técnica a la construcción de imagen profesional.",
+      "cta": "Ver curso"
+    },
+    {
+      "title": "Curso de fotografía gastronómica",
+      "description": "Iluminación, composición y estilismo aplicado.",
+      "cta": "Ver curso"
+    },
+    {
+      "title": "Curso de food styling",
+      "description": "Técnicas para preparar y controlar alimentos.",
+      "cta": "Ver curso"
+    },
+    {
+      "title": "Curso de revelado y edición",
+      "description": "Aprende a revelar y editar fotografías para lograr imágenes más limpias, atractivas y profesionales.",
+      "cta": "Ver curso"
+    },
+    {
+      "title": "Taller de iluminación básica",
+      "description": "Fundamentos de iluminación para comenzar a fotografiar alimentos con resultados profesionales.",
+      "cta": "Ver taller"
+    },
+    {
+      "title": "Taller de iluminación avanzada",
+      "description": "Técnicas avanzadas de iluminación para crear escenas gastronómicas más complejas y controladas.",
+      "cta": "Ver taller"
+    },
+    {
+      "title": "Curso de composición aplicada",
+      "description": "Aprende a construir imágenes gastronómicas equilibradas, atractivas y con intención visual.",
+      "cta": "Ver curso"
+    }
+  ]
+}

@@ -1,30 +1,27 @@
 // Prebuild (npm run build lo ejecuta solo): trae el contenido desde Sanity
 // (dataset público) y genera src/lib/content/generated.json.
-// Si Sanity no tiene contenido o falla, escribe {} y el sitio usa su
-// contenido local de respaldo — el build NUNCA se rompe por el CMS.
+// Si Sanity no tiene contenido o falla, conserva el último generated.json
+// válido (o escribe {} si no existe) y el sitio usa su contenido local de
+// respaldo — el build NUNCA se rompe por el CMS.
 import { writeFileSync } from 'node:fs';
 
-const PROJECT = 'tg1ohclj';
+const PROJECT = 'tg1ohcli';
 const DATASET = 'production';
 const CDN = `https://${PROJECT}.apicdn.sanity.io/v1/data/query/${DATASET}?query=`;
 
-const imgUrl = (ref, w, h) => {
-	const m = /^image-(.+)-(\d+)x(\d+)-(\w+)$/.exec(ref);
-	const path = m ? `${m[1]}.${m[4]}` : ref;
-	return `https://cdn.sanity.io/images/${PROJECT}/${DATASET}/${path}?w=${w}&h=${h}&fit=crop&auto=format&q=80`;
-};
-
-const media = (img, alt, sizes) =>
-	img?.asset?._ref
+// asset->url devuelve la URL completa del CDN; aquí agregamos los parámetros
+// de transformación (recorte 4:5, formatos modernos, calidad)
+const media = (url, alt, sizes) =>
+	url
 		? {
 				kind: 'image',
-				src: imgUrl(img.asset._ref, 480, 600),
+				src: `${url}?w=480&h=600&fit=crop&auto=format&q=80`,
 				srcset: [360, 480, 640, 960]
-						.map((w) => `${imgUrl(img.asset._ref, w, Math.round(w * 1.25))} ${w}w`)
+						.map((w) => `${url}?w=${w}&h=${Math.round(w * 1.25)}&fit=crop&auto=format&q=80 ${w}w`)
 						.join(', '),
 				sizes,
-				lqip: imgUrl(img.asset._ref, 40, 50),
-				alt: alt || img.alt || ''
+				lqip: `${url}?w=40&h=50&fit=crop&blur=300&q=30`,
+				alt: alt || ''
 			}
 		: null;
 
@@ -37,9 +34,9 @@ async function q(groq) {
 let out = {};
 try {
 	const [cats, siteRaw, homeRaw, services, courses] = await Promise.all([
-		q('*[_type=="category" && (defined(visible)==false || visible==true)] | order(orden asc){name,"slug":slug.current,tagline,headline,descripcion,cover{asset,alt},galeria,orden}'),
+		q('*[_type=="category" && (defined(visible)==false || visible==true)] | order(orden asc){name,"slug":slug.current,tagline,headline,descripcion,"coverUrl":cover.asset->url,"coverAlt":cover.alt,galeria[]{tipo,alt,cliente,servicio,anio,"imgUrl":imagen.asset->url,videoUrl},orden}'),
 		q('*[_id=="siteConfig"][0]'),
-		q('*[_id=="homeContent"][0]{kicker,titulo,subtitulo,editorialTitulo,editorialTexto,banner,retratoJJ,retratoAlt,videoHeroUrl}'),
+		q('*[_id=="homeContent"][0]{kicker,titulo,subtitulo,editorialTitulo,editorialTexto,banner[]{"url":asset->url,alt},retratoJJ{"url":asset->url},retratoAlt,videoHeroUrl}'),
 		q('*[_type=="service"] | order(orden asc)'),
 		q('*[_type=="course"] | order(orden asc)')
 	]);
@@ -51,13 +48,13 @@ try {
 			tagline: c.tagline,
 			headline: c.headline,
 			description: c.descripcion,
-			cover: media(c.cover, c.cover?.alt || c.name, '(max-width: 680px) 46vw, 300px'),
+			cover: media(c.coverUrl, c.coverAlt || c.name, '(max-width: 680px) 46vw, 300px'),
 			gallery: (c.galeria ?? [])
 				.map((g) => {
 					if (g.tipo === 'video' && g.videoUrl) {
 						return { kind: 'video', src: g.videoUrl, alt: g.alt || '', cliente: g.cliente, servicio: g.servicio, anio: g.anio };
 					}
-					return { ...media(g.imagen, g.alt || c.name, '(max-width: 980px) 100vw, 640px'), cliente: g.cliente, servicio: g.servicio, anio: g.anio };
+					return { ...media(g.imgUrl, g.alt || c.name, '(max-width: 980px) 100vw, 640px'), cliente: g.cliente, servicio: g.servicio, anio: g.anio };
 				})
 				.filter(Boolean)
 		}));
@@ -91,10 +88,12 @@ try {
 		}
 		if (homeRaw.banner?.length) {
 			home.banner = homeRaw.banner
-				.map((b) => media(b, b.alt, '(max-width: 680px) 42vw, 300px'))
+				.map((b) => media(b.url, b.alt, '(max-width: 680px) 42vw, 300px'))
 				.filter(Boolean);
 		}
-		if (homeRaw.retratoJJ) home.closingFoto = media(homeRaw.retratoJJ, homeRaw.retratoAlt, '(max-width: 680px) 92vw, 560px');
+		if (homeRaw.retratoJJ?.url) {
+			home.closingFoto = media(homeRaw.retratoJJ.url, homeRaw.retratoAlt, '(max-width: 680px) 92vw, 560px');
+		}
 		if (homeRaw.videoHeroUrl) home.videoHeroUrl = homeRaw.videoHeroUrl;
 		if (Object.keys(home).length) out.home = home;
 	}
@@ -106,7 +105,8 @@ try {
 		out.courses = courses.map((c) => ({ title: c.title, description: c.description, cta: c.cta }));
 	}
 } catch (e) {
-	console.warn('[fetch-content] Sanity sin contenido o con error; uso respaldo local:', String(e).slice(0, 200));
+	console.warn('[fetch-content] Sanity sin contenido o con error; se conserva el último generated.json:', String(e).slice(0, 200));
+	process.exit(0);
 }
 
 writeFileSync(new URL('../src/lib/content/generated.json', import.meta.url), JSON.stringify(out, null, 2));
