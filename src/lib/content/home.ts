@@ -22,10 +22,13 @@ export const home = {
 		posterPublicId: 'v1790531313/IMG_9651.jpg'
 	},
 	closing: {
-		/** Pendiente P-2: backstage o video de JJ presentando la web. */
-		videoPublicId: 'v1790531740/Tomatos_JJ_V2.mp4',
-		videoTransform: 'q_80,f_auto/',
-		title: '¿Trabajamos juntos?'
+		/**
+		 * Cierre: el cliente cambió el video por una FOTO de JJ (2026-10-29).
+		 * Placeholder actual: retrato de stock (retratos/jj-placeholder).
+		 * JJ lo reemplaza por su retrato real desde el CMS (Fase 3) — P-2.
+		 */
+		fotoPublicId: 'retratos/jj-placeholder',
+		fotoAlt: 'JJ, fotógrafo gastronómico (foto de prueba — pendiente foto real de JJ)'
 	},
 	/**
 	 * Banner filmstrip (Fase 2c): fotos verticales 4:5 en loop.

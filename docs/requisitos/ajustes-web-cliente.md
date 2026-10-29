@@ -138,6 +138,8 @@ cambiarse**: solo se aplican estas mejoras.
 | P-4 | Número de WhatsApp real (el botón flotante apunta a `wa.me/` sin número) | AJ-10 y sitio completo |
 | P-5 | ID real de Formspree (`contacto.html` usa `TU_FORM_ID`) | Formulario |
 | P-6 | URL real de Instagram (hoy `https://instagram.com/`) | Contacto |
+| P-7 | ~~Campos WhatsApp + Ubicación en cal.com~~ ✅ aplicados vía API (2026-10-29) | Agenda |
+| P-8 | **Futuro (aprobado por Marcos, no urgente):** crear los 4 tipos de evento restantes en cal.com (Dirección de Arte, Food Styling, Consultoría Gratuita, Consulta de Cursos — Paso 5 de INSTRUCCIONS-CALCOM.md). Al existir, aparecen solos en la agenda de la web | Agenda |
 
 ## Trazabilidad
 

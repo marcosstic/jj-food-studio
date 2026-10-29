@@ -1,15 +1,21 @@
 <script lang="ts">
 	import { home, site, waLink } from '$lib/content';
-	import { videoUrl } from '$lib/services/cloudinary';
+	import { imageUrl } from '$lib/services/cloudinary';
 
-	/** Sección de cierre: video de JJ + solo WhatsApp (AJ-10). Placeholder P-2. */
-	const videoSrc = videoUrl(home.closing.videoPublicId, home.closing.videoTransform);
+	/**
+	 * Sección de cierre: retrato de JJ + solo WhatsApp (AJ-10, actualizado:
+	 * el cliente pidió foto en lugar de video — Fase 2c). Placeholder P-2.
+	 */
+	const fotoSrc = imageUrl(home.closing.fotoPublicId, { w: 900, h: 1200, q: 82 });
 </script>
 
 <section class="closing container" aria-label="Trabajemos juntos">
-	<video class="closing__video" src={videoSrc} autoplay muted loop playsinline loading="lazy">
-		Tu navegador no soporta videos HTML5.
-	</video>
+	<img
+		class="closing__foto"
+		src={fotoSrc}
+		alt={home.closing.fotoAlt}
+		loading="lazy"
+	/>
 	<a class="btn btn--outline btn--cta closing__wa" href={waLink()} target="_blank" rel="noreferrer">
 		WhatsApp
 	</a>
@@ -21,11 +27,11 @@
 		padding: var(--space-7) var(--space-4) var(--space-6);
 	}
 
-	/* Caja suave (Fase 2b §4.2): borde tenue, sombra profunda */
-	.closing__video {
+	/* Retrato vertical 3:4 — el formato recomendado para la foto real de JJ */
+	.closing__foto {
 		width: 100%;
-		max-width: 720px;
-		aspect-ratio: 16 / 9;
+		max-width: 560px;
+		aspect-ratio: 3 / 4;
 		object-fit: cover;
 		border-radius: var(--radius);
 		border: 1px solid rgba(255, 255, 255, 0.06);
