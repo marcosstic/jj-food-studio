@@ -209,6 +209,8 @@
 		font-size: 22px;
 		line-height: 1;
 		cursor: pointer;
+		-webkit-backdrop-filter: blur(8px);
+
 		backdrop-filter: blur(8px);
 		transition: border-color var(--dur-1) var(--ease), background var(--dur-1) var(--ease);
 	}

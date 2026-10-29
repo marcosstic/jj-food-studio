@@ -5,6 +5,9 @@
 html,
 body {
   height: 100%;
+  /* iOS: evita la inflación de texto en landscape */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 /* Scroll suave hacia anclas (ej. /#agenda) salvo preferencia de movimiento reducido */
@@ -102,6 +105,9 @@ a {
   position: sticky;
   top: 0;
   z-index: var(--z-header);
+  /* Fix iOS Safari: backdrop-filter sin prefiero webkit rompe el paint del
+     contenido (texto invisible). Prefijo + fallback opaco + composición GPU */
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   background: rgba(7, 7, 8, 0.60);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
@@ -110,6 +116,13 @@ a {
   align-items: center;
   gap: var(--space-4);
   padding: var(--space-3) var(--space-4);
+  transform: translateZ(0);
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header {
+    background: rgba(7, 7, 8, 0.94);
+  }
 }
 
 .brand {

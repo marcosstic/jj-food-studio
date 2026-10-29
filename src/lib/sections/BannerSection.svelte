@@ -50,9 +50,12 @@
 		}
 	}
 
-	.banner:hover .banner__track,
-	.banner:focus-within .banner__track {
-		animation-play-state: paused;
+	/* Pausa solo con puntero real (hover): en táctil un toque NO detiene el loop */
+	@media (hover: hover) and (pointer: fine) {
+		.banner:hover .banner__track,
+		.banner:focus-within .banner__track {
+			animation-play-state: paused;
+		}
 	}
 
 	.banner__tile {

@@ -85,6 +85,7 @@
   --z-header: 40;
   --z-demo: 50;
   --z-float: 60;
+  --z-overlay: 70;
 }
 
 body.demo-on {

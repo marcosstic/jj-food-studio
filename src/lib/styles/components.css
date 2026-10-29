@@ -173,6 +173,8 @@ body.cta-outline .btn--outline.btn--cta::before {
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: rgba(255, 255, 255, 0.86);
   z-index: var(--z-float);
+  -webkit-backdrop-filter: blur(8px);
+
   backdrop-filter: blur(8px);
 }
 
@@ -211,6 +213,8 @@ body.cta-outline .btn--outline.btn--cta::before {
   background: rgba(7, 7, 8, 0.70);
   border: 1px solid rgba(255, 255, 255, 0.10);
   box-shadow: var(--shadow);
+  -webkit-backdrop-filter: blur(10px);
+
   backdrop-filter: blur(10px);
 }
 

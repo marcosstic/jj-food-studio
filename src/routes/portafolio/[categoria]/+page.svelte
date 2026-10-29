@@ -3,6 +3,7 @@
 	import Meta from '$lib/components/Meta.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import GalleryStage from '$lib/components/GalleryStage.svelte';
+	import Lightbox from '$lib/components/Lightbox.svelte';
 	import { imageUrl, imageSrcSet, cardImageSizes, cardImageVariants, lqipUrl } from '$lib/services/cloudinary';
 	import { fadein } from '$lib/actions/fadein';
 	import type { PageProps } from './$types';
@@ -12,10 +13,19 @@
 	const category = $derived(data.category);
 	let active = $state(0);
 	let jumpTo = $state(-1);
+	let lightboxOpen = $state(false);
+	let lightboxIndex = $state(0);
 
 	const goTo = (i: number) => {
 		active = i;
 		jumpTo = i;
+	};
+
+	// Clic en el grid: salta el stage Y abre el lightbox a pantalla completa
+	const openLightbox = (i: number) => {
+		goTo(i);
+		lightboxIndex = i;
+		lightboxOpen = true;
 	};
 
 	const categoryOgImage = $derived(
@@ -53,8 +63,8 @@
 				class="gallery-tile"
 				class:is-active={active === i}
 				type="button"
-				aria-label={`Ver foto ${i + 1} de ${category.name}`}
-				onclick={() => goTo(i)}
+				aria-label={`Ver foto ${i + 1} de ${category.name} a pantalla completa`}
+				onclick={() => openLightbox(i)}
 			>
 				<span
 					class="gallery-tile__media"
@@ -86,5 +96,7 @@
 		</div>
 	</div>
 </section>
+
+<Lightbox images={category.gallery} bind:index={lightboxIndex} bind:open={lightboxOpen} />
 
 <Footer />
