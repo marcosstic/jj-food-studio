@@ -4,7 +4,6 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import GalleryStage from '$lib/components/GalleryStage.svelte';
 	import Lightbox from '$lib/components/Lightbox.svelte';
-	import { imageUrl, imageSrcSet, cardImageSizes, cardImageVariants, lqipUrl } from '$lib/services/cloudinary';
 	import { fadein } from '$lib/actions/fadein';
 	import type { PageProps } from './$types';
 
@@ -28,15 +27,14 @@
 		lightboxOpen = true;
 	};
 
-	const categoryOgImage = $derived(
-		`https://res.cloudinary.com/sfhco0ar/image/upload/c_fill,w_1200,h_630,q_80,f_auto/${category.cover.publicId}`
-	);
+	// OG image: la mayor resolución disponible de la portada
+	const og = $derived(category.cover.srcset?.split(', ').pop()?.split(' ')[0] ?? category.cover.src);
 </script>
 
 <Meta
 	title="{category.name} · JJ Food Studio"
 	description={`${category.headline} ${category.description}`}
-	image={categoryOgImage}
+	image={og}
 	path={`/portafolio/${category.slug}`}
 />
 
@@ -58,7 +56,7 @@
 
 <section class="container section" aria-label="Galería completa">
 	<div class="gallery-grid">
-		{#each category.gallery as img, i (img.publicId + i)}
+		{#each category.gallery as img, i (img.src + i)}
 			<button
 				class="gallery-tile"
 				class:is-active={active === i}
@@ -68,12 +66,12 @@
 			>
 				<span
 					class="gallery-tile__media"
-					style="background-image:url({lqipUrl(img.publicId)})"
+					style="background-image:url({img.lqip})"
 				>
 					<img
-						src={imageUrl(img.publicId, cardImageVariants[cardImageVariants.length - 1])}
-						srcset={imageSrcSet(img.publicId, cardImageVariants)}
-						sizes={cardImageSizes}
+						src={img.src}
+						srcset={img.srcset}
+						sizes={img.sizes}
 						alt={img.alt}
 						loading="lazy"
 						use:fadein
@@ -84,7 +82,7 @@
 	</div>
 </section>
 
-<!-- AJ-09: CTA redirige al formulario/calendario -->
+<!-- AJ-09: CTA redirige al calendario de agenda -->
 <section class="container section gallery-cta" aria-label="Agenda">
 	<div class="card card--wide card--cta-final">
 		<div>

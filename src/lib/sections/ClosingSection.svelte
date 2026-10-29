@@ -1,19 +1,21 @@
 <script lang="ts">
-	import { home, site, waLink } from '$lib/content';
-	import { imageUrl } from '$lib/services/cloudinary';
+	import { home, waLink } from '$lib/content';
 
 	/**
 	 * Sección de cierre: retrato de JJ + solo WhatsApp (AJ-10, actualizado:
 	 * el cliente pidió foto en lugar de video — Fase 2c). Placeholder P-2.
+	 * En Fase 3 el retrato es editable desde el CMS.
 	 */
-	const fotoSrc = imageUrl(home.closing.fotoPublicId, { w: 900, h: 1200, q: 82 });
+	const foto = home.closing.foto;
 </script>
 
 <section class="closing container" aria-label="Trabajemos juntos">
 	<img
 		class="closing__foto"
-		src={fotoSrc}
-		alt={home.closing.fotoAlt}
+		src={foto.src}
+		srcset={foto.srcset}
+		sizes={foto.sizes}
+		alt={foto.alt}
 		loading="lazy"
 	/>
 	<a class="btn btn--outline btn--cta closing__wa" href={waLink()} target="_blank" rel="noreferrer">

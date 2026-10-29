@@ -17,6 +17,25 @@ export interface CloudinaryAsset {
 	alt: string;
 }
 
+/**
+ * Pieza multimedia ya resuelta para render (foto o video).
+ * La produce la capa de contenido desde Cloudinary o Sanity (Fase 3);
+ * los componentes la consumen sin conocer el origen.
+ */
+export interface MediaView {
+	kind?: 'image' | 'video';
+	src: string;
+	srcset?: string;
+	sizes?: string;
+	/** Placeholder borroso para blur-up (solo fotos). */
+	lqip?: string;
+	alt: string;
+	/** Ficha técnica opcional (Fase 3): con quién trabajó JJ y qué se hizo. */
+	cliente?: string;
+	servicio?: string;
+	anio?: string;
+}
+
 /** Categoría del portafolio con su galería (AJ-05/06/08). */
 export interface Category {
 	slug: string;
@@ -26,9 +45,9 @@ export interface Category {
 	/** Encabezado editorial de la página de galería (AJ-08). */
 	headline: string;
 	description: string;
-	cover: CloudinaryAsset;
-	/** Galería completa de la categoría (AJ-06/07). Pendiente P-3: fotos finales del cliente. */
-	gallery: CloudinaryAsset[];
+	cover: MediaView;
+	/** Galería completa de la categoría (AJ-06/07). */
+	gallery: MediaView[];
 }
 
 /** Tarjeta de servicio resumida (home). */

@@ -1,12 +1,12 @@
 <script lang="ts">
-	import type { CloudinaryAsset } from '$lib/content';
-	import { imageUrl } from '$lib/services/cloudinary';
+	import type { MediaView } from '$lib/content';
 
 	/**
-	 * Lightbox a pantalla completa (Fase 2c): ✕ para cerrar, flechas,
-	 * contador y navegación con teclado (Esc / ← →). Clic fuera = cerrar.
+	 * Lightbox a pantalla completa (Fase 2c/3): ✕ para cerrar, flechas,
+	 * contador, ficha técnica (cliente · servicio · año) y navegación con
+	 * teclado (Esc / ← →). Clic fuera = cerrar.
 	 */
-	let { images, index = $bindable(0), open = $bindable(false) }: { images: CloudinaryAsset[]; index?: number; open?: boolean } = $props();
+	let { images, index = $bindable(0), open = $bindable(false) }: { images: MediaView[]; index?: number; open?: boolean } = $props();
 
 	const close = () => (open = false);
 	const step = (dir: 1 | -1) => {
@@ -32,6 +32,7 @@
 </script>
 
 {#if open}
+	{@const img = images[index]}
 	<div
 		class="lb"
 		role="dialog"
@@ -45,13 +46,19 @@
 
 		<button class="lb__nav lb__nav--prev" type="button" aria-label="Anterior" onclick={() => step(-1)}>‹</button>
 
-		<img
-			class="lb__img"
-			src={imageUrl(images[index].publicId, { w: 1200, h: 1500, q: 85 })}
-			alt={images[index].alt}
-		/>
+		{#if img.kind === 'video'}
+			<video class="lb__img" src={img.src} autoplay muted loop playsinline></video>
+		{:else}
+			<img class="lb__img" src={img.src} srcset={img.srcset} alt={img.alt} />
+		{/if}
 
 		<button class="lb__nav lb__nav--next" type="button" aria-label="Siguiente" onclick={() => step(1)}>›</button>
+
+		<div class="lb__ficha">
+			{#if img.cliente}<span>{img.cliente}</span>{/if}
+			{#if img.servicio}<span>{img.servicio}</span>{/if}
+			{#if img.anio}<span>{img.anio}</span>{/if}
+		</div>
 
 		<div class="lb__counter">{index + 1} / {images.length}</div>
 	</div>
@@ -63,8 +70,10 @@
 		inset: 0;
 		z-index: var(--z-overlay);
 		display: flex;
+		flex-direction: column;
 		align-items: center;
 		justify-content: center;
+		gap: var(--space-3);
 		background: rgba(4, 4, 5, 0.94);
 		backdrop-filter: blur(12px);
 		-webkit-backdrop-filter: blur(12px);
@@ -79,11 +88,29 @@
 
 	.lb__img {
 		max-width: min(92vw, 900px);
-		max-height: 88vh;
+		max-height: 80vh;
 		border-radius: var(--radius);
 		border: 1px solid rgba(255, 255, 255, 0.08);
 		box-shadow: 0 32px 80px rgba(0, 0, 0, 0.55);
 		object-fit: contain;
+	}
+
+	.lb__ficha {
+		display: flex;
+		gap: var(--space-4);
+		flex-wrap: wrap;
+		justify-content: center;
+		color: var(--gold-m);
+		font-size: 12px;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		min-height: 1em;
+	}
+
+	.lb__counter {
+		color: rgba(255, 255, 255, 0.8);
+		font-size: 12px;
+		letter-spacing: 0.14em;
 	}
 
 	.lb__close {
@@ -134,20 +161,10 @@
 		right: 18px;
 	}
 
-	.lb__counter {
-		position: absolute;
-		bottom: 20px;
-		left: 50%;
-		transform: translateX(-50%);
-		color: rgba(255, 255, 255, 0.8);
-		font-size: 12px;
-		letter-spacing: 0.14em;
-	}
-
 	@media (max-width: 680px) {
 		.lb__img {
 			max-width: 96vw;
-			max-height: 80vh;
+			max-height: 74vh;
 		}
 
 		.lb__nav {

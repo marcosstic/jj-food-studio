@@ -1,8 +1,10 @@
-import type { LogoMode } from './types';
+import { cloud3x4, cloud4x5 } from './media';
+import type { MediaView } from './types';
 
 /**
  * Copy del home (AJ-01/03/04/10) — textos exactos del cliente.
- * Videos placeholder hasta recibir P-1 (mix/backstage hero) y P-2 (cierre JJ).
+ * Videos placeholder hasta recibir P-1 (mix/backstage hero) y P-2 (foto de JJ).
+ * En Fase 3 esto vive en Sanity (homeContent) con fallback a estos valores.
  */
 export const home = {
 	hero: {
@@ -24,11 +26,14 @@ export const home = {
 	closing: {
 		/**
 		 * Cierre: el cliente cambió el video por una FOTO de JJ (2026-10-29).
-		 * Placeholder actual: retrato de stock (retratos/jj-placeholder).
+		 * Placeholder: retrato de stock (retratos/jj-placeholder en Cloudinary).
 		 * JJ lo reemplaza por su retrato real desde el CMS (Fase 3) — P-2.
 		 */
-		fotoPublicId: 'retratos/jj-placeholder',
-		fotoAlt: 'JJ, fotógrafo gastronómico (foto de prueba — pendiente foto real de JJ)'
+		foto: cloud3x4(
+			'retratos/jj-placeholder',
+			'JJ, fotógrafo gastronómico (foto de prueba — pendiente foto real de JJ)',
+			'(max-width: 680px) 92vw, 560px'
+		)
 	},
 	/**
 	 * Banner filmstrip (Fase 2c): fotos verticales 4:5 en loop.
@@ -36,22 +41,15 @@ export const home = {
 	 * recorta con c_fill). JJ los reemplaza desde el CMS en Fase 3.
 	 */
 	banner: [
-		{ publicId: 'v1790531095/IMG_9222.jpg', alt: 'Fotografía gastronómica de restaurante' },
-		{ publicId: 'v1790531438/IMG_4755-Edit.jpg', alt: 'Plato con textura y vapor' },
-		{ publicId: 'v1790531313/IMG_9651.jpg', alt: 'Ambiente gastronómico' },
-		{ publicId: 'v1790533207/IMG_3370.jpg', alt: 'Fotografía para marca de alimentos' },
-		{ publicId: 'v1790532915/_MG_9520.jpg', alt: 'Creación de pastelería' },
-		{ publicId: 'v1790546207/_MG_7698.jpg', alt: 'Detalle macro de pastelería' }
-	]
-} as const;
+		cloud4x5('v1790531095/IMG_9222.jpg', 'Fotografía gastronómica de restaurante', undefined, '(max-width: 680px) 42vw, 300px'),
+		cloud4x5('v1790531438/IMG_4755-Edit.jpg', 'Plato con textura y vapor', undefined, '(max-width: 680px) 42vw, 300px'),
+		cloud4x5('v1790531313/IMG_9651.jpg', 'Ambiente gastronómico', undefined, '(max-width: 680px) 42vw, 300px'),
+		cloud4x5('v1790533207/IMG_3370.jpg', 'Fotografía para marca de alimentos', undefined, '(max-width: 680px) 42vw, 300px'),
+		cloud4x5('v1790532915/_MG_9520.jpg', 'Creación de pastelería', undefined, '(max-width: 680px) 42vw, 300px'),
+		cloud4x5('v1790546207/_MG_7698.jpg', 'Detalle macro de pastelería', undefined, '(max-width: 680px) 42vw, 300px')
+	] as MediaView[]
+};
 
-export type HomeContent = typeof home;
-
-/**
- * Orden de las secciones del home (Fase 2b: secciones tipo LEGO).
- * Mover una sección = mover un string aquí. Fase 3: lista arrastrable
- * en el CMS (Sanity siteConfig.homeSections).
- */
 export const homeSections = [
 	'banner', // filmstrip vertical en loop (Fase 2c)
 	'hero', // agenda primera: video + calendario + logo

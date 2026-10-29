@@ -1,15 +1,15 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import EmblaCarousel from 'embla-carousel';
-	import type { CloudinaryAsset } from '$lib/content';
-	import { imageUrl, imageSrcSet, cardImageSizes, cardImageVariants, lqipUrl } from '$lib/services/cloudinary';
+	import type { MediaView } from '$lib/content';
 	import { fadein } from '$lib/actions/fadein';
 
 	/**
 	 * Visor fotográfico vertical (Fase 2c): stage 4:5 con autoplay + flechas
 	 * + teclado, y tira de miniaturas lateral sincronizada con el grid.
+	 * Las piezas pueden ser foto o video (MediaView, Fase 3).
 	 */
-	let { images, autoplayMs = 4000, onselect, jumpTo = -1 }: { images: CloudinaryAsset[]; autoplayMs?: number; onselect?: (index: number) => void; jumpTo?: number } = $props();
+	let { images, autoplayMs = 4000, onselect, jumpTo = -1 }: { images: MediaView[]; autoplayMs?: number; onselect?: (index: number) => void; jumpTo?: number } = $props();
 
 	let viewport: HTMLElement;
 	let emblaApi: ReturnType<typeof EmblaCarousel> | null = null;
@@ -87,16 +87,20 @@
 		>
 			<div class="stage__viewport" bind:this={viewport}>
 				<div class="stage__track">
-					{#each images as img, i (img.publicId + i)}
+					{#each images as img, i (img.src + i)}
 						<div class="stage__slide" aria-hidden={current !== i}>
-							<img
-								src={imageUrl(img.publicId, cardImageVariants[cardImageVariants.length - 1])}
-								srcset={imageSrcSet(img.publicId, cardImageVariants)}
-								sizes="(max-width: 980px) 100vw, 640px"
-								alt={img.alt}
-								loading={i === 0 ? 'eager' : 'lazy'}
-								use:fadein
-							/>
+							{#if img.kind === 'video'}
+								<video src={img.src} autoplay muted loop playsinline></video>
+							{:else}
+								<img
+									src={img.src}
+									srcset={img.srcset}
+									sizes="(max-width: 980px) 100vw, 640px"
+									alt={img.alt}
+									loading={i === 0 ? 'eager' : 'lazy'}
+									use:fadein
+								/>
+							{/if}
 						</div>
 					{/each}
 				</div>
@@ -120,15 +124,19 @@
 	</div>
 
 	<div class="viewer__thumbs" role="tablist" aria-label="Miniaturas de la galería">
-		{#each images as img, i (img.publicId + i)}
+		{#each images as img, i (img.src + i)}
 			<button
 				class="viewer__thumb"
 				type="button"
 				class:is-active={current === i}
-				aria-label={`Ver foto ${i + 1}: ${img.alt}`}
+				aria-label={`Ver pieza ${i + 1}: ${img.alt}`}
 				onclick={() => scrollToIndex(i)}
 			>
-				<img src={imageUrl(img.publicId, { w: 160, h: 200, q: 70 })} alt="" loading="lazy" />
+				{#if img.kind === 'video'}
+					<span class="viewer__thumb-video" aria-hidden="true">▶</span>
+				{:else}
+					<img src={img.src} alt="" loading="lazy" />
+				{/if}
 			</button>
 		{/each}
 	</div>
@@ -182,11 +190,15 @@
 			rgba(255, 255, 255, 0.03);
 	}
 
-	.stage__slide img {
+	.stage__slide img,
+	.stage__slide video {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		display: block;
+	}
+
+	.stage__slide img {
 		opacity: 0;
 		transition: opacity 0.3s ease;
 	}
@@ -205,13 +217,12 @@
 		border-radius: 999px;
 		border: 1px solid rgba(255, 255, 255, 0.14);
 		background: rgba(7, 7, 8, 0.55);
+		-webkit-backdrop-filter: blur(8px);
+		backdrop-filter: blur(8px);
 		color: rgba(255, 255, 255, 0.88);
 		font-size: 22px;
 		line-height: 1;
 		cursor: pointer;
-		-webkit-backdrop-filter: blur(8px);
-
-		backdrop-filter: blur(8px);
 		transition: border-color var(--dur-1) var(--ease), background var(--dur-1) var(--ease);
 	}
 
@@ -285,11 +296,16 @@
 		border-color: rgba(233, 215, 154, 0.55);
 	}
 
-	.viewer__thumb img {
+	.viewer__thumb img,
+	.viewer__thumb-video {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		display: block;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: rgba(255, 255, 255, 0.8);
+		font-size: 20px;
 	}
 
 	@media (max-width: 980px) {

@@ -1,13 +1,13 @@
 <script lang="ts">
 	import { home } from '$lib/content';
-	import { imageUrl } from '$lib/services/cloudinary';
 
 	/**
 	 * Banner filmstrip (Fase 2c): cinta de fotos verticales 4:5 en loop
-	 * continuo. Pausa al hover/tap; estática con prefers-reduced-motion.
+	 * continuo. Pausa solo con puntero real (en táctil un toque NO detiene
+	 * el loop); estática con prefers-reduced-motion.
 	 * La pista se duplica para el loop perfecto (translateX -50%).
 	 */
-	const tiles = [...home.banner, ...home.banner];
+	const tiles: typeof home.banner = [...home.banner, ...home.banner];
 </script>
 
 <div class="banner" aria-label="Galería de trabajos">
@@ -15,9 +15,9 @@
 		{#each tiles as img, i (i)}
 			<div class="banner__tile" aria-hidden={i >= home.banner.length}>
 				<img
-					src={imageUrl(img.publicId, { w: 480, h: 600, q: 80 })}
-					srcset={`${imageUrl(img.publicId, { w: 360, h: 450, q: 75 })} 360w, ${imageUrl(img.publicId, { w: 480, h: 600, q: 80 })} 480w, ${imageUrl(img.publicId, { w: 640, h: 800, q: 80 })} 640w`}
-					sizes="(max-width: 680px) 42vw, 300px"
+					src={img.src}
+					srcset={img.srcset}
+					sizes={img.sizes ?? '(max-width: 680px) 42vw, 300px'}
 					alt={img.alt}
 					loading={i < 3 ? 'eager' : 'lazy'}
 				/>

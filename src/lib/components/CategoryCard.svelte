@@ -1,17 +1,16 @@
 <script lang="ts">
 	import type { Category } from '$lib/content';
-	import { imageUrl, imageSrcSet, cardImageSizes, cardImageVariants } from '$lib/services/cloudinary';
 	import { fadein } from '$lib/actions/fadein';
 
 	let { category }: { category: Category } = $props();
 </script>
 
 <a class="card card--cover" href={`/portafolio/${category.slug}`}>
-	<div class="card__media">
+	<div class="card__media" style={category.cover.lqip ? `background-image:url(${category.cover.lqip})` : ''}>
 		<img
-			src={imageUrl(category.cover.publicId, cardImageVariants[cardImageVariants.length - 1])}
-			srcset={imageSrcSet(category.cover.publicId, cardImageVariants)}
-			sizes={cardImageSizes}
+			src={category.cover.src}
+			srcset={category.cover.srcset}
+			sizes={category.cover.sizes}
 			alt={category.cover.alt}
 			loading="lazy"
 			use:fadein
@@ -27,7 +26,9 @@
 	/* Estilos propios del componente (vertical 4:5, Fase 2c) */
 	.card__media {
 		aspect-ratio: 4 / 5;
-		background: rgba(255, 255, 255, 0.05);
+		background-size: cover;
+		background-position: center;
+		background-color: rgba(255, 255, 255, 0.05);
 		border-radius: var(--radius-md);
 		overflow: hidden;
 	}
