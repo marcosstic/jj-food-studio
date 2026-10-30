@@ -5,7 +5,7 @@
 // respaldo — el build NUNCA se rompe por el CMS.
 import { writeFileSync } from 'node:fs';
 
-const PROJECT = 'tg1ohcli';
+const PROJECT = 'tg1ohclj';
 const DATASET = 'production';
 const CDN = `https://${PROJECT}.apicdn.sanity.io/v1/data/query/${DATASET}?query=`;
 

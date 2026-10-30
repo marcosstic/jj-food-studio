@@ -11,7 +11,7 @@ const env = Object.fromEntries(
 		.split('\n').filter((l) => l.includes('=')).map((l) => [l.split('=')[0], l.split('=')[1]])
 );
 const TOKEN = env.SANITY_WRITE_TOKEN;
-const PROJECT = 'tg1ohcli';
+const PROJECT = 'tg1ohclj';
 const DATASET = 'production';
 if (!TOKEN) {
 	console.error('✗ Falta SANITY_WRITE_TOKEN en .env.local (manage.sanity.io → API → Tokens → Add token, permisos Editor)');

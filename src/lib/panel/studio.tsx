@@ -10,6 +10,9 @@ export const studioConfig = defineConfig({
 	projectId: 'tg1ohcli',
 	dataset: 'production',
 	title: 'JJ Food Studio — Panel',
+	// Ruta base del studio embebido: sin esto, Sanity interpreta el segmento
+	// "/panel" de la URL como el nombre de una herramienta ("Tool not found")
+	basePath: '/panel',
 	plugins: [structureTool()],
 	schema: { types: schemaTypes }
 });
