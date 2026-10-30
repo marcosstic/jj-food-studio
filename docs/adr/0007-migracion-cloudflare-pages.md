@@ -50,6 +50,25 @@ no por el uso normal del CMS.
 verificar el de Cloudflare; recién entonces cambiar el dominio. Cero
 downtime.
 
+## Adenda (2026-10-30): dominio en Namecheap + gestión por API de Cloudflare
+
+El dominio está registrado en **Namecheap** (no en Netlify). La API de
+Namecheap es restrictiva (requiere habilitación + whitelist de IP) — se
+descarta. **Plan de DNS elegido: migrar la DNS del dominio a Cloudflare**:
+
+1. Marcos agrega el sitio en Cloudflare (plan Free) → Cloudflare importa los
+   registros actuales y asigna **2 nameservers** (`xxx.ns.cloudflare.com`)
+2. En **Namecheap** → Domain List → jjfoodstudio.com → Nameservers →
+   **Custom DNS** → pegar los 2 nameservers de Cloudflare (1 minuto; el
+   sitio nunca se cae — Cloudflare importa la configuración vigente)
+3. Marcos crea un **API Token** (template "Edit zone DNS" + Cloudflare Pages
+   Edit + Zone Read) y el **Account ID** → me los pasa
+4. **Yo gestiono por API de Cloudflare**: verificar/corregir registros DNS,
+   conectar el dominio al proyecto Pages, variables y deployments
+
+**Resultado:** DNS + hosting + SSL + deployments, todo administrable por API
+de Cloudflare por mi parte — sin depender de panel de Namecheap ni Netlify.
+
 ## Consecuencias
 
 - **Positivas:** 500 builds/mes (sobrado para cambios semanales), ancho de
