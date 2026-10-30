@@ -1,55 +1,67 @@
-# Fase 3 — Configuración pendiente (checklist de Marcos, ~10 minutos)
+# Fase 3 — Estado de configuración
 
-> El código del CMS ya está en producción. Estos pasos se hacen en los
-> dashboards de Sanity y Netlify (donde ya tienes sesión). Cuando los
-> termines, avísame y ejecuto el seed + la prueba end-to-end.
+> Actualizado 2026-10-30. La infraestructura quedó configurada **vía API**
+> (token de Cloudflare que dio Marcos). Solo queda un paso manual en GitHub.
 
-## 1. Crear el dataset `production` (Sanity)
+## Qué ya quedó (automático, sin dashboard)
 
-1. Ve a **manage.sanity.io** → proyecto **JJ Food Studio** (tg1ohcli)
-2. Menú izquierdo → **Datasets** → **Create dataset**
-3. Nombre: `production` · Visibilidad: **Public** → Create
-   *(sin esto, la web usa su contenido local de respaldo — no se rompe nada)*
+| Ítem | Estado |
+|------|--------|
+| Dataset `production` (público) en Sanity tg1ohcli | ✅ |
+| CORS: `https://jjfoodstudio.com`, `https://www.jjfoodstudio.com`, localhost | ✅ |
+| Token de escritura Sanity (en `.env.local`) | ✅ |
+| JJ como miembro **Administrator** (`jjifoodstudio@gmail.com`) | ✅ |
+| Contenido sembrado: 3 categorías + galerías + bannerHome (7 fotos) + config | ✅ |
+| Proyecto Cloudflare Pages `jjfoodstudio` (subida directa vía wrangler) | ✅ |
+| Dominios `jjfoodstudio.com` y `www` activos, certificado emitido | ✅ |
+| DNS zona Cloudflare: CNAME `@` y `www` → `jjfoodstudio.pages.dev` | ✅ |
+| Sitio sirviendo el build nuevo (slider + contenido de Sanity) | ✅ verificado |
 
-## 2. Agregar los orígenes CORS (para que el panel funcione)
+**Nota de dominio:** el dominio es `jjfoodstudio.com` (sin "i").
+**Nota de correo:** la cuenta de JJ es `jjifoodstudio@gmail.com` (con "i"),
+la misma con la que creó Sanity — accesos con esa cuenta.
 
-1. **manage.sanity.io** → tu proyecto → pestaña **API** → sección **CORS origins** → **Add CORS origin**
-2. Agrega estos tres, uno por uno, marcando **Allow credentials ✓**:
-   - `https://jjfoodstudio.com`
-   - `https://jjfoodstudio.netlify.app` (si aplica)
-   - `http://localhost:4173` y `http://localhost:5173` (para desarrollo)
+## Cómo se despliega ahora
 
-## 3. Crear el token de escritura (para el seed inicial)
+```
+push a main ──────────────┐
+                          ├─→ GitHub Actions → npm run build → wrangler → Pages
+Sanity webhook (contenido)┘         (el prebuild trae el contenido de Sanity)
+```
 
-1. **manage.sanity.io** → tu proyecto → **API** → **Tokens** → **Add API token**
-2. Nombre: `seed` · Permisos: **Editor** → guardar
-3. **Cópialo** y pégamelo (o agrégalo tú mismo en `.env.local` como `SANITY_WRITE_TOKEN=...`)
+El workflow está en `.github/workflows/deploy-pages.yml`. Se dispara con:
+1. **Push a `main`** (cambios de código o diseño).
+2. **`repository_dispatch` tipo `sanity`** (cuando JJ publica contenido).
 
-Con este token ejecuto `scripts/seed-sanity.mjs`, que sube a Sanity todo el
-contenido actual (3 categorías con galerías, servicios, cursos, config) para
-que JJ arranque con el panel lleno.
+El deploy hook de Pages (subida directa) quedó descartado: devuelve HTTP 500
+y no reconstruye con contenido nuevo.
 
-## 4. Invitar a JJ al proyecto
+## Paso único pendiente (Marcos, ~2 minutos)
 
-1. **manage.sanity.io** → tu proyecto → **Members** → **Invite member**
-2. Email de JJ → rol **Administrator** (o Editor)
+El PAT de GitHub (`github_pat_11BN…`) no tiene dos permisos que faltan:
 
-Así JJ entra a `jjfoodstudio.com/panel` con SU cuenta de Google/Sanity y ve el panel.
+1. GitHub → **Settings → Developer settings → Personal access tokens →
+   Fine-grained tokens** → editar el token existente
+2. En **Repository permissions** cambiar:
+   - **Workflows**: Read and write *(para poder subir `.github/workflows/`)*
+   - **Secrets**: Read and write *(para que yo cree los secretos de Cloudflare vía API)*
+3. **Update** → avisarme
 
-## 5. Webhook: publicar en Sanity → reconstruir el sitio (Netlify)
+Con eso yo termino: empujar el workflow, crear los secretos
+`CLOUDFLARE_API_TOKEN` y `CLOUDFLARE_ACCOUNT_ID`, crear el webhook en Sanity
+(apunta a `api.github.com/repos/marcosstic/jj-food-studio/dispatches`,
+header `Authorization: Bearer <PAT>`, body `{"event_type":"sanity"}`) y correr
+la prueba end-to-end.
 
-1. **app.netlify.com** → proyecto **jjfoodstudio.com** → **Site configuration → Build & deploy → Build hooks** → **Add build hook**
-   - Nombre: `sanity-publish` · Branch: `main` → **Save** → copia la URL secreta
-2. **manage.sanity.io** → tu proyecto → **API** → **Webhooks** → **Create webhook**
-   - Nombre: `netlify-rebuild`
-   - URL: (la URL del build hook que copiaste)
-   - Trigger on: **Create, Update, Delete**
-   - Filter: (opcional) `_type in ["category","siteConfig","homeContent","service","course","mediaItem"]`
-   - **Save**
+## Cuidado con la expiración del PAT
 
-## Verificación final (la hago yo cuando termines los pasos)
+Los fine-grained tokens vencen (fecha de expiración elegida al crearlos).
+Cuando venza: el webhook de Sanity dejará de disparar deploys y los `git push`
+fallarán. Al renovarlo, avisarme para actualizar el header del webhook.
 
-1. Ejecuto el seed (paso 3) → contenido en Sanity
-2. Abro `jjfoodstudio.com/panel` → login de Sanity → panel en español con categorías, galerías y config
-3. Creo/edito una categoría de prueba → publico → el webhook reconstruye → **jjfoodstudio.com actualizada en ~1 minuto**
-4. Marco la Fase 3 como completa en el plan maestro
+## Verificación final (la hago yo al terminar el paso de arriba)
+
+1. Push de prueba → Actions en verde → `jjfoodstudio.com` con build fresco
+2. Publicar un cambio de prueba en Sanity → webhook → dispatch → deploy →
+   **sitio actualizado en ~2 minutos**
+3. Marcar la Fase 3 como completa en el plan maestro

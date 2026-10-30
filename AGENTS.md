@@ -19,7 +19,8 @@ los ajustes de `docs/requisitos/ajustes-web-cliente.md`.
 
 **Stack objetivo (ver ADRs):** SvelteKit + `adapter-static` (sitio 100 % prerender),
 CSS por capas con design tokens, Cloudinary para media, Sanity como CMS (Fase 3),
-cal.com para agenda, Formspree para el formulario, Netlify como hosting.
+cal.com para agenda, Formspree para el formulario, **Cloudflare Pages como hosting**
+(ver ADR-0007; Netlify quedó como respaldo pausado por créditos agotados).
 
 ## 2. Reglas de oro (innegociables)
 
@@ -56,7 +57,8 @@ cal.com para agenda, Formspree para el formulario, Netlify como hosting.
 | `AGENTS.md` | Este archivo: reglas, metodología, arquitectura, comandos |
 | `docs/plan-maestro.md` | Fases 1–4, alcance, entregables y criterios de salida |
 | `docs/requisitos/ajustes-web-cliente.md` | Requisitos AJ-01…AJ-11 del cliente + pendientes + trazabilidad |
-| `docs/adr/0001…0006` | Decisiones de arquitectura tomadas y su justificación |
+| `docs/adr/0001…0007` | Decisiones de arquitectura tomadas y su justificación |
+| `docs/fase3-configuracion.md` | Estado de Fase 3 (Sanity + Cloudflare Pages) y pasos pendientes |
 | `DESIGN_SYSTEM.md` | Sistema de diseño visual (tokens, componentes, efectos) — fuente visual |
 | `CLIENT-REQUIREMENTS.md` | Requerimiento original del sitio (histórico) |
 | `INSTRUCCIONS-CALCOM.md` | Setup de cal.com + Google Calendar del cliente |
@@ -138,8 +140,11 @@ npm run build      # build estático → build/
 npm run preview    # servir el build localmente (reiniciar tras cada build: sirv cachea el listado de archivos al arrancar)
 ```
 
-Deploy: Netlify conectado al repo GitHub `marcosstic/jj-food-studio`.
-Config (netlify.toml ya incluido): build command `npm run build`, publish `build/`.
+Deploy: **push a `main` → GitHub Actions** (`.github/workflows/deploy-pages.yml`)
+construye y sube a Cloudflare Pages vía wrangler. El mismo workflow se dispara
+con un `repository_dispatch` tipo `sanity` cuando JJ publica contenido en el CMS.
+Detalle y estado: `docs/fase3-configuracion.md`. Netlify sigue conectado al repo
+como respaldo (deploys pausados por créditos; reactivar solo por decisión explícita).
 
 ## 7. Estado actual y próximos pasos
 
@@ -147,7 +152,11 @@ Config (netlify.toml ya incluido): build command `npm run build`, publish `build
 - [x] **Fase 1 — Migración a SvelteKit con paridad visual 1:1** ✅ (2026-10-27; desviaciones D-1…D-7 y bugs preservados documentados en plan-maestro.md; deploy Netlify pendiente de push)
 - [x] **Fase 2 — Ajustes del cliente (AJ-01…AJ-12)** ✅ (2026-10-27; galerías `/portafolio/[categoria]` con stage Embla; selector público de logo; placeholders P-1/P-2/P-3 activos; Q-1 abierta)
 - [x] **Fase 2b — Modularización + sprint visual** ✅ (2026-10-27; secciones LEGO con orden declarativo, agenda primera, contrato de layout, SEO/OG/sitemap/favicon; placeholders Cloudinary pendientes de API key)
-- [ ] **Fase 3 — CMS Sanity sobre la capa de contenido** ← *siguiente paso (explicar alcance a Marcos antes de iniciar)*
+- [ ] **Fase 3 — CMS Sanity sobre la capa de contenido** — en cierre (2026-10-30):
+  contenido sembrado y verificado, `jjfoodstudio.com` + `www` en vivo en
+  Cloudflare Pages con el build de Sanity. Pendiente SOLO permisos del PAT de
+  GitHub (Workflows + Secrets) para dejar el deploy automático por webhook
+  → pasos exactos en `docs/fase3-configuracion.md`
 - [ ] Fase 4 — Evaluación del sistema de agenda
 
 El detalle completo con criterios de salida está en `docs/plan-maestro.md`.

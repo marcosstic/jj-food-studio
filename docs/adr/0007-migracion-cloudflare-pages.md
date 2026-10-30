@@ -1,6 +1,6 @@
-# ADR-0007: Migración de hosting — Netlify → Cloudflare Pages (PROPUESTA)
+# ADR-0007: Migración de hosting — Netlify → Cloudflare Pages
 
-- **Estado:** Propuesta — pendiente de aprobación de Marcos
+- **Estado:** Aceptada e implementada (2026-10-30)
 - **Fecha:** 2026-10-30
 
 ## Contexto
@@ -68,6 +68,29 @@ descarta. **Plan de DNS elegido: migrar la DNS del dominio a Cloudflare**:
 
 **Resultado:** DNS + hosting + SSL + deployments, todo administrable por API
 de Cloudflare por mi parte — sin depender de panel de Namecheap ni Netlify.
+
+## Adenda 2 (2026-10-30): mecanismo de deploy real
+
+Lo que efectivamente se implementó (difiere del plan original en el punto 1):
+
+- La conexión git de Pages falló desde el dashboard ("Error connecting to
+  git account") → el proyecto se creó como **subida directa vía API** y los
+  deploys manuales se hacen con `wrangler pages deploy build`.
+- El **deploy hook** de Pages en proyectos de subida directa quedó descartado:
+  devuelve HTTP 500 y no reconstruye con contenido nuevo (verificado
+  empíricamente: sin deployment nuevo tras dispararlo).
+- **Deploy automático elegido: GitHub Actions** (`.github/workflows/deploy-pages.yml`):
+  se dispara con push a `main` o con `repository_dispatch` tipo `sanity`
+  (que será el objetivo del webhook del CMS), construye con `npm run build`
+  (el prebuild trae el contenido publicado de Sanity, dataset público, sin
+  secretos del CMS) y despliega con wrangler usando los secretos del repo.
+- Estado del dominio al cierre: `www.jjfoodstudio.com` y `jjfoodstudio.com`
+  **activos con certificado** en el proyecto Pages; registros CNAME `@`/`www`
+  → `jjfoodstudio.pages.dev` (proxied).
+- Pendiente para cerrar la cadena: permisos del PAT de GitHub
+  (**Workflows** y **Secrets**: read/write) → empujar el workflow, crear los
+  2 secretos y apuntar el webhook de Sanity a `…/dispatches`.
+  Detalle operativo en `docs/fase3-configuracion.md`.
 
 ## Consecuencias
 
