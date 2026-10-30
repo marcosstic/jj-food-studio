@@ -87,10 +87,15 @@ Lo que efectivamente se implementó (difiere del plan original en el punto 1):
 - Estado del dominio al cierre: `www.jjfoodstudio.com` y `jjfoodstudio.com`
   **activos con certificado** en el proyecto Pages; registros CNAME `@`/`www`
   → `jjfoodstudio.pages.dev` (proxied).
-- Pendiente para cerrar la cadena: permisos del PAT de GitHub
-  (**Workflows** y **Secrets**: read/write) → empujar el workflow, crear los
-  2 secretos y apuntar el webhook de Sanity a `…/dispatches`.
-  Detalle operativo en `docs/fase3-configuracion.md`.
+- Cadena completa verificada (2026-10-30): Actions deploya en success con
+  secretos del repo (`CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`).
+  El webhook de Sanity pasa por una **Pages Function** (`functions/hooks/sanity.js`)
+  en la propia web (`/hooks/sanity?k=<clave>`): GitHub exige
+  `{"event_type":...}` en el cuerpo, incompatible con el payload de Sanity,
+  y la API de Sanity rechaza crear webhooks con token de escritura, así que
+  el registro del webhook es el último paso manual (UI de manage.sanity.io).
+- Pendiente para cerrar la Fase 3: Marcos registra el webhook en Sanity
+  (valores exactos en `docs/fase3-configuracion.md`) → prueba con publicación.
 
 ## Consecuencias
 

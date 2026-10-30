@@ -21,47 +21,53 @@
 **Nota de correo:** la cuenta de JJ es `jjifoodstudio@gmail.com` (con "i"),
 la misma con la que creó Sanity — accesos con esa cuenta.
 
-## Cómo se despliega ahora
+## Cómo se despliega ahora (VERIFICADO end-to-end 2026-10-30)
 
 ```
-push a main ──────────────┐
-                          ├─→ GitHub Actions → npm run build → wrangler → Pages
-Sanity webhook (contenido)┘         (el prebuild trae el contenido de Sanity)
+push a main ────────────────→ GitHub Actions → npm run build → wrangler → Pages
+Sanity webhook (publicación)→ jjfoodstudio.com/hooks/sanity (Pages Function)
+                              → GitHub dispatch → Actions → Pages
 ```
 
-El workflow está en `.github/workflows/deploy-pages.yml`. Se dispara con:
-1. **Push a `main`** (cambios de código o diseño).
-2. **`repository_dispatch` tipo `sanity`** (cuando JJ publica contenido).
+- El workflow está en `.github/workflows/deploy-pages.yml` (Node 22; el
+  prebuild trae el contenido publicado de Sanity, dataset público).
+- El webhook NO llama directo a GitHub (su API exige `{"event_type":...}` en
+  el cuerpo, incompatible con el payload de Sanity): lo traduce la Pages
+  Function `functions/hooks/sanity.js` con clave en la URL. Secretos
+  `GH_TOKEN` y `HOOK_KEY` viven en el proyecto Pages (creados con
+  `wrangler pages secret put`).
+- Probado: clave errónea → 403; clave correcta → dispatch 204 → run de
+  Actions en success → sitio actualizado.
+- El deploy hook de Pages (subida directa) quedó descartado: devuelve HTTP 500
+  y no reconstruye con contenido nuevo.
 
-El deploy hook de Pages (subida directa) quedó descartado: devuelve HTTP 500
-y no reconstruye con contenido nuevo.
+## Paso único pendiente (Marcos, ~2 minutos): registrar el webhook en Sanity
 
-## Paso único pendiente (Marcos, ~2 minutos)
+La API de Sanity rechaza crear webhooks con el token de escritura (exige
+grant de admin del proyecto), así que se crea desde el panel:
 
-El PAT de GitHub (`github_pat_11BN…`) no tiene dos permisos que faltan:
-
-1. GitHub → **Settings → Developer settings → Personal access tokens →
-   Fine-grained tokens** → editar el token existente
-2. En **Repository permissions** cambiar:
-   - **Workflows**: Read and write *(para poder subir `.github/workflows/`)*
-   - **Secrets**: Read and write *(para que yo cree los secretos de Cloudflare vía API)*
-3. **Update** → avisarme
-
-Con eso yo termino: empujar el workflow, crear los secretos
-`CLOUDFLARE_API_TOKEN` y `CLOUDFLARE_ACCOUNT_ID`, crear el webhook en Sanity
-(apunta a `api.github.com/repos/marcosstic/jj-food-studio/dispatches`,
-header `Authorization: Bearer <PAT>`, body `{"event_type":"sanity"}`) y correr
-la prueba end-to-end.
+1. **manage.sanity.io** → proyecto **JJ Food Studio** (tg1ohcli) → pestaña
+   **API** → **Webhooks** → **Create webhook**
+2. Copiar tal cual:
+   - **Name**: `deploy-sitio-jjfoodstudio`
+   - **URL**: (ver `SANITY_WEBHOOK_URL` y `SANITY_WEBHOOK_KEY` en `.env.local`
+     — juntas: `…/hooks/sanity?k=<clave>`)
+   - **Dataset**: `production`
+   - **Trigger on**: Create / Update / Delete
+   - **Include drafts**: OFF (así solo publica cambios PÚBLICOS)
+   - **HTTP method**: POST · **Custom headers**: ninguno · **Filter**: vacío
+3. **Save** → avisarme para correr la prueba completa.
 
 ## Cuidado con la expiración del PAT
 
-Los fine-grained tokens vencen (fecha de expiración elegida al crearlos).
-Cuando venza: el webhook de Sanity dejará de disparar deploys y los `git push`
-fallarán. Al renovarlo, avisarme para actualizar el header del webhook.
+Los fine-grained tokens de GitHub vencen (este expira **2027-05-01**).
+Cuando venza: los `git push` y el relé del webhook fallarán (el `GH_TOKEN`
+del proyecto Pages también). Al renovarlo: actualizar `.env.local`, el
+secreto `GH_TOKEN` de Pages (`wrangler pages secret put GH_TOKEN …`) y el
+secreto `CLOUDFLARE_API_TOKEN` de Actions en GitHub.
 
-## Verificación final (la hago yo al terminar el paso de arriba)
+## Verificación final (la hago yo cuando el webhook exista)
 
-1. Push de prueba → Actions en verde → `jjfoodstudio.com` con build fresco
-2. Publicar un cambio de prueba en Sanity → webhook → dispatch → deploy →
-   **sitio actualizado en ~2 minutos**
-3. Marcar la Fase 3 como completa en el plan maestro
+1. Publicar un cambio de prueba en Sanity → webhook → `/hooks/sanity` →
+   dispatch → Actions en success → **jjfoodstudio.com actualizado en ~2 min**
+2. Marcar la Fase 3 como completa en el plan maestro
