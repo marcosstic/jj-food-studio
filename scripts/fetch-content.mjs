@@ -67,6 +67,19 @@ try {
 		}));
 	}
 
+	// homeSections puede venir como strings o como objetos (si algún editor
+	// los keyed); se normaliza siempre a strings
+	const normSection = (s) =>
+		typeof s === 'string'
+			? s
+			: s && typeof s === 'object'
+				? Object.entries(s)
+						.filter(([k]) => k !== '_key' && k !== '_type')
+						.sort((a, b) => Number(a[0]) - Number(b[0]))
+						.map(([, v]) => v)
+						.join('')
+				: String(s);
+
 	if (siteRaw) {
 		const site = Object.fromEntries(
 			Object.entries({
@@ -77,7 +90,7 @@ try {
 				email: siteRaw.email,
 				formspreeEndpoint: siteRaw.formspreeEndpoint,
 				logoDefault: siteRaw.logoDefault,
-				homeSections: siteRaw.homeSections
+				homeSections: (siteRaw.homeSections ?? []).map(normSection)
 			}).filter(([, v]) => v !== undefined && v !== null && v !== '')
 		);
 		if (Object.keys(site).length) out.site = site;
