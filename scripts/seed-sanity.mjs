@@ -1,7 +1,12 @@
+// ⚠️ NO EJECUTAR sin aprobación explícita de Marcos para esa ejecución (regla
+// estricta del AGENTS.md §4: escritura masiva sobre producción). Este script
+// ya cumplió su propósito (seed inicial del 2026-10-29) — NO volver a correrlo
+// sin que Marcos lo pida explícitamente. Los cambios de contenido ahora se
+// hacen desde el PANEL (jjfoodstudio.com/panel), nunca desde aquí.
+//
 // Seed de contenido inicial en Sanity (Fase 3).
-// USO: 1) pide un token read/write en manage.sanity.io → API → Tokens
-//      2) agrégalo a .env.local como SANITY_WRITE_TOKEN=...
-//      3) ejecuta: node scripts/seed-sanity.mjs
+// USO (solo con aprobación explícita): 1) token en .env.local como
+// SANITY_WRITE_TOKEN  2) node scripts/seed-sanity.mjs
 // Crea: siteConfig, homeContent, 3 categorías con galería, 5 servicios, 7 cursos.
 // Las imágenes se suben a Sanity desde sus URLs actuales de Cloudinary.
 import { readFileSync } from 'node:fs';

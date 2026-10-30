@@ -33,9 +33,13 @@ cal.com para agenda, Formspree para el formulario, Netlify como hosting.
    de los tokens (excepciones: documentar el porqué en el commit).
 4. **Edición de archivos solo con herramientas estructuradas** (lectura/escritura
    completa o edición con coincidencia exacta y diff revisable). **Prohibido modificar
-   archivos con `sed`, `awk`, `echo >`, `perl -pi` u otras sustituciones por shell**:
-   generan errores silenciosos y diffs difíciles de auditar. El shell queda para
-   comandos (git, npm, build), no para editar código.
+   archivos con `sed`, `awk`, `echo >`, `cat >>`, `perl -pi`, `node -e` u otras
+   sustituciones/escrituras por shell**: generan errores silenciosos y diffs difíciles
+   de auditar. El shell queda para comandos (git, npm, build), no para editar código.
+   **Igual de estricto: prohibido ejecutar scripts de escritura masiva sobre
+   producción (seed de Sanity/Cloudinary, migraciones, parcheos por lotes) sin
+   aprobación explícita del usuario PARA CADA EJECUCIÓN** — ese contenido se edita
+   desde el panel, donde se ve lo que se cambia.
 5. **Commits convencionales en español** (`feat:`, `fix:`, `docs:`, `refactor:`…)
    y **solo cuando el usuario lo pida**. Un commit = un propósito.
 6. **Toda decisión de arquitectura se registra como ADR** en `docs/adr/`
