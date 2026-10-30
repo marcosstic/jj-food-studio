@@ -6,7 +6,7 @@
    - Ve a https://accounts.google.com
    - Clic en "Crear cuenta"
    - Selecciona "Para uso personal"
-   - Usa un email dedicado para JJ Food Studio (ej: jjfoodstudio@gmail.com)
+   - Usa la cuenta de JJ: jjifoodstudio@gmail.com (la misma cuenta de Sanity)
    - Configura contraseña segura
 
 2. **Configurar Google Calendar**
