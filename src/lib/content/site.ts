@@ -8,7 +8,7 @@ import type { SiteConfig } from './types';
 export const site: SiteConfig = {
 	name: 'JJ Food Studio',
 	// Dominio real (Netlify: proyecto jjfoodstudio.com)
-	url: 'https://jjfoodstudio.com',
+	url: 'https://jjifoodstudio.com',
 	// Pendiente P-4: número real de WhatsApp (internacional, sin "+")
 	whatsappPhone: '',
 	whatsappMessage: 'Hola JJ, vi tu web y quiero una sesión de fotografía/video gastronómico.',

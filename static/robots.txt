@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://jjfoodstudio.com/sitemap.xml
+Sitemap: https://jjifoodstudio.com/sitemap.xml
