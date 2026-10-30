@@ -1,4 +1,62 @@
 {
+  "bannerHome": [
+    {
+      "kind": "image",
+      "src": "https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+      "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+      "sizes": "(max-width: 680px) 72vw, 460px",
+      "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+      "alt": "Fotografía gastronómica de restaurante"
+    },
+    {
+      "kind": "image",
+      "src": "https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+      "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+      "sizes": "(max-width: 680px) 72vw, 460px",
+      "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+      "alt": "Plato con textura y vapor"
+    },
+    {
+      "kind": "image",
+      "src": "https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+      "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+      "sizes": "(max-width: 680px) 72vw, 460px",
+      "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+      "alt": "Ambiente gastronómico"
+    },
+    {
+      "kind": "image",
+      "src": "https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+      "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+      "sizes": "(max-width: 680px) 72vw, 460px",
+      "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+      "alt": "Fotografía para marca de alimentos"
+    },
+    {
+      "kind": "image",
+      "src": "https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+      "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+      "sizes": "(max-width: 680px) 72vw, 460px",
+      "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+      "alt": "Creación de pastelería"
+    },
+    {
+      "kind": "image",
+      "src": "https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+      "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+      "sizes": "(max-width: 680px) 72vw, 460px",
+      "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+      "alt": "Detalle macro de pastelería"
+    },
+    {
+      "kind": "image",
+      "src": "https://cdn.sanity.io/images/tg1ohcli/production/6f9d66d764f5978e187f837c58f6c0d5435fb27f-928x1152.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+      "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/6f9d66d764f5978e187f837c58f6c0d5435fb27f-928x1152.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/6f9d66d764f5978e187f837c58f6c0d5435fb27f-928x1152.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/6f9d66d764f5978e187f837c58f6c0d5435fb27f-928x1152.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/6f9d66d764f5978e187f837c58f6c0d5435fb27f-928x1152.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+      "sizes": "(max-width: 680px) 72vw, 460px",
+      "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/6f9d66d764f5978e187f837c58f6c0d5435fb27f-928x1152.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+      "alt": "Mole Negro Oaxaqueño de Alta Cocina"
+    }
+  ],
   "categories": [
     {
       "slug": "restaurantes",
@@ -128,15 +186,98 @@
     "email": "contacto@jjfoodstudio.com",
     "logoDefault": "css",
     "homeSections": [
-      "banner",
-      "hero",
-      "editorial",
-      "portfolio",
-      "whatWeDo",
-      "services",
-      "formation",
-      "about",
-      "closing"
+      {
+        "0": "b",
+        "1": "a",
+        "2": "n",
+        "3": "n",
+        "4": "e",
+        "5": "r",
+        "_key": "k07njmw4"
+      },
+      {
+        "0": "h",
+        "1": "e",
+        "2": "r",
+        "3": "o",
+        "_key": "k1pio99h"
+      },
+      {
+        "0": "e",
+        "1": "d",
+        "2": "i",
+        "3": "t",
+        "4": "o",
+        "5": "r",
+        "6": "i",
+        "7": "a",
+        "8": "l",
+        "_key": "k2vrtxg4"
+      },
+      {
+        "0": "p",
+        "1": "o",
+        "2": "r",
+        "3": "t",
+        "4": "f",
+        "5": "o",
+        "6": "l",
+        "7": "i",
+        "8": "o",
+        "_key": "k3uvigfw"
+      },
+      {
+        "0": "w",
+        "1": "h",
+        "2": "a",
+        "3": "t",
+        "4": "W",
+        "5": "e",
+        "6": "D",
+        "7": "o",
+        "_key": "k450xh39"
+      },
+      {
+        "0": "s",
+        "1": "e",
+        "2": "r",
+        "3": "v",
+        "4": "i",
+        "5": "c",
+        "6": "e",
+        "7": "s",
+        "_key": "k5qiwfnq"
+      },
+      {
+        "0": "f",
+        "1": "o",
+        "2": "r",
+        "3": "m",
+        "4": "a",
+        "5": "t",
+        "6": "i",
+        "7": "o",
+        "8": "n",
+        "_key": "k69d0iso"
+      },
+      {
+        "0": "a",
+        "1": "b",
+        "2": "o",
+        "3": "u",
+        "4": "t",
+        "_key": "k7733q92"
+      },
+      {
+        "0": "c",
+        "1": "l",
+        "2": "o",
+        "3": "s",
+        "4": "i",
+        "5": "n",
+        "6": "g",
+        "_key": "k8iq9f6g"
+      }
     ]
   },
   "home": {
@@ -149,56 +290,6 @@
       "title": "No se trata solo de fotografiar comida",
       "subtitle": "Se trata de construir imágenes que hagan que una persona quiera probarla y trasmitir experiencias"
     },
-    "banner": [
-      {
-        "kind": "image",
-        "src": "https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=480&h=600&fit=crop&auto=format&q=80",
-        "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
-        "sizes": "(max-width: 680px) 42vw, 300px",
-        "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/218d5c6f9b212b3923f03d864741fce2e0b56d9a-2736x1824.jpg?w=40&h=50&fit=crop&blur=300&q=30",
-        "alt": "Fotografía gastronómica de restaurante"
-      },
-      {
-        "kind": "image",
-        "src": "https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=480&h=600&fit=crop&auto=format&q=80",
-        "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
-        "sizes": "(max-width: 680px) 42vw, 300px",
-        "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/67d063cacb2405537b5f440a45c062771a2de7b7-4524x3016.jpg?w=40&h=50&fit=crop&blur=300&q=30",
-        "alt": "Plato con textura y vapor"
-      },
-      {
-        "kind": "image",
-        "src": "https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=480&h=600&fit=crop&auto=format&q=80",
-        "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
-        "sizes": "(max-width: 680px) 42vw, 300px",
-        "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/2b125d25ee0b4664bacc68ce5975983e1bf88500-4765x3134.jpg?w=40&h=50&fit=crop&blur=300&q=30",
-        "alt": "Ambiente gastronómico"
-      },
-      {
-        "kind": "image",
-        "src": "https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80",
-        "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
-        "sizes": "(max-width: 680px) 42vw, 300px",
-        "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/df34f5f7eb08365465187a081619839f8ecf0199-5184x3456.jpg?w=40&h=50&fit=crop&blur=300&q=30",
-        "alt": "Fotografía para marca de alimentos"
-      },
-      {
-        "kind": "image",
-        "src": "https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=480&h=600&fit=crop&auto=format&q=80",
-        "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
-        "sizes": "(max-width: 680px) 42vw, 300px",
-        "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/f882fb7c329e744b6fea2102c655ba9f794cec3f-4741x3161.jpg?w=40&h=50&fit=crop&blur=300&q=30",
-        "alt": "Creación de pastelería"
-      },
-      {
-        "kind": "image",
-        "src": "https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80",
-        "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
-        "sizes": "(max-width: 680px) 42vw, 300px",
-        "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/72c65922fe0059661ace99599f069ead6f72775d-5184x3456.jpg?w=40&h=50&fit=crop&blur=300&q=30",
-        "alt": "Detalle macro de pastelería"
-      }
-    ],
     "closingFoto": {
       "kind": "image",
       "src": "https://cdn.sanity.io/images/tg1ohcli/production/abba1ae7652b63f295a412566797e9c1d30a4ba2-1600x1068.jpg?w=480&h=600&fit=crop&auto=format&q=80",

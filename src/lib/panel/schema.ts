@@ -2,8 +2,10 @@
  * Esquemas de Sanity — Fase 3 (títulos en español para JJ).
  * Cada categoría es creable sin límite; el resto es contenido editable.
  */
+import { bannerHomeSchema } from './banner-schema';
 
 export const schemaTypes = [
+	bannerHomeSchema,
 	/* ===== Categoría del portafolio (creable por JJ) ===== */
 	{
 		name: 'category',
@@ -88,26 +90,32 @@ export const schemaTypes = [
 	/* ===== Contenido del home (singleton) ===== */
 	{
 		name: 'homeContent',
-		title: 'Contenido del home',
+		title: 'Textos y videos del home',
 		type: 'document',
 		__experimental_actions: ['update', 'publish'],
+		groups: [
+			{ name: 'textos', title: 'Textos', default: true },
+			{ name: 'imagenes', title: 'Imágenes y videos' }
+		],
 		fields: [
-			{ name: 'kicker', title: 'Etiqueta superior', type: 'string' },
-			{ name: 'titulo', title: 'Titular principal', type: 'string' },
-			{ name: 'subtitulo', title: 'Subtítulo', type: 'string' },
-			{ name: 'editorialTitulo', title: 'Editorial — título', type: 'string' },
-			{ name: 'editorialTexto', title: 'Editorial — texto', type: 'text' },
+			{ name: 'kicker', title: 'Etiqueta superior', type: 'string', group: 'textos' },
+			{ name: 'titulo', title: 'Titular principal', type: 'string', group: 'textos' },
+			{ name: 'subtitulo', title: 'Subtítulo', type: 'string', group: 'textos' },
+			{ name: 'editorialTitulo', title: 'Editorial — título', type: 'string', group: 'textos' },
+			{ name: 'editorialTexto', title: 'Editorial — texto', type: 'text', rows: 3, group: 'textos' },
 			{
-				name: 'banner', title: 'Fotos del banner (verticales 4:5)', type: 'array',
-				of: [{
-					type: 'image', options: { hotspot: true },
-					fields: [{ name: 'alt', title: 'Descripción (alt)', type: 'string', validation: (R: any) => R.required() }]
-				}]
+				name: 'retratoJJ', title: 'Retrato de JJ (cierre, vertical 3:4)', type: 'image',
+				options: { hotspot: true }, group: 'imagenes'
 			},
-			{ name: 'retratoJJ', title: 'Retrato de JJ (cierre, vertical 3:4)', type: 'image', options: { hotspot: true } },
-			{ name: 'retratoAlt', title: 'Descripción del retrato (alt)', type: 'string' },
-			{ name: 'videoHeroUrl', title: 'Video del hero (URL Cloudinary, vertical 9:16)', type: 'url', description: 'Pendiente P-1: mix/backstage' },
-			{ name: 'videoCierreUrl', title: 'Video del cierre (URL Cloudinary) — si vuelve a querer video', type: 'url' }
+			{ name: 'retratoAlt', title: 'Descripción del retrato (alt)', type: 'string', group: 'imagenes' },
+			{
+				name: 'videoHeroUrl', title: 'Video del hero (URL Cloudinary, vertical 9:16)', type: 'url',
+				description: 'Pendiente P-1: mix/backstage', group: 'imagenes'
+			},
+			{
+				name: 'videoCierreUrl', title: 'Video del cierre (URL Cloudinary) — si vuelve a querer video',
+				type: 'url', group: 'imagenes'
+			}
 		]
 	},
 

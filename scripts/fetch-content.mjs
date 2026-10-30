@@ -5,7 +5,7 @@
 // respaldo — el build NUNCA se rompe por el CMS.
 import { writeFileSync } from 'node:fs';
 
-const PROJECT = 'tg1ohclj';
+const PROJECT = 'tg1ohcli';
 const DATASET = 'production';
 const CDN = `https://${PROJECT}.apicdn.sanity.io/v1/data/query/${DATASET}?query=`;
 
@@ -33,13 +33,20 @@ async function q(groq) {
 
 let out = {};
 try {
-	const [cats, siteRaw, homeRaw, services, courses] = await Promise.all([
+	const [cats, siteRaw, homeRaw, bannerHomeRaw, services, courses] = await Promise.all([
 		q('*[_type=="category" && (defined(visible)==false || visible==true)] | order(orden asc){name,"slug":slug.current,tagline,headline,descripcion,"coverUrl":cover.asset->url,"coverAlt":cover.alt,galeria[]{tipo,alt,cliente,servicio,anio,"imgUrl":imagen.asset->url,videoUrl},orden}'),
 		q('*[_id=="siteConfig"][0]'),
-		q('*[_id=="homeContent"][0]{kicker,titulo,subtitulo,editorialTitulo,editorialTexto,banner[]{"url":asset->url,alt},retratoJJ{"url":asset->url},retratoAlt,videoHeroUrl}'),
+		q('*[_id=="homeContent"][0]{kicker,titulo,subtitulo,editorialTitulo,editorialTexto,retratoJJ{"url":asset->url},retratoAlt,videoHeroUrl}'),
+		q('*[_id=="bannerHome"][0]{fotos[]{"url":asset->url,alt}}'),
 		q('*[_type=="service"] | order(orden asc)'),
 		q('*[_type=="course"] | order(orden asc)')
 	]);
+
+	if (bannerHomeRaw?.fotos?.length) {
+		out.bannerHome = bannerHomeRaw.fotos
+			.map((f) => media(f.url, f.alt, '(max-width: 680px) 72vw, 460px'))
+			.filter(Boolean);
+	}
 
 	if (cats?.length) {
 		out.categories = cats.map((c) => ({
@@ -85,11 +92,6 @@ try {
 		if (Object.keys(hero).length) home.hero = hero;
 		if (homeRaw.editorialTitulo || homeRaw.editorialTexto) {
 			home.editorial = { title: homeRaw.editorialTitulo, subtitle: homeRaw.editorialTexto };
-		}
-		if (homeRaw.banner?.length) {
-			home.banner = homeRaw.banner
-				.map((b) => media(b.url, b.alt, '(max-width: 680px) 42vw, 300px'))
-				.filter(Boolean);
 		}
 		if (homeRaw.retratoJJ?.url) {
 			home.closingFoto = media(homeRaw.retratoJJ.url, homeRaw.retratoAlt, '(max-width: 680px) 92vw, 560px');

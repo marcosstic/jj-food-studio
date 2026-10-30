@@ -1,110 +1,176 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import EmblaCarousel from 'embla-carousel';
+	import Autoplay from 'embla-carousel-autoplay';
 	import { home } from '$lib/content';
 
 	/**
-	 * Banner filmstrip (Fase 2c): cinta de fotos verticales 4:5 en loop
-	 * continuo. Pausa solo con puntero real (en táctil un toque NO detiene
-	 * el loop); estática con prefers-reduced-motion.
-	 * La pista se duplica para el loop perfecto (translateX -50%).
+	 * Banner slider (Fase 3): autoplay + flechas + dots + arrastre táctil.
+	 * Pausa al hover y al interactuar; respeta prefers-reduced-motion.
 	 */
-	const tiles: typeof home.banner = [...home.banner, ...home.banner];
+	const images = home.banner;
+
+	let viewport: HTMLElement;
+	let emblaApi: ReturnType<typeof EmblaCarousel> | null = null;
+	let current = $state(0);
+
+	const step = (dir: 1 | -1) => {
+		emblaApi?.scrollTo(emblaApi.selectedScrollSnap() + dir);
+	};
+
+	const onKeydown = (e: KeyboardEvent) => {
+		if (e.key === 'ArrowRight') step(1);
+		else if (e.key === 'ArrowLeft') step(-1);
+	};
+
+	onMount(() => {
+		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		const plugins = reducedMotion ? [] : [Autoplay({ delay: 4200, stopOnInteraction: false, stopOnMouseEnter: true })];
+		emblaApi = EmblaCarousel(viewport, { loop: true, align: 'center' }, plugins);
+		emblaApi.on('select', () => (current = emblaApi!.selectedScrollSnap()));
+		return () => {
+			emblaApi?.destroy();
+			emblaApi = null;
+		};
+	});
 </script>
 
-<div class="banner" aria-label="Galería de trabajos">
-	<div class="banner__track">
-		{#each tiles as img, i (i)}
-			<div class="banner__tile" aria-hidden={i >= home.banner.length}>
-				<img
-					src={img.src}
-					srcset={img.srcset}
-					sizes={img.sizes ?? '(max-width: 680px) 42vw, 300px'}
-					alt={img.alt}
-					loading={i < 3 ? 'eager' : 'lazy'}
-				/>
-			</div>
+<div class="banner" aria-label="Trabajos destacados — carrusel">
+	<div class="banner__viewport" bind:this={viewport}>
+		<div class="banner__track">
+			{#each images as img, i (img.src + i)}
+				<div class="banner__slide" class:is-active={current === i} aria-hidden={current !== i}>
+					<img src={img.src} srcset={img.srcset} sizes={img.sizes} alt={img.alt} loading={i === 0 ? 'eager' : 'lazy'} />
+				</div>
+			{/each}
+		</div>
+	</div>
+
+	<button class="banner__nav banner__nav--prev" type="button" aria-label="Foto anterior" onclick={() => step(-1)}>‹</button>
+	<button class="banner__nav banner__nav--next" type="button" aria-label="Foto siguiente" onclick={() => step(1)}>›</button>
+
+	<div class="banner__dots" role="tablist" aria-label="Posición del carrusel">
+		{#each images as _, i (i)}
+			<button
+				class="banner__dot"
+				type="button"
+				class:is-active={current === i}
+				aria-label={`Ir a la foto ${i + 1}`}
+				onclick={() => emblaApi?.scrollTo(i)}
+			></button>
 		{/each}
 	</div>
-	<div class="banner__fade banner__fade--left" aria-hidden="true"></div>
-	<div class="banner__fade banner__fade--right" aria-hidden="true"></div>
 </div>
 
 <style>
 	.banner {
 		position: relative;
 		overflow: hidden;
-		padding: var(--space-5) 0;
+		padding: var(--space-6) 0;
+	}
+
+	.banner__viewport {
+		overflow: hidden;
 	}
 
 	.banner__track {
 		display: flex;
-		gap: var(--space-3);
-		width: max-content;
-		animation: banner-scroll 55s linear infinite;
-		will-change: transform;
 	}
 
-	/* Loop perfecto: la pista duplicada se desplaza exactamente la mitad */
-	@keyframes banner-scroll {
-		to {
-			transform: translateX(calc(-50% - var(--space-3) / 2));
-		}
-	}
-
-	/* Pausa solo con puntero real (hover): en táctil un toque NO detiene el loop */
-	@media (hover: hover) and (pointer: fine) {
-		.banner:hover .banner__track,
-		.banner:focus-within .banner__track {
-			animation-play-state: paused;
-		}
-	}
-
-	.banner__tile {
-		flex: 0 0 auto;
-		width: clamp(220px, 24vw, 300px);
+	.banner__slide {
+		flex: 0 0 min(58vw, 460px);
+		margin: 0 var(--space-3);
 		aspect-ratio: 4 / 5;
 		border-radius: var(--radius);
 		overflow: hidden;
 		border: 1px solid rgba(255, 255, 255, 0.06);
+		box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+		opacity: 0.35;
+		transition: opacity var(--dur-2) var(--ease);
 	}
 
-	.banner__tile img {
+	.banner__slide.is-active {
+		opacity: 1;
+	}
+
+	.banner__slide img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
 		display: block;
-		transform: scale(1);
-		transition: transform 0.6s var(--ease);
 	}
 
-	.banner__tile:hover img {
-		transform: scale(1.04);
-	}
-
-	/* Fundidos laterales para integrar la cinta con el fondo */
-	.banner__fade {
+	.banner__nav {
 		position: absolute;
-		top: 0;
-		bottom: 0;
-		width: clamp(40px, 8vw, 120px);
-		pointer-events: none;
-		z-index: 1;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 44px;
+		height: 44px;
+		border-radius: 999px;
+		border: 1px solid rgba(255, 255, 255, 0.16);
+		background: rgba(7, 7, 8, 0.6);
+		-webkit-backdrop-filter: blur(8px);
+		backdrop-filter: blur(8px);
+		color: rgba(255, 255, 255, 0.9);
+		font-size: 20px;
+		line-height: 1;
+		cursor: pointer;
+		z-index: 2;
+		transition: border-color var(--dur-1) var(--ease);
 	}
 
-	.banner__fade--left {
+	.banner__nav:hover {
+		border-color: rgba(233, 215, 154, 0.5);
+	}
+
+	.banner__nav--prev {
+		left: clamp(12px, 4vw, 48px);
+	}
+
+	.banner__nav--next {
+		right: clamp(12px, 4vw, 48px);
+	}
+
+	.banner__dots {
+		position: absolute;
 		left: 0;
-		background: linear-gradient(90deg, var(--bg0), transparent);
-	}
-
-	.banner__fade--right {
 		right: 0;
-		background: linear-gradient(270deg, var(--bg0), transparent);
+		bottom: 18px;
+		display: flex;
+		justify-content: center;
+		gap: 8px;
+		z-index: 2;
 	}
 
-	@media (prefers-reduced-motion: reduce) {
-		.banner__track {
-			animation: none;
-			overflow-x: auto;
-			width: auto;
+	.banner__dot {
+		width: 9px;
+		height: 9px;
+		padding: 0;
+		border-radius: 999px;
+		border: 1px solid rgba(255, 255, 255, 0.45);
+		background: transparent;
+		cursor: pointer;
+		transition: background var(--dur-1) var(--ease), border-color var(--dur-1) var(--ease);
+	}
+
+	.banner__dot.is-active {
+		background: var(--gold-l);
+		border-color: var(--gold-l);
+	}
+
+	@media (max-width: 680px) {
+		.banner {
+			padding: var(--space-4) 0;
+		}
+
+		.banner__slide {
+			flex-basis: 72vw;
+		}
+
+		.banner__nav {
+			width: 38px;
+			height: 38px;
+			font-size: 17px;
 		}
 	}
 </style>

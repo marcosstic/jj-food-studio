@@ -43,6 +43,7 @@ export type {
 
 /* ===== Contenido generado por Sanity en el prebuild ===== */
 const g = generatedJson as {
+	bannerHome?: MediaView[];
 	categories?: Category[];
 	site?: Partial<SiteConfig> & { homeSections?: HomeSectionId[] };
 	home?: {
@@ -71,7 +72,7 @@ export const home = {
 	closing: {
 		foto: g.home?.closingFoto ?? (localHome.closing.foto as MediaView)
 	},
-	banner: (g.home?.banner?.length ? g.home.banner : localHome.banner) as MediaView[]
+	banner: (g.bannerHome?.length ? g.bannerHome : localHome.banner) as MediaView[]
 };
 
 export const homeSections: HomeSectionId[] = (
