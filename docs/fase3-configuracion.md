@@ -1,7 +1,18 @@
 # Fase 3 — Estado de configuración
 
-> Actualizado 2026-10-30. La infraestructura quedó configurada **vía API**
-> (token de Cloudflare que dio Marcos). Solo queda un paso manual en GitHub.
+> Actualizado 2026-10-31. Infraestructura configurada **vía API**
+> (tokens de Cloudflare y Sanity que dio Marcos).
+
+## Panel de JJ (Sanity Studio hospedado)
+
+**URL: <https://jjfoodstudio-panel.sanity.studio>** (login `jjifoodstudio@gmail.com`).
+
+- Código fuente: `studio/` (React, Sanity v3). Redesplegar tras cambiar
+  esquema/copy del panel: `cd studio && SANITY_AUTH_TOKEN=<SANITY_DEPLOY_TOKEN
+  de .env.local> npx sanity deploy -y`
+- `studio/sanity.cli.ts` fija projectId y `studioHost` (evita el prompt
+  interactivo del CLI). Token: **Deploy Studio (Token only)** en `.env.local`
+  como `SANITY_DEPLOY_TOKEN` (el de escritura NO tiene ese permiso).
 
 ## Qué ya quedó (automático, sin dashboard)
 
@@ -66,8 +77,9 @@ del proyecto Pages también). Al renovarlo: actualizar `.env.local`, el
 secreto `GH_TOKEN` de Pages (`wrangler pages secret put GH_TOKEN …`) y el
 secreto `CLOUDFLARE_API_TOKEN` de Actions en GitHub.
 
-## Verificación final (la hago yo cuando el webhook exista)
+## Verificación final (2026-10-31, en curso)
 
-1. Publicar un cambio de prueba en Sanity → webhook → `/hooks/sanity` →
+1. Publicar un cambio de prueba desde el panel → webhook → `/hooks/sanity` →
    dispatch → Actions en success → **jjfoodstudio.com actualizado en ~2 min**
-2. Marcar la Fase 3 como completa en el plan maestro
+2. Marcar la Fase 3 como completa en el plan maestro y escribir la guía de
+   uso del panel para JJ
