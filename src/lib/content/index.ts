@@ -17,8 +17,9 @@ import {
 	servicesSummary as localServicesSummary,
 	servicesDetailed as localServicesDetailed
 } from './services';
+import { site as siteFallback } from './site';
 
-export { site, waLink, ogImage } from './site';
+export { ogImage } from './site';
 export { methodSteps } from './metodologia';
 
 import type {
@@ -78,6 +79,25 @@ export const home = {
 export const homeSections: HomeSectionId[] = (
 	g.site?.homeSections?.length ? g.site.homeSections : localHomeSections
 ) as HomeSectionId[];
+
+/* ===== Configuración global (siteConfig): respaldo local + override del CMS ===== */
+export const site: SiteConfig = {
+	...siteFallback,
+	whatsappPhone: g.site?.whatsappPhone ?? siteFallback.whatsappPhone,
+	whatsappMessage: g.site?.whatsappMessage ?? siteFallback.whatsappMessage,
+	instagramUrl: g.site?.instagramUrl ?? siteFallback.instagramUrl,
+	instagramHandle: g.site?.instagramHandle ?? siteFallback.instagramHandle,
+	email: g.site?.email ?? siteFallback.email,
+	// AJ-12: el modo de logo por defecto se edita desde el panel
+	logoDefault: g.site?.logoDefault ?? siteFallback.logoDefault,
+	formspreeEndpoint: g.site?.formspreeEndpoint ?? siteFallback.formspreeEndpoint
+};
+
+/** Enlace de WhatsApp con mensaje prellenado (lee la config merged del CMS). */
+export const waLink = (message: string = site.whatsappMessage): string =>
+	site.whatsappPhone
+		? `https://wa.me/${site.whatsappPhone}?text=${encodeURIComponent(message)}`
+		: 'https://wa.me/';
 
 /* ===== Servicios ===== */
 export const servicesSummary: ServiceSummary[] = g.services?.length
