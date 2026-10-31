@@ -6,8 +6,9 @@
 
 	/**
 	 * Banner slider (Fase 3): autoplay + flechas + dots + arrastre táctil.
-	 * Cadencia 2.8 s (herencia del filmstrip continuo original), pausa al
-	 * hover y al interactuar; respeta prefers-reduced-motion.
+	 * Cadencia 7.8 s y transición larga (duration 50) = ritmo del filmstrip
+	 * continuo original (55 s / 7 fotos). Pausa al hover y al interactuar;
+	 * respeta prefers-reduced-motion.
 	 */
 	const images = home.banner;
 
@@ -26,8 +27,8 @@
 
 	onMount(() => {
 		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-		const plugins = reducedMotion ? [] : [Autoplay({ delay: 2800, stopOnInteraction: false, stopOnMouseEnter: true })];
-		emblaApi = EmblaCarousel(viewport, { loop: true, align: 'center' }, plugins);
+		const plugins = reducedMotion ? [] : [Autoplay({ delay: 7800, stopOnInteraction: false, stopOnMouseEnter: true })];
+		emblaApi = EmblaCarousel(viewport, { loop: true, align: 'center', duration: 50 }, plugins);
 		emblaApi.on('select', () => (current = emblaApi!.selectedScrollSnap()));
 		return () => {
 			emblaApi?.destroy();
@@ -41,7 +42,17 @@
 		<div class="banner__track">
 			{#each images as img, i (img.src + i)}
 				<div class="banner__slide" class:is-active={current === i} aria-hidden={current !== i}>
-					<img src={img.src} srcset={img.srcset} sizes={img.sizes} alt={img.alt} loading={i === 0 ? 'eager' : 'lazy'} />
+					<!-- Todas eager: el banner es above-the-fold y las fotos tardías
+					     aparecían "de golpe" al llegar el carrusel a ellas -->
+					<img
+						src={img.src}
+						srcset={img.srcset}
+						sizes={img.sizes}
+						alt={img.alt}
+						loading="eager"
+						fetchpriority={i === 0 ? 'high' : undefined}
+						decoding="async"
+					/>
 				</div>
 			{/each}
 		</div>
