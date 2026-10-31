@@ -136,9 +136,19 @@ compartido entre 5 rutas, z-index mágicos, elementos fijos).
 - **Plan Sanity:** el proyecto se crea en trial de 30 días del plan pago y **al vencer baja automáticamente al plan Community gratuito permanente** (contenido y studio intactos; sin medios de pago registrados no hay cobro posible). El sitio no usa funciones de pago.
 
 **Criterios de salida:**
-- [ ] JJ crea/edita una categoría con fotos y el cambio se publica solo.
-- [ ] Sin cambios visuales respecto a Fase 2 (el CMS no altera el render).
-- [ ] Documentado el flujo de edición para el cliente (guía breve con capturas).
+- [x] JJ crea/edita una categoría con fotos y el cambio se publica solo
+  (verificado 2026-10-31: publish en el panel → webhook → deploy automático
+  en ~2 min, 3 corridas seguidas en success; imagen nueva y `logoDefault:
+  three` visibles en producción).
+- [x] Sin cambios visuales respecto a Fase 2 (el CMS no altera el render;
+  `siteConfig` aplica con respaldo local campo por campo).
+- [x] Documentado el flujo de edición para el cliente
+  ([guia-panel-jj.md](guia-panel-jj.md)).
+
+**Fase 3 ✅ completada (2026-10-31).** Detalles operativos:
+[docs/fase3-configuracion.md](fase3-configuracion.md) — panel en
+`jjfoodstudio-panel.sanity.studio`, hosting Cloudflare Pages (ADR-0007),
+deploy por GitHub Actions + relay del webhook en Pages Function.
 
 ### Fase 4 — Evaluación del sistema de agenda
 

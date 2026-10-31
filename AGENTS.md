@@ -59,6 +59,7 @@ cal.com para agenda, Formspree para el formulario, **Cloudflare Pages como hosti
 | `docs/requisitos/ajustes-web-cliente.md` | Requisitos AJ-01…AJ-11 del cliente + pendientes + trazabilidad |
 | `docs/adr/0001…0007` | Decisiones de arquitectura tomadas y su justificación |
 | `docs/fase3-configuracion.md` | Estado de Fase 3 (Sanity + Cloudflare Pages) y pasos pendientes |
+| `docs/guia-panel-jj.md` | Guía de uso del panel para el cliente (no técnica) |
 | `DESIGN_SYSTEM.md` | Sistema de diseño visual (tokens, componentes, efectos) — fuente visual |
 | `CLIENT-REQUIREMENTS.md` | Requerimiento original del sitio (histórico) |
 | `INSTRUCCIONS-CALCOM.md` | Setup de cal.com + Google Calendar del cliente |
@@ -152,11 +153,11 @@ como respaldo (deploys pausados por créditos; reactivar solo por decisión expl
 - [x] **Fase 1 — Migración a SvelteKit con paridad visual 1:1** ✅ (2026-10-27; desviaciones D-1…D-7 y bugs preservados documentados en plan-maestro.md; deploy Netlify pendiente de push)
 - [x] **Fase 2 — Ajustes del cliente (AJ-01…AJ-12)** ✅ (2026-10-27; galerías `/portafolio/[categoria]` con stage Embla; selector público de logo; placeholders P-1/P-2/P-3 activos; Q-1 abierta)
 - [x] **Fase 2b — Modularización + sprint visual** ✅ (2026-10-27; secciones LEGO con orden declarativo, agenda primera, contrato de layout, SEO/OG/sitemap/favicon; placeholders Cloudinary pendientes de API key)
-- [ ] **Fase 3 — CMS Sanity sobre la capa de contenido** — en cierre (2026-10-30):
-  contenido sembrado y verificado, `jjfoodstudio.com` + `www` en vivo en
-  Cloudflare Pages con el build de Sanity. Pendiente SOLO permisos del PAT de
-  GitHub (Workflows + Secrets) para dejar el deploy automático por webhook
-  → pasos exactos en `docs/fase3-configuracion.md`
+- [x] **Fase 3 — CMS Sanity sobre la capa de contenido** ✅ (2026-10-31:
+  panel hospedado en `jjfoodstudio-panel.sanity.studio`; deploy automático
+  publish→webhook→Actions→Pages verificado en producción; `siteConfig` del
+  CMS aplica con respaldo local; guía para JJ en `docs/guia-panel-jj.md`;
+  operación y detalles en `docs/fase3-configuracion.md`)
 - [ ] Fase 4 — Evaluación del sistema de agenda
 
 El detalle completo con criterios de salida está en `docs/plan-maestro.md`.
