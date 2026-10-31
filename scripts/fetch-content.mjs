@@ -34,7 +34,7 @@ async function q(groq) {
 let out = {};
 try {
 	const [cats, siteRaw, homeRaw, bannerHomeRaw, services, courses] = await Promise.all([
-		q('*[_type=="category" && (defined(visible)==false || visible==true)] | order(orden asc){name,"slug":slug.current,tagline,headline,descripcion,"coverUrl":cover.asset->url,"coverAlt":cover.alt,galeria[]{tipo,alt,cliente,servicio,anio,"imgUrl":imagen.asset->url,videoUrl},orden}'),
+		q('*[_type=="category" && (defined(visible)==false || visible==true)] | order(orden asc){"name":nombre,"slug":slug.current,tagline,headline,descripcion,"coverUrl":cover.asset->url,"coverAlt":cover.alt,galeria[]{tipo,alt,cliente,servicio,anio,"imgUrl":imagen.asset->url,videoUrl},orden}'),
 		q('*[_id=="siteConfig"][0]'),
 		q('*[_id=="homeContent"][0]{kicker,titulo,subtitulo,editorialTitulo,editorialTexto,retratoJJ{"url":asset->url},retratoAlt,videoHeroUrl}'),
 		q('*[_id=="bannerHome"][0]{fotos[]{"url":asset->url,alt}}'),
