@@ -21,7 +21,9 @@ export const home = {
 		/** Pendiente P-1: video "mix" o "backstage" para el hero. */
 		videoPublicId: 'v1790499569/DRACOROSSO_TEASER.mp4',
 		videoTransform: 'q_80,f_auto/',
-		posterPublicId: 'v1790531313/IMG_9651.jpg'
+		posterPublicId: 'v1790531313/IMG_9651.jpg',
+		/** URL completa del video publicada en el CMS (homeContent.videoHeroUrl). */
+		customUrl: undefined as string | undefined
 	},
 	closing: {
 		/**

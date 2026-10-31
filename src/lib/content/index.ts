@@ -17,9 +17,8 @@ import {
 	servicesSummary as localServicesSummary,
 	servicesDetailed as localServicesDetailed
 } from './services';
-import { site as siteFallback } from './site';
+import { site as siteFallback, ogImage as ogImageFallback } from './site';
 
-export { ogImage } from './site';
 export { methodSteps } from './metodologia';
 
 import type {
@@ -69,12 +68,21 @@ export const findCategory = (slug: string): Category | undefined =>
 export const home = {
 	hero: { ...localHome.hero, ...(g.home?.hero ?? {}) },
 	editorial: { ...localHome.editorial, ...(g.home?.editorial ?? {}) },
-	reel: localHome.reel,
+	// El video del hero se publica en el panel como URL completa (P-1)
+	reel: { ...localHome.reel, customUrl: g.home?.videoHeroUrl ?? localHome.reel.customUrl },
 	closing: {
 		foto: g.home?.closingFoto ?? (localHome.closing.foto as MediaView)
 	},
 	banner: (g.bannerHome?.length ? g.bannerHome : localHome.banner) as MediaView[]
 };
+
+/**
+ * Vista previa al compartir en redes (Open Graph): la primera foto del banner
+ * recortada 1200×630. Si no hay banner del CMS, la estática de respaldo.
+ */
+export const ogImage: string = g.bannerHome?.[0]
+	? `${g.bannerHome[0].src.split('?')[0]}?w=1200&h=630&fit=crop&auto=format&q=80`
+	: ogImageFallback;
 
 export const homeSections: HomeSectionId[] = (
 	g.site?.homeSections?.length ? g.site.homeSections : localHomeSections
