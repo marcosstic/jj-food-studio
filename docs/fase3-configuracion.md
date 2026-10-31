@@ -7,12 +7,19 @@
 
 **URL: <https://jjfoodstudio-panel.sanity.studio>** (login `jjifoodstudio@gmail.com`).
 
-- Código fuente: `studio/` (React, Sanity v3). Redesplegar tras cambiar
-  esquema/copy del panel: `cd studio && SANITY_AUTH_TOKEN=<SANITY_DEPLOY_TOKEN
-  de .env.local> npx sanity deploy -y`
+- Código fuente: `studio/` (React, **Sanity v4.22**). Redesplegar tras cambiar
+  esquema/copy del panel — **requiere Node ≥20.19 (usamos 22 vía nvm)** porque
+  el CLI v4 usa `require(esm)`:
+  `export PATH="$HOME/.config/nvm/versions/node/v22.23.4/bin:$PATH"` y luego
+  `cd studio && SANITY_AUTH_TOKEN=<SANITY_DEPLOY_TOKEN de .env.local>
+  ./node_modules/.bin/sanity deploy -y`
 - `studio/sanity.cli.ts` fija projectId y `studioHost` (evita el prompt
   interactivo del CLI). Token: **Deploy Studio (Token only)** en `.env.local`
   como `SANITY_DEPLOY_TOKEN` (el de escritura NO tiene ese permiso).
+- Limpieza 2026-10-31: se quitaron por API los campos huérfanos
+  `homeContent.banner` (residuo del esquema viejo del banner) y `service.cta`
+  ×5 — eran la causa de los avisos "Unknown field found" en el panel.
+  El sitio nunca los leyó (el banner vive en `bannerHome`).
 
 ## Qué ya quedó (automático, sin dashboard)
 
