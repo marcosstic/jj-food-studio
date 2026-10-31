@@ -30,6 +30,13 @@ Los borradores NO disparan la web — puedes trabajar tranquilo.
 2. Edita los campos que quieras
 3. **Publish**
 
+### Tu retrato (cierre de la página) y el video del inicio
+En **"Contenido del home"** → pestaña **"Imágenes y videos"**:
+- **Retrato de JJ**: súbelo directo (vertical 3:4) + su descripción → **Publish**
+- **Video del hero**: pega la **URL pública del video en Cloudinary**
+  (formato vertical 9:16). Si aún no tienes videos subidos, pídelo a Marcos
+  (pendiente hasta que grabes tu mix/backstage) → **Publish**
+
 ### Logo (versión por defecto para tus visitas)
 1. Abre **"Configuración del sitio"** → campo **Logo por defecto**
 2. Elige: CSS (clásico) · Glow · **3D** · Cinemático → **Publish**

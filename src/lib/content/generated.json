@@ -55,6 +55,14 @@
       "sizes": "(max-width: 680px) 72vw, 460px",
       "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/6f9d66d764f5978e187f837c58f6c0d5435fb27f-928x1152.jpg?w=40&h=50&fit=crop&blur=300&q=30",
       "alt": "Mole Negro Oaxaqueño de Alta Cocina"
+    },
+    {
+      "kind": "image",
+      "src": "https://cdn.sanity.io/images/tg1ohcli/production/f38ee72e755e19fc63f8cf1655fcf74574571979-1408x768.jpg?w=480&h=600&fit=crop&auto=format&q=80",
+      "srcset": "https://cdn.sanity.io/images/tg1ohcli/production/f38ee72e755e19fc63f8cf1655fcf74574571979-1408x768.jpg?w=360&h=450&fit=crop&auto=format&q=80 360w, https://cdn.sanity.io/images/tg1ohcli/production/f38ee72e755e19fc63f8cf1655fcf74574571979-1408x768.jpg?w=480&h=600&fit=crop&auto=format&q=80 480w, https://cdn.sanity.io/images/tg1ohcli/production/f38ee72e755e19fc63f8cf1655fcf74574571979-1408x768.jpg?w=640&h=800&fit=crop&auto=format&q=80 640w, https://cdn.sanity.io/images/tg1ohcli/production/f38ee72e755e19fc63f8cf1655fcf74574571979-1408x768.jpg?w=960&h=1200&fit=crop&auto=format&q=80 960w",
+      "sizes": "(max-width: 680px) 72vw, 460px",
+      "lqip": "https://cdn.sanity.io/images/tg1ohcli/production/f38ee72e755e19fc63f8cf1655fcf74574571979-1408x768.jpg?w=40&h=50&fit=crop&blur=300&q=30",
+      "alt": "Pabellón Criollo en Presentación de Autor"
     }
   ],
   "categories": [
@@ -184,7 +192,7 @@
     "instagramUrl": "https://instagram.com/",
     "instagramHandle": "@jjfoodstudio",
     "email": "contacto@jjfoodstudio.com",
-    "logoDefault": "css",
+    "logoDefault": "three",
     "homeSections": [
       "banner",
       "hero",
