@@ -1,0 +1,116 @@
+PANEL DE TU WEB — MINI MANUAL
+Para JJ · cualquier duda, escríbeme (Marcos)
+
+========================================
+1. CÓMO ENTRAR
+========================================
+
+Abre esta dirección y guárdala en favoritos:
+
+   jjfoodstudio-panel.sanity.studio
+
+Entra con tu correo de Google (jjifoodstudio@gmail.com).
+
+Ahí mismo cambias fotos, textos y categorías de tu web sin tocar nada de código.
+
+========================================
+2. LA REGLA DE ORO: PUBLICAR
+========================================
+
+Cada cambio que haces queda guardado como borrador.
+Para que aparezca en la web, toca el botón PUBLICAR (arriba a la derecha del documento).
+
+Sin Publicar, la web no cambia — puedes trabajar tranquilo y publicar cuando quieras.
+
+Después de Publicar, tu web (jjfoodstudio.com) se actualiza sola en unos 2 minutos.
+
+========================================
+3. FOTOS DEL INICIO (LA CINTA QUE SE MUEVE)
+========================================
+
+1. En el menú, abre "Fotos del banner".
+2. Agrega o quita fotos con los botones de la lista.
+   • Las fotos verticales (como un post de Instagram) se ven perfectas.
+3. A cada foto ponle su descripción corta (ej: "Mole negro oaxaqueño").
+   Eso ayuda a que Google te encuentre.
+4. Toca PUBLICAR.
+
+Para cambiar el orden: arrastra las fotos dentro de la lista.
+
+========================================
+4. TEXTOS DEL INICIO
+========================================
+
+1. Abre "Textos y videos del home".
+2. En la pestaña "Textos" edita lo que quieras (titular, subtítulo, texto editorial).
+3. Toca PUBLICAR.
+
+En la pestaña "Imágenes y videos" del mismo documento puedes:
+   • Subir tu retrato (la foto que cierra la página). Vertical, 3 de alto por 4 de ancho.
+   • Pegar el enlace de un video tuyo para el inicio (te lo subo yo a Cloudinary cuando lo tengas).
+
+========================================
+5. TU LOGO Y TUS DATOS DE CONTACTO
+========================================
+
+Abre "Configuración del sitio":
+
+   • Logo por defecto: elige la versión que verán tus visitas al entrar (clásico, brillo, 3D o cine).
+   • WhatsApp: tu número con código de país, sin el signo + (ej: 584121234567).
+   • Instagram y correo: los editas ahí mismo.
+
+Toca PUBLICAR y el botón flotante de WhatsApp de tu web se actualiza al instante.
+
+========================================
+6. CREAR UNA CATEGORÍA NUEVA EN TU PORTAFOLIO
+========================================
+
+1. En el menú, entra a "Categorías" y toca el botón + para crear una nueva.
+2. Llena estos datos:
+   • Nombre: ej. "Pasteles"
+   • URL: se genera sola al escribir el nombre (en minúsculas y sin espacios).
+     OJO: si la categoría ya está publicada, no cambies la URL — rompería el
+     enlace que ya compartiste.
+   • Frase corta: una línea para la tarjeta (ej. "Dulces que se antojan").
+   • Titular de la página y descripción: 2 o 3 frases sobre la categoría.
+   • Portada: la foto principal (vertical) con su descripción.
+3. GALERÍA: agrega fotos y videos mezclados. En cada pieza puedes poner tu
+   FICHA TÉCNICA (cliente, servicio, año) — se muestra al abrir cada foto y
+   es lo que vende tu experiencia.
+4. Toca PUBLICAR.
+
+Extras útiles:
+   • "Visible": apágalo para esconder una categoría completa sin borrarla.
+   • El orden de las categorías en la web se cambia arrastrando.
+
+========================================
+7. SERVICIOS Y CURSOS
+========================================
+
+En "Servicio" y "Curso o taller" editas las tarjetas de esas secciones.
+Mismo flujo de siempre: editar, PUBLICAR.
+
+========================================
+8. NO VEO MI CAMBIO, ¿QUÉ HAGO?
+========================================
+
+1. Espera unos 2 minutos (la web se reconstruye sola tras cada Publicar).
+2. Refresca la página de tu web: Ctrl + Shift + R (recarga sin memoria).
+3. ¿Sigue sin verse? Revisa que hayas tocado PUBLICAR — puede haber quedado en borrador.
+
+========================================
+9. ESTO MEJOR DÉJAMELO A MÍ (MARCOS)
+========================================
+
+   • El "Orden de secciones del home" (en Configuración del sitio):
+     mover esa lista puede dañar el diseño de la portada.
+   • Cualquier cambio de diseño, colores o secciones nuevas.
+   • Videos muy pesados (más de 200 MB): consúltame antes de subirlos.
+
+========================================
+10. SI ALGO SALE MAL, NO PASA NADA
+========================================
+
+Todo lo que publicas queda guardado con historial: cualquier cambio se puede
+deshacer sin perder nada. Si ves algo raro, mándame una captura de pantalla
+de lo que ves en el panel y yo lo reviso.
