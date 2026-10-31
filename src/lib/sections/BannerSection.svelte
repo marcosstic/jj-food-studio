@@ -5,10 +5,10 @@
 	import { home } from '$lib/content';
 
 	/**
-	 * Banner slider (Fase 3): autoplay + flechas + dots + arrastre táctil.
-	 * Cadencia 7.8 s y transición larga (duration 50) = ritmo del filmstrip
-	 * continuo original (55 s / 7 fotos). Pausa al hover y al interactuar;
-	 * respeta prefers-reduced-motion.
+	 * Banner slider (Fase 3): autoplay continuo — la transición (duration 75)
+	 * empalma con el siguiente arranque (delay 2200), así el carrusel rueda
+	 * sin detenerse, a velocidad pausada. Sin pausa al hover; tras arrastrar
+	 * o usar los controles retoma solo. Respeta prefers-reduced-motion.
 	 */
 	const images = home.banner;
 
@@ -27,8 +27,10 @@
 
 	onMount(() => {
 		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-		const plugins = reducedMotion ? [] : [Autoplay({ delay: 7800, stopOnInteraction: false, stopOnMouseEnter: true })];
-		emblaApi = EmblaCarousel(viewport, { loop: true, align: 'center', duration: 50 }, plugins);
+		const plugins = reducedMotion
+			? []
+			: [Autoplay({ delay: 2200, stopOnInteraction: false, stopOnMouseEnter: false })];
+		emblaApi = EmblaCarousel(viewport, { loop: true, align: 'center', duration: 75 }, plugins);
 		emblaApi.on('select', () => (current = emblaApi!.selectedScrollSnap()));
 		return () => {
 			emblaApi?.destroy();
