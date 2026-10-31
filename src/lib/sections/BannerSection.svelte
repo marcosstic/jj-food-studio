@@ -6,7 +6,8 @@
 
 	/**
 	 * Banner slider (Fase 3): autoplay + flechas + dots + arrastre táctil.
-	 * Pausa al hover y al interactuar; respeta prefers-reduced-motion.
+	 * Cadencia 2.8 s (herencia del filmstrip continuo original), pausa al
+	 * hover y al interactuar; respeta prefers-reduced-motion.
 	 */
 	const images = home.banner;
 
@@ -25,7 +26,7 @@
 
 	onMount(() => {
 		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-		const plugins = reducedMotion ? [] : [Autoplay({ delay: 4200, stopOnInteraction: false, stopOnMouseEnter: true })];
+		const plugins = reducedMotion ? [] : [Autoplay({ delay: 2800, stopOnInteraction: false, stopOnMouseEnter: true })];
 		emblaApi = EmblaCarousel(viewport, { loop: true, align: 'center' }, plugins);
 		emblaApi.on('select', () => (current = emblaApi!.selectedScrollSnap()));
 		return () => {
@@ -71,6 +72,16 @@
 
 	.banner__viewport {
 		overflow: hidden;
+		/* Las fotos se desvanecen hacia los bordes de la página (efecto
+		   editorial, sin caja ni velo negro sobre las imágenes) */
+		-webkit-mask-image: linear-gradient(
+			90deg,
+			transparent 0,
+			#000 9%,
+			#000 91%,
+			transparent 100%
+		);
+		mask-image: linear-gradient(90deg, transparent 0, #000 9%, #000 91%, transparent 100%);
 	}
 
 	.banner__track {
@@ -83,14 +94,26 @@
 		aspect-ratio: 4 / 5;
 		border-radius: var(--radius);
 		overflow: hidden;
-		border: 1px solid rgba(255, 255, 255, 0.06);
-		box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
-		opacity: 0.35;
-		transition: opacity var(--dur-2) var(--ease);
+		border: 1px solid rgba(255, 255, 255, 0.05);
+		box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+		/* Atenuación por luminosidad (se integra al fondo sin capa encima):
+		   las laterales respiran hacia atrás, la activa brilla */
+		filter: brightness(0.55) saturate(0.85) blur(1.5px);
+		transform: scale(0.95);
+		transition:
+			filter 0.8s var(--ease),
+			transform 0.8s var(--ease),
+			border-color 0.8s var(--ease),
+			box-shadow 0.8s var(--ease);
 	}
 
 	.banner__slide.is-active {
-		opacity: 1;
+		filter: none;
+		transform: scale(1);
+		border-color: rgba(233, 215, 154, 0.22);
+		box-shadow:
+			0 28px 70px rgba(0, 0, 0, 0.5),
+			0 0 0 1px rgba(233, 215, 154, 0.08);
 	}
 
 	.banner__slide img {
